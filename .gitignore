@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Data and generated indexes
+data/raw/*
+data/processed/*
+storage/indexes/*
+storage/metadata/*
+
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/evaluation/.gitkeep
+!storage/indexes/.gitkeep
+!storage/metadata/.gitkeep
+
+# Models
+*.pt
+*.pth
+*.onnx
+*.bin
+
+# OS
+.DS_Store
+Thumbs.db
