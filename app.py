@@ -7,10 +7,11 @@ import pymupdf
 import streamlit as st
 
 from lexisync.chunking.legal_chunker import chunk_document
-from lexisync.config import UPLOADS_DIR
+from lexisync.config import INDEX_DIR, UPLOADS_DIR
 from lexisync.generation.answer_generator import AnswerGenerator
 from lexisync.ingestion.pdf_loader import load_pdf
 from lexisync.retrieval.context_expander import ContextExpander
+from lexisync.retrieval.index_store import IndexStore
 from lexisync.retrieval.indexing_pipeline import DocumentIndexingPipeline
 from lexisync.retrieval.retrieval_pipeline import RetrievalPipeline
 
@@ -53,7 +54,9 @@ def build_case(files, case_name: str):
         destination.write_bytes(uploaded.getvalue())
         paths.append(destination)
 
-    indexer = DocumentIndexingPipeline()
+    # Isolate persisted FAISS files by case so a new case cannot overwrite another case.
+    case_index_store = IndexStore(index_dir=INDEX_DIR / case_id, index_name="legal_documents")
+    indexer = DocumentIndexingPipeline(index_store=case_index_store)
     indexed = indexer.build(paths)
     pipeline = RetrievalPipeline(indexing_pipeline=indexer)
     pipeline.initialize()
