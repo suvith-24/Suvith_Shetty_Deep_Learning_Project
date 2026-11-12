@@ -55,7 +55,7 @@ flowchart LR
 - **Ingestion:** extracts page text in reading order and preserves page numbers. Pages with little extracted text are flagged as potentially scanned. OCR is not currently run, and flagged pages cannot provide searchable evidence.
 - **Chunking:** splits on detected legal headings and prefers paragraph boundaries while keeping source page and section metadata.
 - **Retrieval:** combines BM25 clause-number matching with FAISS dense retrieval using reciprocal rank fusion; a cross encoder reranks candidates. Query expansion and neighboring context are supported.
-- **Generation:** Ollama answers from retrieved excerpts. Citation IDs are validated, missing/invalid citations receive one repair attempt, and claims are checked against cited evidence. The UI expands citation IDs into document, page, and section labels.
+- **Generation:** Ollama answers from retrieved excerpts. Citation IDs are validated, missing/invalid citations receive one repair attempt, and claims are checked against cited evidence. The UI expands citation IDs into document, page, and section labels and displays the cited PDF page beside the answer.
 - **Abstention:** empty retrieval produces a direct insufficient-evidence response. Claim review can flag unsupported/inconclusive claims; automated outputs still require human review.
 
 ## Evaluation
@@ -78,7 +78,7 @@ This writes `evaluation/held_out_results.json` incrementally. It runs a local an
 python scripts/evaluate_held_out.py --generate --ids q01,q15,q16,q17,q18 --generation-timeout 60
 ```
 
-Generation failures and timeouts are recorded so one slow question does not discard completed work. Manually score `manual_correctness` and `manual_citation_precision` before reporting answer correctness or citation precision. The benchmark is grounded in the included GDPR document; for a fresh unseen document, add a separate labeled question set with expected sections before drawing conclusions.
+Generation failures and timeouts are recorded so one slow question does not discard completed work. Use `evaluation/manual_scoring_template.csv` to manually score all 18 questions. For each answerable question, record manual answer correctness (0/1), claims_total, supported_cited_claims and citation precision (`supported_cited_claims / claims_total`). For every question, record whether the system's answer/abstention decision was correct and end-to-end latency. Report answer correctness, citation precision and abstention accuracy separately; do not substitute Recall@5 for answer correctness. The benchmark is grounded in the included GDPR document; for a fresh unseen document, add a separate labeled question set with expected sections before drawing conclusions.
 
 ### Measured retrieval result
 
@@ -105,6 +105,23 @@ evaluation/                    Held-out questions and generated results
 scripts/                        Evaluation and development commands
 tests/                          Unit tests
 ```
+
+### Manual evaluation procedure
+
+The professor's brief requires at least 15 held-out questions, including factual questions, multi-hop questions spanning two pages, and at least 3 unanswerable questions. The current 18-question set contains 14 answerable and 4 unanswerable GDPR questions. The existing benchmark measures retrieval relevance automatically; manual answer correctness and citation precision are separate assessments.
+
+Fill in [evaluation/manual_scoring_template.csv](evaluation/manual_scoring_template.csv) after running the full generation evaluation:
+
+- **Answer correctness:** mark 1 only when the complete answer is factually correct and addresses all parts; otherwise 0.
+- **Citation precision:** supported cited claims divided by all factual claims that carry citations. Inspect each cited page and clause.
+- **Abstention correctness:** mark 1 when an answerable question receives a supported answer or an unanswerable question is refused; otherwise 0.
+- **End-to-end latency:** measure from submitting the question until the final answer/abstention is displayed. Keep this separate from retrieval-only latency.
+
+The five-question smoke evaluation is not a substitute for scoring all 18 questions. The current known false abstention on an answerable smoke question must remain visible in the report.
+
+## Assignment demo checklist
+
+For the live exam, prepare one unseen public PDF and three unseen questions: (1) a direct prose/factual question, (2) a multi-hop question requiring evidence from two pages, and (3) an unanswerable question. The assignment specifies a five-minute demo with a one-page architecture diagram followed by five minutes of theoretical Q&A. The UI supports one-PDF exam ingestion, although the normal project workflow should use 2–5 public PDFs. Confirm the unseen PDF is text-extractable; OCR is not implemented.
 
 ## Known limitations
 
