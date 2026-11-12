@@ -8,6 +8,37 @@ from lexisync.utils.logger import get_logger
 logger = get_logger(__name__)
 
 
+def reciprocal_rank_fusion(
+    rankings: list[list[tuple[Chunk, float]]],
+    k: int = 60,
+    weights: list[float] | None = None,
+) -> list[tuple[Chunk, float]]:
+    """Fuse ranked lists with (weighted) Reciprocal Rank Fusion.
+
+    score(d) = sum_i w_i / (k + rank_i(d)). Only ranks are used, so BM25 and
+    cosine scores on different scales can be combined. Ties are broken by
+    chunk ID for determinism.
+    """
+
+    if k <= 0:
+        raise ValueError("RRF k must be greater than zero.")
+
+    weights = weights or [1.0] * len(rankings)
+    if len(weights) != len(rankings):
+        raise ValueError("weights must contain one weight per ranking.")
+
+    fused: dict[str, float] = {}
+    chunks_by_id: dict[str, Chunk] = {}
+
+    for results, weight in zip(rankings, weights):
+        for rank, (chunk, _) in enumerate(results, start=1):
+            chunks_by_id[chunk.chunk_id] = chunk
+            fused[chunk.chunk_id] = fused.get(chunk.chunk_id, 0.0) + weight / (k + rank)
+
+    ranked = sorted(fused.items(), key=lambda item: (-item[1], item[0]))
+    return [(chunks_by_id[chunk_id], score) for chunk_id, score in ranked]
+
+
 class HybridRetriever:
     """
     Hybrid retrieval using BM25, FAISS, and Reciprocal Rank Fusion.

@@ -4,6 +4,7 @@ import numpy as np
 from sentence_transformers import CrossEncoder
 
 from lexisync.config import RERANKER_MODEL
+from lexisync.retrieval.text_utils import index_text
 from lexisync.schemas.document import Chunk
 from lexisync.utils.logger import get_logger
 
@@ -26,6 +27,7 @@ class CrossEncoderReranker:
         model_name: str = RERANKER_MODEL,
         batch_size: int = 16,
         model: CrossEncoder | None = None,
+        contextual: bool = False,
     ) -> None:
 
         if batch_size <= 0:
@@ -34,6 +36,7 @@ class CrossEncoderReranker:
             )
 
         self.batch_size = batch_size
+        self.contextual = contextual
 
         self.model = model or CrossEncoder(
             model_name,
@@ -81,7 +84,7 @@ class CrossEncoderReranker:
 
         # Build query-passage pairs.
         pairs = [
-            (query, chunk.text)
+            (query, index_text(chunk, self.contextual))
             for chunk, _ in candidates
         ]
 

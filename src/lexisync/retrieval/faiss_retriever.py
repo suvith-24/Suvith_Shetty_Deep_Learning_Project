@@ -6,6 +6,7 @@ from sentence_transformers import SentenceTransformer
 
 from lexisync.config import EMBEDDING_MODEL
 from lexisync.retrieval.index_store import IndexStore
+from lexisync.retrieval.text_utils import index_text
 from lexisync.schemas.document import Chunk
 from lexisync.utils.logger import get_logger
 
@@ -35,6 +36,7 @@ class FAISSRetriever:
         model: SentenceTransformer | None = None,
         index_store: IndexStore | None = None,
         load_existing: bool = False,
+        contextual: bool = False,
     ) -> None:
 
         if batch_size <= 0:
@@ -54,6 +56,7 @@ class FAISSRetriever:
 
         self.batch_size = batch_size
         self.index_store = index_store
+        self.contextual = contextual
 
         # The embedding model is needed for query encoding
         # in both build and load modes.
@@ -83,14 +86,14 @@ class FAISSRetriever:
         self.chunks = chunks
 
         texts = [
-            chunk.text
+            index_text(chunk, self.contextual)
             for chunk in self.chunks
         ]
 
         embeddings = self.model.encode(
             texts,
             batch_size=self.batch_size,
-            show_progress_bar=True,
+            show_progress_bar=False,
             convert_to_numpy=True,
             normalize_embeddings=True,
         )

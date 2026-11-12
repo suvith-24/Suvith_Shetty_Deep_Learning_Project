@@ -1,8 +1,7 @@
 
-import re
-
 from rank_bm25 import BM25Okapi
 
+from lexisync.retrieval.text_utils import index_text, legal_tokens
 from lexisync.schemas.document import Chunk
 from lexisync.utils.logger import get_logger
 
@@ -17,7 +16,7 @@ class BM25Retriever:
     Returns matching chunks with their BM25 relevance scores.
     """
 
-    def __init__(self, chunks: list[Chunk]) -> None:
+    def __init__(self, chunks: list[Chunk], contextual: bool = False) -> None:
 
         if not chunks:
             raise ValueError(
@@ -25,9 +24,10 @@ class BM25Retriever:
             )
 
         self.chunks = chunks
+        self.contextual = contextual
 
         self.tokenized_corpus = [
-            self._tokenize(chunk.text)
+            self._tokenize(index_text(chunk, contextual))
             for chunk in chunks
         ]
 
@@ -44,16 +44,15 @@ class BM25Retriever:
         Normalize text and tokenize it.
 
         Keeps alphanumeric terms, including legal identifiers
-        such as Article-6 and GDPR-related references.
+        such as Article-6 and GDPR-related references, and adds
+        whole-clause tokens (``7.2``, ``83(4)``, ``article:83``) so
+        clause numbers match exactly instead of as separate digits.
         """
 
         if not isinstance(text, str):
             raise TypeError("Input text must be a string.")
 
-        return re.findall(
-            r"\b[\w-]+\b",
-            text.casefold(),
-        )
+        return legal_tokens(text)
 
     def search(
         self,
