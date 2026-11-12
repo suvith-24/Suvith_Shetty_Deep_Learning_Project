@@ -81,7 +81,7 @@ def main() -> None:
         "benchmark": QUESTIONS_PATH.name,
         "generated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
         "top_k": args.top_k,
-        "conditions": {"retrieval": "BM25 + dense RRF + cross-encoder", "baseline": "no retrieved evidence"},
+        "conditions": {"baseline": "Dense-only FAISS retrieval", "retrieval": "Hybrid BM25 + dense RRF + cross-encoder reranking"},
         "metrics": {},
         "items": [],
         "manual_scoring": {
@@ -135,7 +135,6 @@ def main() -> None:
         }
 
         if generator is not None:
-            no_retrieval = generator.generate_answer(question["question"], evidence=[])
             generation_started = time.perf_counter()
             try:
                 retrieved = generator.generate_answer(question["question"], evidence=hybrid)
@@ -156,8 +155,6 @@ def main() -> None:
                 item["claim_verification"] = retrieved["claim_verification"]
                 item["generation_seconds"] = round(generation_elapsed, 4)
                 item["retrieval_correctness"] = None
-            item["no_retrieval_answer"] = no_retrieval["answer"]
-            item["no_retrieval_abstained"] = no_retrieval["abstained"]
 
         output["items"].append(item)
         output_path.write_text(json.dumps(output, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -178,10 +175,6 @@ def main() -> None:
         "mean_hybrid_retrieval_latency_seconds": sum(latencies) / len(latencies) if latencies else None,
     }
     if args.generate:
-        output["metrics"]["no_retrieval_abstention_accuracy"] = sum(
-            item["no_retrieval_abstained"] == (not item["answerable"])
-            for item in output["items"]
-        ) / len(questions)
         output["metrics"]["retrieval_abstention_accuracy"] = sum(
             item["retrieval_abstained"] == (not item["answerable"])
             for item in output["items"]
