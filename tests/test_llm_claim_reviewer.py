@@ -109,7 +109,7 @@ def test_invalid_quote_retries_and_accepts_exact_quote():
     assert result["status"] == "supported"
     assert result["retry_attempted"] is True
     assert len(client.calls) == 2
-    assert "retry once" in client.calls[1].casefold()
+    assert "previous response could not be validated" in client.calls[1].casefold()
 
 
 def test_invalid_quote_after_retry_remains_inconclusive():
