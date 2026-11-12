@@ -26,7 +26,7 @@ streamlit run app.py
 
 Ollama must be running locally. Configure `OLLAMA_BASE_URL` and `OLLAMA_MODEL` in a root `.env` file if the defaults (`http://localhost:11434` and `qwen2.5:3b`) do not fit your setup. `.env.example` documents the supported variables.
 
-In the app, create a case, upload 1–5 public PDFs (2–5 for a normal case; one is supported for the unseen-PDF exam demo), select **Index documents**, then ask questions. One active case index is used at a time. Uploads are stored under `data/uploads/<case-name>/`; the FAISS index is stored under `storage/indexes/`. The index is local and rebuilt when you index another case.
+In the app, create a case, upload 1–5 public PDFs (2–5 for a normal case; one is supported for the unseen-PDF exam demo), select **Index documents**, then ask questions. Each case has its own persisted index. Uploads are stored under `data/uploads/<case-name>/`; the FAISS index and chunk metadata are stored under `storage/indexes/<case-name>/`. Re-indexing a case replaces only that case's index; other cases remain isolated.
 
 For a quick demo, `data/raw/gdpr.pdf` is included. Pair it with another suitable public legal PDF to meet the 2-document case workflow. Do not upload confidential client material.
 
@@ -66,7 +66,7 @@ The held-out benchmark contains 18 GDPR questions: 14 answerable questions and 4
 python scripts/evaluate_held_out.py
 ```
 
-To also compare no-retrieval answers against retrieval-grounded answers and measure abstention behavior and generation latency:
+To generate retrieval-grounded answers and measure abstention behavior and generation latency (the dense-only versus hybrid comparison remains the retrieval ablation):
 
 ```powershell
 python scripts/evaluate_held_out.py --generate
@@ -91,7 +91,7 @@ Run on 12 November 2026 against the included GDPR index (535 chunks), with 14 an
 
 Hybrid retrieval recovered Article 46 for the third-country transfer question, while Article 6 was missed by both configurations. Answer correctness and citation precision still require manual scoring of the generated answer outputs.
 
-The five-question generation smoke sample (`q01` plus the four unanswerables) recorded 4/5 abstention accuracy for both retrieval and no-retrieval conditions. Retrieval abstained on the answerable sample because its draft did not pass citation/claim checks; this is a false abstention and shows the current conservative gate can reduce answer coverage. The per-question details are in `evaluation/held_out_results_selected.json`.
+The five-question generation smoke sample (`q01` plus the four unanswerables) recorded 4/5 abstention accuracy for the retrieval-grounded condition. Retrieval abstained on the answerable sample because its draft did not pass citation/claim checks; this is a false abstention and shows the current conservative gate can reduce answer coverage. The per-question details are in `evaluation/held_out_results_selected.json`.
 
 ## Project layout
 
@@ -110,7 +110,7 @@ tests/                          Unit tests
 
 - OCR, table extraction, chart/figure understanding, bounding-box citations, and public hosting are not implemented.
 - Reading order reconstruction is heuristic and should be checked on multi-column or unusually formatted documents.
-- The app uses one persisted index at a time; indexing another case replaces the current FAISS index.
+- Case indexes are isolated under `storage/indexes/<case-name>/`; re-indexing the same case replaces only that case's files.
 - Citation and claim verification are automated checks, not legal advice or a guarantee of legal correctness. Review the displayed source page before relying on an answer.
 - The held-out evaluation uses one source document and article labels as retrieval relevance judgments. It does not replace a manually scored multi-document evaluation.
 
