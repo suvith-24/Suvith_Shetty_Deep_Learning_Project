@@ -1,26 +1,32 @@
-
 [build-system]
 requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "lexisyncai"
-version = "0.1.0"
-description = "Evidence-grounded legal document analyst"
+version = "1.0.0"
+description = "Evidence-grounded legal document analyst (hybrid RAG with claim-level verification)"
 requires-python = ">=3.11"
+# Exact pins for reproducibility. torch is pulled in by sentence-transformers;
+# run.ps1 installs the CPU-only wheel first so no CUDA download is forced.
 dependencies = [
     "PyMuPDF==2.1",
-    "streamlit==1.67.0",
     "rank-bm25==0.2.2",
     "faiss-cpu==1.16.0",
-    "python-dotenv==1.2.4",
+    "numpy==2.4.6",
     "sentence-transformers==6.3.0",
-    "rank-bm25==0.2.2",
+    "transformers==5.22.2",
+    "python-dotenv==1.2.4",
+    "fastapi==0.118.0",
+    "uvicorn==0.54.0",
+    "python-multipart==0.0.33",
+    "pydantic==2.14.3",
 ]
 
 [project.optional-dependencies]
 dev = [
     "pytest==9.2.0",
+    "httpx==0.28.1",
 ]
 
 [tool.setuptools]
@@ -29,3 +35,6 @@ package-dir = {"" = "src"}
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]

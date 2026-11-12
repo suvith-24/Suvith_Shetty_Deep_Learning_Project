@@ -48,3 +48,13 @@ Thumbs.db
 # Application logs
 logs/
 *.log
+# Application state (per-machine cases, histories, evaluation indexes)
+storage/
+# Non-project binaries accidentally placed in data/
+data/raw/*.exe
+data/**/*.exe
+# Scratch folders
+New folder/
+
+# Generated demo documents (recreate with: python scripts/make_demo_documents.py)
+data/demo/
