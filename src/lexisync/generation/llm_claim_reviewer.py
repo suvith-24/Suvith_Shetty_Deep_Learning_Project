@@ -82,15 +82,15 @@ Do not paraphrase the quotation. Do not add any other fields.
             return {"valid": False, "reason": "Empty model response."}
 
         verdict_match = re.search(
-            r"^\\s*VERDICT:\\s*(SUPPORTED|CONTRADICTED|INSUFFICIENT)\\s*$",
+            r"^\s*VERDICT:\s*(SUPPORTED|CONTRADICTED|INSUFFICIENT)\s*$",
             response, re.IGNORECASE | re.MULTILINE,
         )
         evidence_match = re.search(
-            r"^\\s*EVIDENCE:\\s*(.*?)" r"(?=^\\s*REASON:)",
+            r"^\s*EVIDENCE:\s*(.*?)" r"(?=^\s*REASON:)",
             response, re.IGNORECASE | re.MULTILINE | re.DOTALL,
         )
         reason_match = re.search(
-            r"^\\s*REASON:\\s*(.+?)\\s*$",
+            r"^\s*REASON:\s*(.+?)\s*$",
             response, re.IGNORECASE | re.MULTILINE,
         )
 
