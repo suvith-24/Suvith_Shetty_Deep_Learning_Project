@@ -1,0 +1,1869 @@
+{
+  "benchmark": "held_out_questions.json",
+  "generated_at": "2026-11-12T13:07:03Z",
+  "top_k": 5,
+  "conditions": {
+    "retrieval": "BM25 + dense RRF + cross-encoder",
+    "baseline": "no retrieved evidence"
+  },
+  "metrics": {
+    "dense_only_recall_at_5": 0.8571428571428571,
+    "hybrid_reranked_recall_at_5": 0.9285714285714286,
+    "answerable_questions": 14,
+    "unanswerable_questions": 4,
+    "mean_hybrid_retrieval_latency_seconds": 0.3121011111126993
+  },
+  "items": [
+    {
+      "id": "q01",
+      "question": "What principles govern the processing of personal data?",
+      "answerable": true,
+      "expected_sections": [
+        "Article 5"
+      ],
+      "expected_answer": "Personal data must be processed lawfully, fairly and transparently; collected for specified purposes; limited to what is necessary; kept accurate and no longer than needed; and protected with appropriate security. The controller is responsible for and must demonstrate compliance.",
+      "dense_only": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.0191,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 5",
+            "pages": [
+              35
+            ],
+            "score": 0.7455652952194214
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 6",
+            "pages": [
+              36
+            ],
+            "score": 0.7453577518463135
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              17
+            ],
+            "score": 0.72917240858078
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 6",
+            "pages": [
+              37
+            ],
+            "score": 0.7092774510383606
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              12
+            ],
+            "score": 0.7086784839630127
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.2963,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 5",
+            "pages": [
+              35
+            ],
+            "score": 8.900699615478516
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              2
+            ],
+            "score": 7.161057472229004
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              12
+            ],
+            "score": 7.153563499450684
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              3
+            ],
+            "score": 6.754611492156982
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              7
+            ],
+            "score": 6.725283622741699
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null
+    },
+    {
+      "id": "q02",
+      "question": "What must a controller be able to demonstrate under the accountability principle?",
+      "answerable": true,
+      "expected_sections": [
+        "Article 5"
+      ],
+      "expected_answer": "The controller is responsible for compliance with the Article 5(1) principles and must be able to demonstrate it.",
+      "dense_only": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.0086,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 5",
+            "pages": [
+              36
+            ],
+            "score": 0.6639738082885742
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              16
+            ],
+            "score": 0.5514981746673584
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 24",
+            "pages": [
+              47
+            ],
+            "score": 0.5428811311721802
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 8",
+            "pages": [
+              38
+            ],
+            "score": 0.5275251269340515
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              15
+            ],
+            "score": 0.5237808227539062
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.2971,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 5",
+            "pages": [
+              36
+            ],
+            "score": 6.633572578430176
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              17
+            ],
+            "score": 6.1542158126831055
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              14
+            ],
+            "score": 3.245851516723633
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 24",
+            "pages": [
+              47
+            ],
+            "score": 2.7538623809814453
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              15
+            ],
+            "score": 1.4380079507827759
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null
+    },
+    {
+      "id": "q03",
+      "question": "When is processing of personal data lawful under the GDPR?",
+      "answerable": true,
+      "expected_sections": [
+        "Article 6"
+      ],
+      "expected_answer": "Processing is lawful only if at least one Article 6(1) basis applies, such as consent, contract necessity, legal obligation, vital interests, public task or legitimate interests subject to the stated conditions.",
+      "dense_only": {
+        "recall_at_k": 0.0,
+        "latency_seconds": 0.0075,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              7
+            ],
+            "score": 0.7105803489685059
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              8
+            ],
+            "score": 0.6864222884178162
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 17",
+            "pages": [
+              44
+            ],
+            "score": 0.6770018935203552
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              23
+            ],
+            "score": 0.6683406829833984
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              2
+            ],
+            "score": 0.6621278524398804
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": 0.0,
+        "latency_seconds": 0.2984,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 8",
+            "pages": [
+              37
+            ],
+            "score": 4.045071601867676
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              8
+            ],
+            "score": 3.8896870613098145
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 18",
+            "pages": [
+              44
+            ],
+            "score": 3.6517186164855957
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 10",
+            "pages": [
+              39
+            ],
+            "score": 2.6774115562438965
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              4
+            ],
+            "score": 2.5888290405273438
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null
+    },
+    {
+      "id": "q04",
+      "question": "What conditions apply to consent, and how can a data subject withdraw it?",
+      "answerable": true,
+      "expected_sections": [
+        "Article 7"
+      ],
+      "expected_answer": "The controller must be able to demonstrate consent; a consent request must be distinguishable, intelligible, accessible and in clear language; withdrawal must be as easy as giving consent and does not affect prior lawful processing.",
+      "dense_only": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.0069,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 7",
+            "pages": [
+              37
+            ],
+            "score": 0.8751555681228638
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 13",
+            "pages": [
+              41
+            ],
+            "score": 0.7980731725692749
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 7",
+            "pages": [
+              37
+            ],
+            "score": 0.7600134015083313
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              8
+            ],
+            "score": 0.7482662200927734
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 17",
+            "pages": [
+              44
+            ],
+            "score": 0.741274356842041
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.3262,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 7",
+            "pages": [
+              37
+            ],
+            "score": 7.2242960929870605
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 7",
+            "pages": [
+              37
+            ],
+            "score": 5.944039344787598
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 17",
+            "pages": [
+              44
+            ],
+            "score": 4.9199419021606445
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              12
+            ],
+            "score": 3.813152313232422
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              8
+            ],
+            "score": 3.3044261932373047
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null
+    },
+    {
+      "id": "q05",
+      "question": "What information must be provided when personal data is collected directly from the data subject?",
+      "answerable": true,
+      "expected_sections": [
+        "Article 13"
+      ],
+      "expected_answer": "The controller must provide its identity and contact details, purposes and legal basis, relevant legitimate interests, recipients, international transfer information, retention period, rights and complaint information, whether provision is statutory or contractual, and applicable automated decision information.",
+      "dense_only": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.0076,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              12
+            ],
+            "score": 0.7897480726242065
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              12
+            ],
+            "score": 0.7599682211875916
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 13",
+            "pages": [
+              40
+            ],
+            "score": 0.746820330619812
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 14",
+            "pages": [
+              41
+            ],
+            "score": 0.7310476899147034
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              5
+            ],
+            "score": 0.727969765663147
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.3186,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 13",
+            "pages": [
+              40
+            ],
+            "score": 8.382001876831055
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              12
+            ],
+            "score": 7.471794605255127
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              12
+            ],
+            "score": 7.374421119689941
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 14",
+            "pages": [
+              41
+            ],
+            "score": 7.294713020324707
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              12
+            ],
+            "score": 6.756612777709961
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null
+    },
+    {
+      "id": "q06",
+      "question": "What is the deadline for responding to a data subject rights request, and when may it be extended?",
+      "answerable": true,
+      "expected_sections": [
+        "Article 12"
+      ],
+      "expected_answer": "The controller must act without undue delay and within one month; that period may be extended by two further months where necessary, considering complexity and number of requests, with notice and reasons within the first month.",
+      "dense_only": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.009,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 12",
+            "pages": [
+              40
+            ],
+            "score": 0.6777722835540771
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 15",
+            "pages": [
+              43
+            ],
+            "score": 0.5997507572174072
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              11
+            ],
+            "score": 0.5920523405075073
+          },
+          {
+            "document_id": "gdpr",
+            "section": "CHAPTER III",
+            "pages": [
+              39
+            ],
+            "score": 0.5877566337585449
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              17
+            ],
+            "score": 0.5815345048904419
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.3275,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 12",
+            "pages": [
+              40
+            ],
+            "score": 4.405393123626709
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              11
+            ],
+            "score": 2.8361215591430664
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 12",
+            "pages": [
+              40
+            ],
+            "score": 0.3261120319366455
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 36",
+            "pages": [
+              54
+            ],
+            "score": 0.004962414503097534
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              17
+            ],
+            "score": -0.9322793483734131
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null
+    },
+    {
+      "id": "q07",
+      "question": "What is the right to erasure and what exceptions can prevent erasure?",
+      "answerable": true,
+      "expected_sections": [
+        "Article 17"
+      ],
+      "expected_answer": "A data subject may obtain erasure in specified circumstances, including where data is no longer necessary, consent is withdrawn without another basis, or processing is unlawful. Exceptions include freedom of expression, legal obligations or public tasks, public health, archiving/research/statistics, and legal claims, subject to the Article's conditions.",
+      "dense_only": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.0077,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 17",
+            "pages": [
+              43
+            ],
+            "score": 0.6785492300987244
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              13
+            ],
+            "score": 0.6226056218147278
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              7
+            ],
+            "score": 0.5184478163719177
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Section 3",
+            "pages": [
+              43
+            ],
+            "score": 0.5119483470916748
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              29
+            ],
+            "score": 0.5113784670829773
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.3426,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 17",
+            "pages": [
+              43
+            ],
+            "score": 5.72701358795166
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              13
+            ],
+            "score": 3.1240134239196777
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              13
+            ],
+            "score": 1.840928316116333
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 19",
+            "pages": [
+              45
+            ],
+            "score": -0.5243175029754639
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              14
+            ],
+            "score": -0.6449401378631592
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null
+    },
+    {
+      "id": "q08",
+      "question": "What does the right to data portability require?",
+      "answerable": true,
+      "expected_sections": [
+        "Article 20"
+      ],
+      "expected_answer": "For qualifying automated processing based on consent or contract, the data subject can receive provided personal data in a structured, commonly used, machine-readable format and transmit it to another controller; direct transmission is required where technically feasible.",
+      "dense_only": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.0068,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 20",
+            "pages": [
+              45
+            ],
+            "score": 0.7849674224853516
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              12
+            ],
+            "score": 0.6176095008850098
+          },
+          {
+            "document_id": "gdpr",
+            "section": "CHAPTER III",
+            "pages": [
+              39
+            ],
+            "score": 0.6111469268798828
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              13
+            ],
+            "score": 0.6105327606201172
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              13
+            ],
+            "score": 0.6045408248901367
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.3151,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 20",
+            "pages": [
+              45
+            ],
+            "score": 7.37165641784668
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              14
+            ],
+            "score": 4.645963668823242
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 13",
+            "pages": [
+              41
+            ],
+            "score": 4.446961402893066
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              13
+            ],
+            "score": 2.9502596855163574
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 14",
+            "pages": [
+              42
+            ],
+            "score": 2.49316143989563
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null
+    },
+    {
+      "id": "q09",
+      "question": "When must a personal data breach be notified to the supervisory authority?",
+      "answerable": true,
+      "expected_sections": [
+        "Article 33"
+      ],
+      "expected_answer": "The controller must notify the competent supervisory authority without undue delay and, where feasible, within 72 hours after becoming aware, unless the breach is unlikely to result in a risk to individuals' rights and freedoms.",
+      "dense_only": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.008,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              17
+            ],
+            "score": 0.7742513418197632
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 33",
+            "pages": [
+              52
+            ],
+            "score": 0.771943211555481
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              17
+            ],
+            "score": 0.7700822353363037
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              17
+            ],
+            "score": 0.7652961611747742
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              16
+            ],
+            "score": 0.6894357204437256
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.3221,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 33",
+            "pages": [
+              52
+            ],
+            "score": 9.037362098693848
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              17
+            ],
+            "score": 8.823873519897461
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              17
+            ],
+            "score": 7.321754455566406
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              17
+            ],
+            "score": 6.5065598487854
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              17
+            ],
+            "score": 6.3179216384887695
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null
+    },
+    {
+      "id": "q10",
+      "question": "When must a controller communicate a personal data breach to affected individuals?",
+      "answerable": true,
+      "expected_sections": [
+        "Article 34"
+      ],
+      "expected_answer": "When the breach is likely to result in a high risk to individuals' rights and freedoms, the controller must communicate it without undue delay, subject to the Article's exceptions.",
+      "dense_only": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.0099,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              16
+            ],
+            "score": 0.7661428451538086
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 33",
+            "pages": [
+              52
+            ],
+            "score": 0.758185863494873
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 34",
+            "pages": [
+              53
+            ],
+            "score": 0.7549223899841309
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              17
+            ],
+            "score": 0.7380486726760864
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              17
+            ],
+            "score": 0.7329516410827637
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.2978,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 34",
+            "pages": [
+              52
+            ],
+            "score": 7.818323612213135
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              17
+            ],
+            "score": 7.036191940307617
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              17
+            ],
+            "score": 6.588936805725098
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 34",
+            "pages": [
+              53
+            ],
+            "score": 5.5781049728393555
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 33",
+            "pages": [
+              52
+            ],
+            "score": 4.718588352203369
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null
+    },
+    {
+      "id": "q11",
+      "question": "What safeguards may be used for transfers to a third country without an adequacy decision?",
+      "answerable": true,
+      "expected_sections": [
+        "Article 46"
+      ],
+      "expected_answer": "Transfers may take place where appropriate safeguards are provided, enforceable data subject rights and effective legal remedies are available; safeguards include binding instruments, binding corporate rules, standard data protection clauses, approved codes or certification with binding commitments, and specified administrative arrangements.",
+      "dense_only": {
+        "recall_at_k": 0.0,
+        "latency_seconds": 0.0114,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 45",
+            "pages": [
+              61
+            ],
+            "score": 0.6787341833114624
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              20
+            ],
+            "score": 0.6777914762496948
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              22
+            ],
+            "score": 0.6494803428649902
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              19
+            ],
+            "score": 0.6337229013442993
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 44",
+            "pages": [
+              60
+            ],
+            "score": 0.6272559762001038
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.3208,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 49",
+            "pages": [
+              64
+            ],
+            "score": 7.059047698974609
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 46",
+            "pages": [
+              62
+            ],
+            "score": 6.730719566345215
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              20
+            ],
+            "score": 6.668145179748535
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              20
+            ],
+            "score": 6.292117118835449
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 45",
+            "pages": [
+              61
+            ],
+            "score": 6.1919474601745605
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null
+    },
+    {
+      "id": "q12",
+      "question": "What are the maximum administrative fines for the two tiers of GDPR infringements?",
+      "answerable": true,
+      "expected_sections": [
+        "Article 83"
+      ],
+      "expected_answer": "The lower tier is up to EUR 10 million or, for an undertaking, 2% of total worldwide annual turnover, whichever is higher. The higher tier is up to EUR 20 million or 4%, whichever is higher.",
+      "dense_only": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.007,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 83",
+            "pages": [
+              82
+            ],
+            "score": 0.6766293048858643
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 83",
+            "pages": [
+              83
+            ],
+            "score": 0.6513316631317139
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 83",
+            "pages": [
+              82
+            ],
+            "score": 0.6302257776260376
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 83",
+            "pages": [
+              83
+            ],
+            "score": 0.6289401054382324
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              28
+            ],
+            "score": 0.6160101890563965
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.3494,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 83",
+            "pages": [
+              82
+            ],
+            "score": 2.9367835521698
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 83",
+            "pages": [
+              83
+            ],
+            "score": 2.0926413536071777
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              28
+            ],
+            "score": 0.47960180044174194
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 83",
+            "pages": [
+              82
+            ],
+            "score": -1.6657135486602783
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 83",
+            "pages": [
+              83
+            ],
+            "score": -1.9044263362884521
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null
+    },
+    {
+      "id": "q13",
+      "question": "What age threshold does the GDPR set for a child's consent to information society services, and may a Member State lower it?",
+      "answerable": true,
+      "expected_sections": [
+        "Article 8"
+      ],
+      "expected_answer": "The default threshold is 16 years; a Member State may provide by law for a lower age, but not below 13.",
+      "dense_only": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.0086,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 8",
+            "pages": [
+              37
+            ],
+            "score": 0.792380690574646
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              7
+            ],
+            "score": 0.48513054847717285
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              7
+            ],
+            "score": 0.47720542550086975
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              31
+            ],
+            "score": 0.4678536653518677
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              11
+            ],
+            "score": 0.4661511778831482
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.3502,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 8",
+            "pages": [
+              37
+            ],
+            "score": 5.478312969207764
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              6
+            ],
+            "score": -5.496672630310059
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              6
+            ],
+            "score": -5.600651741027832
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 17",
+            "pages": [
+              44
+            ],
+            "score": -6.656950950622559
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              21
+            ],
+            "score": -7.668004512786865
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null
+    },
+    {
+      "id": "q14",
+      "question": "What rights does a data subject have regarding solely automated decisions with legal or similarly significant effects?",
+      "answerable": true,
+      "expected_sections": [
+        "Article 22"
+      ],
+      "expected_answer": "The data subject has the right not to be subject to such a decision, subject to exceptions for contractual necessity, legal authorization with safeguards, or explicit consent. Safeguards include human intervention, expressing a view and contesting the decision where applicable.",
+      "dense_only": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.0081,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 22",
+            "pages": [
+              46
+            ],
+            "score": 0.6962558031082153
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 22",
+            "pages": [
+              46
+            ],
+            "score": 0.6711217164993286
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              6
+            ],
+            "score": 0.6696634292602539
+          },
+          {
+            "document_id": "gdpr",
+            "section": "CHAPTER III",
+            "pages": [
+              39
+            ],
+            "score": 0.6520562171936035
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 21",
+            "pages": [
+              46
+            ],
+            "score": 0.6510359048843384
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.2924,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 22",
+            "pages": [
+              46
+            ],
+            "score": 8.023157119750977
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              14
+            ],
+            "score": 8.019100189208984
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 47",
+            "pages": [
+              63
+            ],
+            "score": 4.201550483703613
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 15",
+            "pages": [
+              43
+            ],
+            "score": 3.7954115867614746
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 21",
+            "pages": [
+              46
+            ],
+            "score": 2.7983415126800537
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null
+    },
+    {
+      "id": "q15",
+      "question": "How long must a controller retain records of every employee's annual leave balance?",
+      "answerable": false,
+      "expected_sections": [],
+      "expected_answer": "The GDPR text does not specify this employee leave-record retention period.",
+      "dense_only": {
+        "recall_at_k": null,
+        "latency_seconds": 0.0087,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              16
+            ],
+            "score": 0.42575305700302124
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 12",
+            "pages": [
+              40
+            ],
+            "score": 0.3974273204803467
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 28",
+            "pages": [
+              49
+            ],
+            "score": 0.38231325149536133
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 28",
+            "pages": [
+              49
+            ],
+            "score": 0.3683125376701355
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              16
+            ],
+            "score": 0.36510539054870605
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": null,
+        "latency_seconds": 0.3038,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 30",
+            "pages": [
+              50
+            ],
+            "score": -5.195103168487549
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 12",
+            "pages": [
+              40
+            ],
+            "score": -5.794226169586182
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              12
+            ],
+            "score": -6.936038970947266
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              16
+            ],
+            "score": -6.949405670166016
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 14",
+            "pages": [
+              42
+            ],
+            "score": -8.288761138916016
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null
+    },
+    {
+      "id": "q16",
+      "question": "Which court has jurisdiction over a dispute between two private companies under their supply contract?",
+      "answerable": false,
+      "expected_sections": [],
+      "expected_answer": "The GDPR does not identify a court for disputes under an unrelated private supply contract.",
+      "dense_only": {
+        "recall_at_k": null,
+        "latency_seconds": 0.0073,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              26
+            ],
+            "score": 0.4377877414226532
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 81",
+            "pages": [
+              81
+            ],
+            "score": 0.41358086466789246
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              27
+            ],
+            "score": 0.40628015995025635
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 62",
+            "pages": [
+              73
+            ],
+            "score": 0.37302231788635254
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              26
+            ],
+            "score": 0.372363805770874
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": null,
+        "latency_seconds": 0.2958,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              26
+            ],
+            "score": -5.2606024742126465
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              27
+            ],
+            "score": -7.104706764221191
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              26
+            ],
+            "score": -7.639413833618164
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 81",
+            "pages": [
+              81
+            ],
+            "score": -8.377837181091309
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 65",
+            "pages": [
+              74
+            ],
+            "score": -8.38398265838623
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null
+    },
+    {
+      "id": "q17",
+      "question": "What is the current market price of the controller's shares?",
+      "answerable": false,
+      "expected_sections": [],
+      "expected_answer": "A market share price is not provided by the GDPR text.",
+      "dense_only": {
+        "recall_at_k": null,
+        "latency_seconds": 0.0107,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 26",
+            "pages": [
+              48
+            ],
+            "score": 0.22970975935459137
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 12",
+            "pages": [
+              40
+            ],
+            "score": 0.22121158242225647
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 28",
+            "pages": [
+              50
+            ],
+            "score": 0.22083011269569397
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 47",
+            "pages": [
+              64
+            ],
+            "score": 0.21678687632083893
+          },
+          {
+            "document_id": "gdpr",
+            "section": "CHAPTER IV",
+            "pages": [
+              47
+            ],
+            "score": 0.21536177396774292
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": null,
+        "latency_seconds": 0.2752,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "CHAPTER IV",
+            "pages": [
+              47
+            ],
+            "score": -8.919240951538086
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 14",
+            "pages": [
+              42
+            ],
+            "score": -10.438822746276855
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 26",
+            "pages": [
+              48
+            ],
+            "score": -10.551048278808594
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 31",
+            "pages": [
+              51
+            ],
+            "score": -10.561603546142578
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 30",
+            "pages": [
+              51
+            ],
+            "score": -10.64779281616211
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null
+    },
+    {
+      "id": "q18",
+      "question": "What encryption algorithm must every organization use for all personal data?",
+      "answerable": false,
+      "expected_sections": [],
+      "expected_answer": "The GDPR does not mandate one specific encryption algorithm for every organization and all personal data.",
+      "dense_only": {
+        "recall_at_k": null,
+        "latency_seconds": 0.0105,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              2
+            ],
+            "score": 0.5179510116577148
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              17
+            ],
+            "score": 0.5034865140914917
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              16
+            ],
+            "score": 0.48641669750213623
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Section 2",
+            "pages": [
+              51
+            ],
+            "score": 0.4852713942527771
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 5",
+            "pages": [
+              36
+            ],
+            "score": 0.480192631483078
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": null,
+        "latency_seconds": 0.2886,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 32",
+            "pages": [
+              51
+            ],
+            "score": -4.105302333831787
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              16
+            ],
+            "score": -5.026132106781006
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Section 2",
+            "pages": [
+              51
+            ],
+            "score": -5.195873260498047
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 5",
+            "pages": [
+              36
+            ],
+            "score": -5.831943988800049
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              12
+            ],
+            "score": -5.886150360107422
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null
+    }
+  ],
+  "manual_scoring": {
+    "answer_correctness": "Fill in after manually reviewing each generated answer.",
+    "citation_precision": "Count cited claims supported by the cited page/section; fill in after manual review.",
+    "abstention_accuracy": "Computed from the retrieval condition when --generate is used."
+  }
+}

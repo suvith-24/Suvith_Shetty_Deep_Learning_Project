@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title description">
+  <title id="title">LexiSyncAI system architecture</title>
+  <desc id="description">PDF ingestion flows into legal chunking, sparse and dense retrieval, fusion, reranking, context expansion, local answer generation, verification, and a cited answer UI.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#506078"/></marker>
+    <style>
+      .box { fill:#fff; stroke:#52657d; stroke-width:2; rx:14; }
+      .stage { fill:#eef4fb; stroke:#426b91; stroke-width:2; rx:14; }
+      .result { fill:#eaf6ef; stroke:#3a7953; stroke-width:2; rx:14; }
+      .title { font:700 23px 'Segoe UI',Arial,sans-serif; fill:#172438; }
+      .label { font:600 17px 'Segoe UI',Arial,sans-serif; fill:#172438; }
+      .detail { font:14px 'Segoe UI',Arial,sans-serif; fill:#42536a; }
+      .arrow { stroke:#506078; stroke-width:2.5; fill:none; marker-end:url(#arrow); }
+      .line { stroke:#7a8ba0; stroke-width:2; fill:none; }
+    </style>
+  </defs>
+  <rect width="1200" height="760" fill="#f7f9fc"/>
+  <text x="600" y="45" text-anchor="middle" class="title">LexiSyncAI · Evidence-Grounded Legal Document Analyst</text>
+  <text x="600" y="72" text-anchor="middle" class="detail">Local document processing · hybrid retrieval · cited generation · abstention</text>
+
+  <rect x="40" y="118" width="205" height="100" class="box"/>
+  <text x="142" y="153" text-anchor="middle" class="label">Public legal PDFs</text>
+  <text x="142" y="181" text-anchor="middle" class="detail">2–5 documents per case</text>
+  <text x="142" y="201" text-anchor="middle" class="detail">Local uploads</text>
+
+  <rect x="300" y="118" width="245" height="100" class="stage"/>
+  <text x="422" y="153" text-anchor="middle" class="label">PDF ingestion</text>
+  <text x="422" y="181" text-anchor="middle" class="detail">PyMuPDF · page numbers</text>
+  <text x="422" y="201" text-anchor="middle" class="detail">scan-page flagging</text>
+
+  <rect x="600" y="118" width="255" height="100" class="stage"/>
+  <text x="727" y="153" text-anchor="middle" class="label">Legal chunking</text>
+  <text x="727" y="181" text-anchor="middle" class="detail">Heading + paragraph boundaries</text>
+  <text x="727" y="201" text-anchor="middle" class="detail">page and section metadata</text>
+
+  <path d="M245 168 H295" class="arrow"/><path d="M545 168 H595" class="arrow"/>
+  <path d="M727 218 V264 H370 V290" class="arrow"/>
+  <path d="M727 264 H830 V290" class="arrow"/>
+
+  <rect x="220" y="292" width="300" height="115" class="box"/>
+  <text x="370" y="330" text-anchor="middle" class="label">Sparse retrieval</text>
+  <text x="370" y="358" text-anchor="middle" class="detail">BM25 keyword matching</text>
+  <text x="370" y="380" text-anchor="middle" class="detail">clause numbers and exact terms</text>
+
+  <rect x="680" y="292" width="300" height="115" class="box"/>
+  <text x="830" y="330" text-anchor="middle" class="label">Dense retrieval</text>
+  <text x="830" y="358" text-anchor="middle" class="detail">Sentence Transformer embeddings</text>
+  <text x="830" y="380" text-anchor="middle" class="detail">FAISS vector search</text>
+
+  <path d="M370 407 V443 H600" class="arrow"/><path d="M830 407 V443 H600" class="arrow"/>
+  <rect x="465" y="450" width="270" height="92" class="stage"/>
+  <text x="600" y="486" text-anchor="middle" class="label">RRF + cross-encoder</text>
+  <text x="600" y="515" text-anchor="middle" class="detail">candidate fusion and reranking</text>
+
+  <path d="M600 542 V570" class="arrow"/>
+  <rect x="465" y="578" width="270" height="76" class="stage"/>
+  <text x="600" y="610" text-anchor="middle" class="label">Context expansion</text>
+  <text x="600" y="635" text-anchor="middle" class="detail">adjacent passages as supporting context</text>
+
+  <path d="M735 616 H805" class="arrow"/>
+  <rect x="815" y="572" width="310" height="92" class="box"/>
+  <text x="970" y="608" text-anchor="middle" class="label">Ollama local LLM</text>
+  <text x="970" y="636" text-anchor="middle" class="detail">answers only from retrieved evidence</text>
+  <rect x="40" y="490" width="300" height="150" class="result"/>
+  <text x="190" y="526" text-anchor="middle" class="label">Citation & claim checks</text>
+  <text x="190" y="554" text-anchor="middle" class="detail">validate source IDs and cited claims</text>
+  <text x="190" y="578" text-anchor="middle" class="detail">one citation repair attempt</text>
+  <text x="190" y="610" text-anchor="middle" class="detail">insufficient evidence → abstain</text>
+  <path d="M815 618 H345" class="arrow"/>
+
+  <rect x="395" y="680" width="730" height="52" class="result"/>
+  <text x="760" y="712" text-anchor="middle" class="label">Streamlit UI · answer + document/page/section citations + source page preview + confidence</text>
+  <path d="M190 640 V706 H390" class="arrow"/>
+</svg>

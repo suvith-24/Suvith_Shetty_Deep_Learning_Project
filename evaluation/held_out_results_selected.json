@@ -1,0 +1,980 @@
+{
+  "benchmark": "held_out_questions.json",
+  "generated_at": "2026-11-12T12:58:11Z",
+  "top_k": 5,
+  "conditions": {
+    "retrieval": "BM25 + dense RRF + cross-encoder",
+    "baseline": "no retrieved evidence"
+  },
+  "metrics": {
+    "dense_only_recall_at_5": 1.0,
+    "hybrid_reranked_recall_at_5": 1.0,
+    "answerable_questions": 1,
+    "unanswerable_questions": 4,
+    "mean_hybrid_retrieval_latency_seconds": 0.3199134200025583,
+    "no_retrieval_abstention_accuracy": 0.8,
+    "retrieval_abstention_accuracy": 0.8,
+    "retrieval_generation_failures": 0,
+    "mean_generation_latency_seconds": 5.7495400000000005
+  },
+  "items": [
+    {
+      "id": "q01",
+      "question": "What principles govern the processing of personal data?",
+      "answerable": true,
+      "expected_sections": [
+        "Article 5"
+      ],
+      "expected_answer": "Personal data must be processed lawfully, fairly and transparently; collected for specified purposes; limited to what is necessary; kept accurate and no longer than needed; and protected with appropriate security. The controller is responsible for and must demonstrate compliance.",
+      "dense_only": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.0166,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 5",
+            "pages": [
+              35
+            ],
+            "score": 0.7455652952194214
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 6",
+            "pages": [
+              36
+            ],
+            "score": 0.7453577518463135
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              17
+            ],
+            "score": 0.72917240858078
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 6",
+            "pages": [
+              37
+            ],
+            "score": 0.7092774510383606
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              12
+            ],
+            "score": 0.7086784839630127
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": 1.0,
+        "latency_seconds": 0.3369,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 5",
+            "pages": [
+              35
+            ],
+            "score": 8.900699615478516
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              2
+            ],
+            "score": 7.161057472229004
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              12
+            ],
+            "score": 7.153563499450684
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              3
+            ],
+            "score": 6.754611492156982
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              7
+            ],
+            "score": 6.725283622741699
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null,
+      "retrieval_answer": "The retrieved documents do not provide sufficient evidence to answer this question reliably.",
+      "retrieval_abstained": true,
+      "retrieval_sources": [
+        {
+          "source_id": "S1",
+          "document_id": "gdpr",
+          "chunk_id": "043b7ebb-abdc-47fb-a7fc-967f77844792",
+          "pages": [
+            35
+          ],
+          "section": "Article 5",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S2",
+          "document_id": "gdpr",
+          "chunk_id": "e095bde7-1858-4598-9092-a6ac083ce4c5",
+          "pages": [
+            2
+          ],
+          "section": "General",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S3",
+          "document_id": "gdpr",
+          "chunk_id": "b312805f-f89e-43af-acc9-613bc2cd4f64",
+          "pages": [
+            12
+          ],
+          "section": "General",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S4",
+          "document_id": "gdpr",
+          "chunk_id": "43a4965d-28d1-4b7c-ac81-51e4452a4490",
+          "pages": [
+            3
+          ],
+          "section": "General",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S5",
+          "document_id": "gdpr",
+          "chunk_id": "27abf08c-ba54-4c08-b015-b159c37104ae",
+          "pages": [
+            7
+          ],
+          "section": "General",
+          "subsection": null,
+          "evidence_type": "primary"
+        }
+      ],
+      "claim_verification": {
+        "total_claims": 10,
+        "supported": 0,
+        "contradicted": 0,
+        "insufficient": 0,
+        "inconclusive": 10,
+        "all_claims_supported": false,
+        "reviews": [
+          {
+            "claim": "The principles governing the processing of personal data are as follows:",
+            "source_ids": [],
+            "status": "inconclusive",
+            "quotation": null,
+            "reason": "The claim does not contain a source citation.",
+            "quotation_valid": false
+          },
+          {
+            "claim": "**Lawfulness, Fairness and Transparency**: Personal data shall be processed lawfully, fairly and in a transparent manner in relation to the data subject (Article 5(1)(a)).",
+            "source_ids": [],
+            "status": "inconclusive",
+            "quotation": null,
+            "reason": "The claim does not contain a source citation.",
+            "quotation_valid": false
+          },
+          {
+            "claim": "**Purpose Limitation**: Personal data shall be collected for specified, explicit and legitimate purposes and not further processed in a manner that is incompatible with those purposes (Article 5(1)(b)).",
+            "source_ids": [],
+            "status": "inconclusive",
+            "quotation": null,
+            "reason": "The claim does not contain a source citation.",
+            "quotation_valid": false
+          },
+          {
+            "claim": "**Data Minimization**: Personal data shall be adequate, relevant and limited to what is necessary in relation to the purposes for which they are processed (Article 5(1)(c)).",
+            "source_ids": [],
+            "status": "inconclusive",
+            "quotation": null,
+            "reason": "The claim does not contain a source citation.",
+            "quotation_valid": false
+          },
+          {
+            "claim": "**Accuracy and Updating**: Personal data shall be accurate and, where necessary, kept up to date; every reasonable step must be taken to ensure that personal data that is inaccurate is corrected (Article 5(1)(d)).",
+            "source_ids": [],
+            "status": "inconclusive",
+            "quotation": null,
+            "reason": "The claim does not contain a source citation.",
+            "quotation_valid": false
+          },
+          {
+            "claim": "Personal data shall be processed lawfully, fairly and in a transparent manner in relation to the data subject (Article 5(1)(a)).",
+            "source_ids": [],
+            "status": "inconclusive",
+            "quotation": null,
+            "reason": "The claim does not contain a source citation.",
+            "quotation_valid": false
+          },
+          {
+            "claim": "Personal data shall be collected for specified, explicit and legitimate purposes and not further processed in a manner that is incompatible with those purposes (Article 5(1)(b)).",
+            "source_ids": [],
+            "status": "inconclusive",
+            "quotation": null,
+            "reason": "The claim does not contain a source citation.",
+            "quotation_valid": false
+          },
+          {
+            "claim": "Personal data shall be adequate, relevant and limited to what is necessary in relation to the purposes for which they are processed (Article 5(1)(c)).",
+            "source_ids": [],
+            "status": "inconclusive",
+            "quotation": null,
+            "reason": "The claim does not contain a source citation.",
+            "quotation_valid": false
+          },
+          {
+            "claim": "Personal data shall be accurate and, where necessary, kept up to date; every reasonable step must be taken to ensure that personal data that is inaccurate is corrected (Article 5(1)(d)).",
+            "source_ids": [],
+            "status": "inconclusive",
+            "quotation": null,
+            "reason": "The claim does not contain a source citation.",
+            "quotation_valid": false
+          },
+          {
+            "claim": "The provided excerpts do not contain information on other principles governing the processing of personal data beyond those explicitly stated in Article 5.",
+            "source_ids": [],
+            "status": "inconclusive",
+            "quotation": null,
+            "reason": "The claim does not contain a source citation.",
+            "quotation_valid": false
+          }
+        ],
+        "message": "One or more claims could not be verified as supported by their cited evidence."
+      },
+      "generation_seconds": 14.4516,
+      "retrieval_correctness": null,
+      "no_retrieval_answer": "The retrieved documents do not provide sufficient evidence to answer this question reliably.",
+      "no_retrieval_abstained": true
+    },
+    {
+      "id": "q15",
+      "question": "How long must a controller retain records of every employee's annual leave balance?",
+      "answerable": false,
+      "expected_sections": [],
+      "expected_answer": "The GDPR text does not specify this employee leave-record retention period.",
+      "dense_only": {
+        "recall_at_k": null,
+        "latency_seconds": 0.0167,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              16
+            ],
+            "score": 0.42575305700302124
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 12",
+            "pages": [
+              40
+            ],
+            "score": 0.3974273204803467
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 28",
+            "pages": [
+              49
+            ],
+            "score": 0.38231325149536133
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 28",
+            "pages": [
+              49
+            ],
+            "score": 0.3683125376701355
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              16
+            ],
+            "score": 0.36510539054870605
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": null,
+        "latency_seconds": 0.312,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 30",
+            "pages": [
+              50
+            ],
+            "score": -5.195103168487549
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 12",
+            "pages": [
+              40
+            ],
+            "score": -5.794226169586182
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              12
+            ],
+            "score": -6.936038970947266
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              16
+            ],
+            "score": -6.949405670166016
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 14",
+            "pages": [
+              42
+            ],
+            "score": -8.288761138916016
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null,
+      "retrieval_answer": "Answer:\nThe retrieved documents do not provide sufficient evidence to answer this question reliably.\n\nLimitations:\n- The provided excerpts do not contain any information regarding the retention period for records of every employee's annual leave balance.\n- The excerpts are related to data protection and processing activities, but do not specify any retention period for annual leave balance records.\n\nKey Conditions:\n- None of the provided excerpts contain conditions related to the retention period for employee annual leave balance records.",
+      "retrieval_abstained": true,
+      "retrieval_sources": [
+        {
+          "source_id": "S1",
+          "document_id": "gdpr",
+          "chunk_id": "41adc84c-09f4-45b2-9110-ca756f3f43bb",
+          "pages": [
+            50
+          ],
+          "section": "Article 30",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S2",
+          "document_id": "gdpr",
+          "chunk_id": "dc2eef22-656a-4281-97d2-961eed3d670d",
+          "pages": [
+            40
+          ],
+          "section": "Article 12",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S3",
+          "document_id": "gdpr",
+          "chunk_id": "14bb8a39-53e9-483d-8c50-f2b2b39b081d",
+          "pages": [
+            12
+          ],
+          "section": "General",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S4",
+          "document_id": "gdpr",
+          "chunk_id": "0463488c-ba4f-4454-87a9-453d704b1819",
+          "pages": [
+            16
+          ],
+          "section": "General",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S5",
+          "document_id": "gdpr",
+          "chunk_id": "fbcc4de5-6f3d-42fc-a9fc-ba43ebf65de3",
+          "pages": [
+            42
+          ],
+          "section": "Article 14",
+          "subsection": null,
+          "evidence_type": "primary"
+        }
+      ],
+      "claim_verification": {
+        "total_claims": 0,
+        "supported": 0,
+        "contradicted": 0,
+        "insufficient": 0,
+        "inconclusive": 0,
+        "all_claims_supported": false,
+        "reviews": [],
+        "message": "Claim verification skipped because the answerwas an abstention."
+      },
+      "generation_seconds": 3.5611,
+      "retrieval_correctness": null,
+      "no_retrieval_answer": "The retrieved documents do not provide sufficient evidence to answer this question reliably.",
+      "no_retrieval_abstained": true
+    },
+    {
+      "id": "q16",
+      "question": "Which court has jurisdiction over a dispute between two private companies under their supply contract?",
+      "answerable": false,
+      "expected_sections": [],
+      "expected_answer": "The GDPR does not identify a court for disputes under an unrelated private supply contract.",
+      "dense_only": {
+        "recall_at_k": null,
+        "latency_seconds": 0.0115,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              26
+            ],
+            "score": 0.4377877414226532
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 81",
+            "pages": [
+              81
+            ],
+            "score": 0.41358086466789246
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              27
+            ],
+            "score": 0.40628015995025635
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 62",
+            "pages": [
+              73
+            ],
+            "score": 0.37302231788635254
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              26
+            ],
+            "score": 0.372363805770874
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": null,
+        "latency_seconds": 0.3005,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              26
+            ],
+            "score": -5.2606024742126465
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              27
+            ],
+            "score": -7.104706764221191
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              26
+            ],
+            "score": -7.639413833618164
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 81",
+            "pages": [
+              81
+            ],
+            "score": -8.377837181091309
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 65",
+            "pages": [
+              74
+            ],
+            "score": -8.38398265838623
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null,
+      "retrieval_answer": "Answer:\nThe jurisdiction of a dispute between two private companies under their supply contract is not directly addressed in the provided evidence. The evidence primarily discusses the jurisdiction of national courts in relation to supervisory authorities, data subjects, and disputes involving controllers or processors. There is no explicit mention of private companies and their supply contracts. Therefore, the retrieved documents do not provide sufficient evidence to answer this question reliably.\n\nLimitations:\n- The evidence does not contain information about the jurisdiction of disputes between private companies under supply contracts.\n- The evidence focuses on the jurisdiction of national courts in relation to supervisory authorities, data subjects, and disputes involving controllers or processors.",
+      "retrieval_abstained": true,
+      "retrieval_sources": [
+        {
+          "source_id": "S1",
+          "document_id": "gdpr",
+          "chunk_id": "597f20dc-6e80-4171-a775-c052bd2ef141",
+          "pages": [
+            26
+          ],
+          "section": "General",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S2",
+          "document_id": "gdpr",
+          "chunk_id": "b44128b3-ab5d-40b5-b6e9-c4be63e8899b",
+          "pages": [
+            27
+          ],
+          "section": "General",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S3",
+          "document_id": "gdpr",
+          "chunk_id": "2661d66e-9e61-4df6-89b6-23d99507e601",
+          "pages": [
+            26
+          ],
+          "section": "General",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S4",
+          "document_id": "gdpr",
+          "chunk_id": "13c108b7-20c4-4e1b-8245-6c1970b95a7a",
+          "pages": [
+            81
+          ],
+          "section": "Article 81",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S5",
+          "document_id": "gdpr",
+          "chunk_id": "5916c244-5c71-4037-b75d-d279048db5ee",
+          "pages": [
+            74
+          ],
+          "section": "Article 65",
+          "subsection": null,
+          "evidence_type": "primary"
+        }
+      ],
+      "claim_verification": {
+        "total_claims": 0,
+        "supported": 0,
+        "contradicted": 0,
+        "insufficient": 0,
+        "inconclusive": 0,
+        "all_claims_supported": false,
+        "reviews": [],
+        "message": "Claim verification skipped because the answerwas an abstention."
+      },
+      "generation_seconds": 4.0988,
+      "retrieval_correctness": null,
+      "no_retrieval_answer": "The retrieved documents do not provide sufficient evidence to answer this question reliably.",
+      "no_retrieval_abstained": true
+    },
+    {
+      "id": "q17",
+      "question": "What is the current market price of the controller's shares?",
+      "answerable": false,
+      "expected_sections": [],
+      "expected_answer": "A market share price is not provided by the GDPR text.",
+      "dense_only": {
+        "recall_at_k": null,
+        "latency_seconds": 0.008,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 26",
+            "pages": [
+              48
+            ],
+            "score": 0.22970975935459137
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 12",
+            "pages": [
+              40
+            ],
+            "score": 0.22121158242225647
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 28",
+            "pages": [
+              50
+            ],
+            "score": 0.22083011269569397
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 47",
+            "pages": [
+              64
+            ],
+            "score": 0.21678687632083893
+          },
+          {
+            "document_id": "gdpr",
+            "section": "CHAPTER IV",
+            "pages": [
+              47
+            ],
+            "score": 0.21536177396774292
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": null,
+        "latency_seconds": 0.2872,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "CHAPTER IV",
+            "pages": [
+              47
+            ],
+            "score": -8.919240951538086
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 14",
+            "pages": [
+              42
+            ],
+            "score": -10.438822746276855
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 26",
+            "pages": [
+              48
+            ],
+            "score": -10.551048278808594
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 31",
+            "pages": [
+              51
+            ],
+            "score": -10.561603546142578
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 30",
+            "pages": [
+              51
+            ],
+            "score": -10.64779281616211
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null,
+      "retrieval_answer": "The retrieved documents do not provide sufficient evidence to answer this question reliably.",
+      "retrieval_abstained": true,
+      "retrieval_sources": [
+        {
+          "source_id": "S1",
+          "document_id": "gdpr",
+          "chunk_id": "331b54b0-d4cc-412e-92e2-e4f47fddb43f",
+          "pages": [
+            47
+          ],
+          "section": "CHAPTER IV",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S2",
+          "document_id": "gdpr",
+          "chunk_id": "fbcc4de5-6f3d-42fc-a9fc-ba43ebf65de3",
+          "pages": [
+            42
+          ],
+          "section": "Article 14",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S3",
+          "document_id": "gdpr",
+          "chunk_id": "8b9bb580-35b7-46f2-9a12-052f3bf1116f",
+          "pages": [
+            48
+          ],
+          "section": "Article 26",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S4",
+          "document_id": "gdpr",
+          "chunk_id": "ff93a34a-a65b-40fc-9270-b3b4aa00655a",
+          "pages": [
+            51
+          ],
+          "section": "Article 31",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S5",
+          "document_id": "gdpr",
+          "chunk_id": "ede98891-c59c-4581-ac42-b242f83b4013",
+          "pages": [
+            51
+          ],
+          "section": "Article 30",
+          "subsection": null,
+          "evidence_type": "primary"
+        }
+      ],
+      "claim_verification": {
+        "total_claims": 0,
+        "supported": 0,
+        "contradicted": 0,
+        "insufficient": 0,
+        "inconclusive": 0,
+        "all_claims_supported": false,
+        "reviews": [],
+        "message": "Claim verification skipped because the answerwas an abstention."
+      },
+      "generation_seconds": 2.6107,
+      "retrieval_correctness": null,
+      "no_retrieval_answer": "The retrieved documents do not provide sufficient evidence to answer this question reliably.",
+      "no_retrieval_abstained": true
+    },
+    {
+      "id": "q18",
+      "question": "What encryption algorithm must every organization use for all personal data?",
+      "answerable": false,
+      "expected_sections": [],
+      "expected_answer": "The GDPR does not mandate one specific encryption algorithm for every organization and all personal data.",
+      "dense_only": {
+        "recall_at_k": null,
+        "latency_seconds": 0.0201,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              2
+            ],
+            "score": 0.5179510116577148
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              17
+            ],
+            "score": 0.5034865140914917
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              16
+            ],
+            "score": 0.48641669750213623
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Section 2",
+            "pages": [
+              51
+            ],
+            "score": 0.4852713942527771
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 5",
+            "pages": [
+              36
+            ],
+            "score": 0.480192631483078
+          }
+        ]
+      },
+      "hybrid_reranked": {
+        "recall_at_k": null,
+        "latency_seconds": 0.3629,
+        "results": [
+          {
+            "document_id": "gdpr",
+            "section": "Article 32",
+            "pages": [
+              51
+            ],
+            "score": -4.105302333831787
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              16
+            ],
+            "score": -5.026132106781006
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Section 2",
+            "pages": [
+              51
+            ],
+            "score": -5.195873260498047
+          },
+          {
+            "document_id": "gdpr",
+            "section": "Article 5",
+            "pages": [
+              36
+            ],
+            "score": -5.831943988800049
+          },
+          {
+            "document_id": "gdpr",
+            "section": "General",
+            "pages": [
+              12
+            ],
+            "score": -5.886150360107422
+          }
+        ]
+      },
+      "manual_correctness": null,
+      "manual_citation_precision": null,
+      "retrieval_answer": "Answer:\nThe retrieved documents do not provide sufficient evidence to answer this question reliably.\n\nLimitations:\n- The evidence provided discusses security measures and encryption in general terms, but does not specify a particular encryption algorithm for all personal data.\n- The documents do not provide a mandatory encryption algorithm for all personal data.\n\nKey Conditions:\n- The documents discuss the need for appropriate technical and organisational measures to ensure a level of security appropriate to the risk, including pseudonymisation and encryption of personal data.\n- The documents emphasize the importance of implementing measures to mitigate risks, such as encryption, to ensure an appropriate level of security.",
+      "retrieval_abstained": true,
+      "retrieval_sources": [
+        {
+          "source_id": "S1",
+          "document_id": "gdpr",
+          "chunk_id": "39fdd5bc-e5d2-4c5c-9fbc-4387bb15486b",
+          "pages": [
+            51
+          ],
+          "section": "Article 32",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S2",
+          "document_id": "gdpr",
+          "chunk_id": "a0e10214-e7bf-412c-93b8-5d8240e2675a",
+          "pages": [
+            16
+          ],
+          "section": "General",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S3",
+          "document_id": "gdpr",
+          "chunk_id": "73d8c9a5-3c85-4767-a220-3608775a84f4",
+          "pages": [
+            51
+          ],
+          "section": "Section 2",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S4",
+          "document_id": "gdpr",
+          "chunk_id": "3b52826d-19b2-4c37-8d31-aac9e1bf6c9c",
+          "pages": [
+            36
+          ],
+          "section": "Article 5",
+          "subsection": null,
+          "evidence_type": "primary"
+        },
+        {
+          "source_id": "S5",
+          "document_id": "gdpr",
+          "chunk_id": "14bb8a39-53e9-483d-8c50-f2b2b39b081d",
+          "pages": [
+            12
+          ],
+          "section": "General",
+          "subsection": null,
+          "evidence_type": "primary"
+        }
+      ],
+      "claim_verification": {
+        "total_claims": 0,
+        "supported": 0,
+        "contradicted": 0,
+        "insufficient": 0,
+        "inconclusive": 0,
+        "all_claims_supported": false,
+        "reviews": [],
+        "message": "Claim verification skipped because the answerwas an abstention."
+      },
+      "generation_seconds": 4.0255,
+      "retrieval_correctness": null,
+      "no_retrieval_answer": "The retrieved documents do not provide sufficient evidence to answer this question reliably.",
+      "no_retrieval_abstained": true
+    }
+  ],
+  "manual_scoring": {
+    "answer_correctness": "Fill in after manually reviewing each generated answer.",
+    "citation_precision": "Count cited claims supported by the cited page/section; fill in after manual review.",
+    "abstention_accuracy": "Computed from the retrieval condition when --generate is used."
+  }
+}
