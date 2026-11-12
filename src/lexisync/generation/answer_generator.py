@@ -371,6 +371,15 @@ Do not explain the repair process.
         return sentences
 
     @classmethod
+    def _has_uncited_claims(cls, answer: str) -> bool:
+        """Return True when any extracted claim has no source citation."""
+
+        return any(
+            not item["source_ids"]
+            for item in cls._extract_claims(answer)
+        )
+
+    @classmethod
     def _extract_claims(cls, answer: str) -> list[dict]:
         """
         Extract sentence-level claim candidates and their citations.
@@ -703,14 +712,20 @@ Do not generate a separate Sources section.
             "reason": "Initial citation validation passed.",
         }
 
-        # Step 5: Retry once if citations are missing or invalid.
+        # Step 5: Retry once if citations are missing, invalid, or
+        # absent from any individual extracted claim. A single valid
+        # citation elsewhere in the answer must not mask uncited claims.
+        has_uncited_claims = self._has_uncited_claims(
+            validation["answer"]
+        )
         if (
-            not validation["citations_valid"]
+            (not validation["citations_valid"] or has_uncited_claims)
             and not validation["abstained"]
         ):
             citation_repair["attempted"] = True
             citation_repair["reason"] = (
-                "Initial answer contained missing or invalid citations."
+                "Initial answer contained missing, invalid, or claim-level "
+                "citations."
             )
 
             logger.warning(
