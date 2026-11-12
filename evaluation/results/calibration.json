@@ -1,0 +1,80 @@
+{
+  "dev_set": "dev_calibration_questions.json",
+  "rows": [
+    {
+      "id": "d01",
+      "answerable": true,
+      "top_score": 2.4791769981384277
+    },
+    {
+      "id": "d02",
+      "answerable": true,
+      "top_score": 4.807207107543945
+    },
+    {
+      "id": "d03",
+      "answerable": true,
+      "top_score": 7.777210235595703
+    },
+    {
+      "id": "d04",
+      "answerable": true,
+      "top_score": 5.8155317306518555
+    },
+    {
+      "id": "d05",
+      "answerable": true,
+      "top_score": 8.565601348876953
+    },
+    {
+      "id": "d06",
+      "answerable": true,
+      "top_score": 8.764039993286133
+    },
+    {
+      "id": "d07",
+      "answerable": true,
+      "top_score": 7.58969783782959
+    },
+    {
+      "id": "d08",
+      "answerable": true,
+      "top_score": 4.965965270996094
+    },
+    {
+      "id": "d09",
+      "answerable": false,
+      "top_score": -10.906274795532227
+    },
+    {
+      "id": "d10",
+      "answerable": false,
+      "top_score": -10.867716789245605
+    },
+    {
+      "id": "d11",
+      "answerable": false,
+      "top_score": -0.49181556701660156
+    },
+    {
+      "id": "d12",
+      "answerable": false,
+      "top_score": -10.842842102050781
+    },
+    {
+      "id": "d13",
+      "answerable": false,
+      "top_score": -10.176590919494629
+    },
+    {
+      "id": "d14",
+      "answerable": false,
+      "top_score": -10.935848236083984
+    }
+  ],
+  "threshold": 0.994,
+  "accuracy": 1.0,
+  "margin": 1.485,
+  "min_answerable": 2.4791769981384277,
+  "max_unanswerable": -0.49181556701660156
+}

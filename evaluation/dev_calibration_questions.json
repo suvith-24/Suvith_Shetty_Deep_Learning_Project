@@ -1,0 +1,16 @@
+[
+  {"id": "d01", "question": "What is the territorial scope of the GDPR?", "answerable": true, "expected_sections": ["Article 3"]},
+  {"id": "d02", "question": "How does the Regulation define pseudonymisation?", "answerable": true, "expected_sections": ["Article 4"]},
+  {"id": "d03", "question": "When is a data protection impact assessment required?", "answerable": true, "expected_sections": ["Article 35"]},
+  {"id": "d04", "question": "What must a contract between a controller and a processor stipulate?", "answerable": true, "expected_sections": ["Article 28"]},
+  {"id": "d05", "question": "What is the right to rectification?", "answerable": true, "expected_sections": ["Article 16"]},
+  {"id": "d06", "question": "When does a data subject have the right to object to processing?", "answerable": true, "expected_sections": ["Article 21"]},
+  {"id": "d07", "question": "What must the records of processing activities contain?", "answerable": true, "expected_sections": ["Article 30"]},
+  {"id": "d08", "question": "Who must designate a representative in the Union?", "answerable": true, "expected_sections": ["Article 27"]},
+  {"id": "d09", "question": "What is the VAT rate for digital services in Germany?", "answerable": false, "expected_sections": []},
+  {"id": "d10", "question": "How many paid vacation days must employees receive each year?", "answerable": false, "expected_sections": []},
+  {"id": "d11", "question": "Which cloud provider must controllers use to host personal data?", "answerable": false, "expected_sections": []},
+  {"id": "d12", "question": "What is the statutory minimum wage in France?", "answerable": false, "expected_sections": []},
+  {"id": "d13", "question": "When does the office lease agreement terminate?", "answerable": false, "expected_sections": []},
+  {"id": "d14", "question": "What password length must user accounts have?", "answerable": false, "expected_sections": []}
+]

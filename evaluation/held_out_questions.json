@@ -1,20 +1,387 @@
 [
-  {"id":"q01","question":"What principles govern the processing of personal data?","answerable":true,"expected_sections":["Article 5"],"expected_answer":"Personal data must be processed lawfully, fairly and transparently; collected for specified purposes; limited to what is necessary; kept accurate and no longer than needed; and protected with appropriate security. The controller is responsible for and must demonstrate compliance."},
-  {"id":"q02","question":"What must a controller be able to demonstrate under the accountability principle?","answerable":true,"expected_sections":["Article 5"],"expected_answer":"The controller is responsible for compliance with the Article 5(1) principles and must be able to demonstrate it."},
-  {"id":"q03","question":"When is processing of personal data lawful under the GDPR?","answerable":true,"expected_sections":["Article 6"],"expected_answer":"Processing is lawful only if at least one Article 6(1) basis applies, such as consent, contract necessity, legal obligation, vital interests, public task or legitimate interests subject to the stated conditions."},
-  {"id":"q04","question":"What conditions apply to consent, and how can a data subject withdraw it?","answerable":true,"expected_sections":["Article 7"],"expected_answer":"The controller must be able to demonstrate consent; a consent request must be distinguishable, intelligible, accessible and in clear language; withdrawal must be as easy as giving consent and does not affect prior lawful processing."},
-  {"id":"q05","question":"What information must be provided when personal data is collected directly from the data subject?","answerable":true,"expected_sections":["Article 13"],"expected_answer":"The controller must provide its identity and contact details, purposes and legal basis, relevant legitimate interests, recipients, international transfer information, retention period, rights and complaint information, whether provision is statutory or contractual, and applicable automated decision information."},
-  {"id":"q06","question":"What is the deadline for responding to a data subject rights request, and when may it be extended?","answerable":true,"expected_sections":["Article 12"],"expected_answer":"The controller must act without undue delay and within one month; that period may be extended by two further months where necessary, considering complexity and number of requests, with notice and reasons within the first month."},
-  {"id":"q07","question":"What is the right to erasure and what exceptions can prevent erasure?","answerable":true,"expected_sections":["Article 17"],"expected_answer":"A data subject may obtain erasure in specified circumstances, including where data is no longer necessary, consent is withdrawn without another basis, or processing is unlawful. Exceptions include freedom of expression, legal obligations or public tasks, public health, archiving/research/statistics, and legal claims, subject to the Article's conditions."},
-  {"id":"q08","question":"What does the right to data portability require?","answerable":true,"expected_sections":["Article 20"],"expected_answer":"For qualifying automated processing based on consent or contract, the data subject can receive provided personal data in a structured, commonly used, machine-readable format and transmit it to another controller; direct transmission is required where technically feasible."},
-  {"id":"q09","question":"When must a personal data breach be notified to the supervisory authority?","answerable":true,"expected_sections":["Article 33"],"expected_answer":"The controller must notify the competent supervisory authority without undue delay and, where feasible, within 72 hours after becoming aware, unless the breach is unlikely to result in a risk to individuals' rights and freedoms."},
-  {"id":"q10","question":"When must a controller communicate a personal data breach to affected individuals?","answerable":true,"expected_sections":["Article 34"],"expected_answer":"When the breach is likely to result in a high risk to individuals' rights and freedoms, the controller must communicate it without undue delay, subject to the Article's exceptions."},
-  {"id":"q11","question":"What safeguards may be used for transfers to a third country without an adequacy decision?","answerable":true,"expected_sections":["Article 46"],"expected_answer":"Transfers may take place where appropriate safeguards are provided, enforceable data subject rights and effective legal remedies are available; safeguards include binding instruments, binding corporate rules, standard data protection clauses, approved codes or certification with binding commitments, and specified administrative arrangements."},
-  {"id":"q12","question":"What are the maximum administrative fines for the two tiers of GDPR infringements?","answerable":true,"expected_sections":["Article 83"],"expected_answer":"The lower tier is up to EUR 10 million or, for an undertaking, 2% of total worldwide annual turnover, whichever is higher. The higher tier is up to EUR 20 million or 4%, whichever is higher."},
-  {"id":"q13","question":"What age threshold does the GDPR set for a child's consent to information society services, and may a Member State lower it?","answerable":true,"expected_sections":["Article 8"],"expected_answer":"The default threshold is 16 years; a Member State may provide by law for a lower age, but not below 13."},
-  {"id":"q14","question":"What rights does a data subject have regarding solely automated decisions with legal or similarly significant effects?","answerable":true,"expected_sections":["Article 22"],"expected_answer":"The data subject has the right not to be subject to such a decision, subject to exceptions for contractual necessity, legal authorization with safeguards, or explicit consent. Safeguards include human intervention, expressing a view and contesting the decision where applicable."},
-  {"id":"q15","question":"How long must a controller retain records of every employee's annual leave balance?","answerable":false,"expected_sections":[],"expected_answer":"The GDPR text does not specify this employee leave-record retention period."},
-  {"id":"q16","question":"Which court has jurisdiction over a dispute between two private companies under their supply contract?","answerable":false,"expected_sections":[],"expected_answer":"The GDPR does not identify a court for disputes under an unrelated private supply contract."},
-  {"id":"q17","question":"What is the current market price of the controller's shares?","answerable":false,"expected_sections":[],"expected_answer":"A market share price is not provided by the GDPR text."},
-  {"id":"q18","question":"What encryption algorithm must every organization use for all personal data?","answerable":false,"expected_sections":[],"expected_answer":"The GDPR does not mandate one specific encryption algorithm for every organization and all personal data."}
+  {
+    "id": "q01",
+    "question": "What principles govern the processing of personal data?",
+    "type": "factual",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 5"
+    ],
+    "expected_pages": [
+      35,
+      36
+    ],
+    "expected_answer": "Personal data must be processed lawfully, fairly and transparently; collected for specified purposes; limited to what is necessary; kept accurate and no longer than needed; and protected with appropriate security. The controller is responsible for and must demonstrate compliance.",
+    "notes": ""
+  },
+  {
+    "id": "q02",
+    "question": "What must a controller be able to demonstrate under the accountability principle?",
+    "type": "factual",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 5"
+    ],
+    "expected_pages": [
+      35,
+      36
+    ],
+    "expected_answer": "The controller is responsible for compliance with the Article 5(1) principles and must be able to demonstrate it.",
+    "notes": ""
+  },
+  {
+    "id": "q03",
+    "question": "When is processing of personal data lawful under the GDPR?",
+    "type": "factual",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 6"
+    ],
+    "expected_pages": [
+      36,
+      37
+    ],
+    "expected_answer": "Processing is lawful only if at least one Article 6(1) basis applies, such as consent, contract necessity, legal obligation, vital interests, public task or legitimate interests subject to the stated conditions.",
+    "notes": ""
+  },
+  {
+    "id": "q04",
+    "question": "What conditions apply to consent, and how can a data subject withdraw it?",
+    "type": "factual",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 7"
+    ],
+    "expected_pages": [
+      37
+    ],
+    "expected_answer": "The controller must be able to demonstrate consent; a consent request must be distinguishable, intelligible, accessible and in clear language; withdrawal must be as easy as giving consent and does not affect prior lawful processing.",
+    "notes": ""
+  },
+  {
+    "id": "q05",
+    "question": "What information must be provided when personal data is collected directly from the data subject?",
+    "type": "factual",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 13"
+    ],
+    "expected_pages": [
+      40,
+      41
+    ],
+    "expected_answer": "The controller must provide its identity and contact details, purposes and legal basis, relevant legitimate interests, recipients, international transfer information, retention period, rights and complaint information, whether provision is statutory or contractual, and applicable automated decision information.",
+    "notes": ""
+  },
+  {
+    "id": "q06",
+    "question": "What is the deadline for responding to a data subject rights request, and when may it be extended?",
+    "type": "factual",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 12"
+    ],
+    "expected_pages": [
+      39,
+      40
+    ],
+    "expected_answer": "The controller must act without undue delay and within one month; that period may be extended by two further months where necessary, considering complexity and number of requests, with notice and reasons within the first month.",
+    "notes": ""
+  },
+  {
+    "id": "q07",
+    "question": "What is the right to erasure and what exceptions can prevent erasure?",
+    "type": "factual",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 17"
+    ],
+    "expected_pages": [
+      43,
+      44
+    ],
+    "expected_answer": "A data subject may obtain erasure in specified circumstances, including where data is no longer necessary, consent is withdrawn without another basis, or processing is unlawful. Exceptions include freedom of expression, legal obligations or public tasks, public health, archiving/research/statistics, and legal claims, subject to the Article's conditions.",
+    "notes": ""
+  },
+  {
+    "id": "q08",
+    "question": "What does the right to data portability require?",
+    "type": "factual",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 20"
+    ],
+    "expected_pages": [
+      45
+    ],
+    "expected_answer": "For qualifying automated processing based on consent or contract, the data subject can receive provided personal data in a structured, commonly used, machine-readable format and transmit it to another controller; direct transmission is required where technically feasible.",
+    "notes": ""
+  },
+  {
+    "id": "q09",
+    "question": "When must a personal data breach be notified to the supervisory authority?",
+    "type": "factual",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 33"
+    ],
+    "expected_pages": [
+      52
+    ],
+    "expected_answer": "The controller must notify the competent supervisory authority without undue delay and, where feasible, within 72 hours after becoming aware, unless the breach is unlikely to result in a risk to individuals' rights and freedoms.",
+    "notes": ""
+  },
+  {
+    "id": "q10",
+    "question": "When must a controller communicate a personal data breach to affected individuals?",
+    "type": "factual",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 34"
+    ],
+    "expected_pages": [
+      52,
+      53
+    ],
+    "expected_answer": "When the breach is likely to result in a high risk to individuals' rights and freedoms, the controller must communicate it without undue delay, subject to the Article's exceptions.",
+    "notes": ""
+  },
+  {
+    "id": "q11",
+    "question": "What safeguards may be used for transfers to a third country without an adequacy decision?",
+    "type": "factual",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 46"
+    ],
+    "expected_pages": [
+      62
+    ],
+    "expected_answer": "Transfers may take place where appropriate safeguards are provided, enforceable data subject rights and effective legal remedies are available; safeguards include binding instruments, binding corporate rules, standard data protection clauses, approved codes or certification with binding commitments, and specified administrative arrangements.",
+    "notes": ""
+  },
+  {
+    "id": "q12",
+    "question": "What are the maximum administrative fines for the two tiers of GDPR infringements?",
+    "type": "multi_hop",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 83"
+    ],
+    "expected_pages": [
+      82,
+      83
+    ],
+    "expected_answer": "The lower tier is up to EUR 10 million or, for an undertaking, 2% of total worldwide annual turnover, whichever is higher. The higher tier is up to EUR 20 million or 4%, whichever is higher.",
+    "notes": "Assignment example: tier 1 is Article 83(4) on p. 82, tier 2 is Article 83(5) on p. 83; both are needed.",
+    "expected_clauses": [
+      "83(4)",
+      "83(5)"
+    ]
+  },
+  {
+    "id": "q13",
+    "question": "What age threshold does the GDPR set for a child's consent to information society services, and may a Member State lower it?",
+    "type": "factual",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 8"
+    ],
+    "expected_pages": [
+      37,
+      38
+    ],
+    "expected_answer": "The default threshold is 16 years; a Member State may provide by law for a lower age, but not below 13.",
+    "notes": ""
+  },
+  {
+    "id": "q14",
+    "question": "What rights does a data subject have regarding solely automated decisions with legal or similarly significant effects?",
+    "type": "factual",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 22"
+    ],
+    "expected_pages": [
+      46
+    ],
+    "expected_answer": "The data subject has the right not to be subject to such a decision, subject to exceptions for contractual necessity, legal authorization with safeguards, or explicit consent. Safeguards include human intervention, expressing a view and contesting the decision where applicable.",
+    "notes": ""
+  },
+  {
+    "id": "q15",
+    "question": "How long must a controller retain records of every employee's annual leave balance?",
+    "type": "unanswerable",
+    "answerable": false,
+    "expected_document": null,
+    "expected_sections": [],
+    "expected_pages": [],
+    "expected_answer": "The GDPR text does not specify this employee leave-record retention period.",
+    "notes": "Not covered by the GDPR; the system should abstain."
+  },
+  {
+    "id": "q16",
+    "question": "Which court has jurisdiction over a dispute between two private companies under their supply contract?",
+    "type": "unanswerable",
+    "answerable": false,
+    "expected_document": null,
+    "expected_sections": [],
+    "expected_pages": [],
+    "expected_answer": "The GDPR does not identify a court for disputes under an unrelated private supply contract.",
+    "notes": "Not covered by the GDPR; the system should abstain."
+  },
+  {
+    "id": "q17",
+    "question": "What is the current market price of the controller's shares?",
+    "type": "unanswerable",
+    "answerable": false,
+    "expected_document": null,
+    "expected_sections": [],
+    "expected_pages": [],
+    "expected_answer": "A market share price is not provided by the GDPR text.",
+    "notes": "Not covered by the GDPR; the system should abstain."
+  },
+  {
+    "id": "q18",
+    "question": "What encryption algorithm must every organization use for all personal data?",
+    "type": "unanswerable",
+    "answerable": false,
+    "expected_document": null,
+    "expected_sections": [],
+    "expected_pages": [],
+    "expected_answer": "The GDPR does not mandate one specific encryption algorithm for every organization and all personal data.",
+    "notes": "Not covered by the GDPR; the system should abstain."
+  },
+  {
+    "id": "q19",
+    "question": "How quickly must a controller notify a personal data breach to the supervisory authority, and when must the breach also be communicated to the data subjects?",
+    "type": "multi_hop",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 33",
+      "Article 34"
+    ],
+    "expected_pages": [
+      52,
+      53
+    ],
+    "expected_answer": "Article 33(1): notify the supervisory authority without undue delay and, where feasible, not later than 72 hours after becoming aware, unless the breach is unlikely to result in a risk. Article 34(1): communicate to the data subject without undue delay when the breach is likely to result in a high risk to the rights and freedoms of natural persons.",
+    "notes": "Multi-hop: requires evidence from both provisions (see expected_pages)."
+  },
+  {
+    "id": "q20",
+    "question": "Which legal bases make processing of personal data lawful, and what is the rule for processing health data as a special category?",
+    "type": "multi_hop",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 6",
+      "Article 9"
+    ],
+    "expected_pages": [
+      36,
+      37,
+      38,
+      39
+    ],
+    "expected_answer": "Article 6(1) lists consent, contract, legal obligation, vital interests, public task and legitimate interests. Article 9(1) prohibits processing special categories (including data concerning health) unless an Article 9(2) exception applies, such as explicit consent.",
+    "notes": "Multi-hop: requires evidence from both provisions (see expected_pages)."
+  },
+  {
+    "id": "q21",
+    "question": "What information can a data subject obtain under the right of access, and within what time limit must the controller respond to such a request?",
+    "type": "multi_hop",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 15",
+      "Article 12"
+    ],
+    "expected_pages": [
+      39,
+      40,
+      43
+    ],
+    "expected_answer": "Article 15(1): confirmation of processing, access to the data and information on purposes, categories, recipients, retention period, rights, source and automated decision-making. Article 12(3): without undue delay and in any event within one month of receipt, extendable by two further months where necessary.",
+    "notes": "Multi-hop: requires evidence from both provisions (see expected_pages)."
+  },
+  {
+    "id": "q22",
+    "question": "On which grounds can a data subject obtain erasure of personal data, and must the controller inform recipients to whom the data were disclosed?",
+    "type": "multi_hop",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 17",
+      "Article 19"
+    ],
+    "expected_pages": [
+      43,
+      44,
+      45
+    ],
+    "expected_answer": "Article 17(1) grounds include data no longer necessary, consent withdrawn, objection, unlawful processing, legal obligation and children's information-society data. Article 19: the controller must communicate any erasure to each recipient unless this proves impossible or involves disproportionate effort.",
+    "notes": "Multi-hop: requires evidence from both provisions (see expected_pages)."
+  },
+  {
+    "id": "q23",
+    "question": "What is the general principle for transfers of personal data to third countries, and which derogations allow a transfer without an adequacy decision or appropriate safeguards?",
+    "type": "multi_hop",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 44",
+      "Article 49"
+    ],
+    "expected_pages": [
+      60,
+      64,
+      65
+    ],
+    "expected_answer": "Article 44: transfers may take place only if the controller and processor comply with the conditions of Chapter V. Article 49(1) derogations include explicit consent, contract performance, important reasons of public interest, legal claims, vital interests and transfers from a public register.",
+    "notes": "Multi-hop: requires evidence from both provisions (see expected_pages)."
+  },
+  {
+    "id": "q24",
+    "question": "When must a controller designate a data protection officer, and what tasks does the data protection officer have?",
+    "type": "multi_hop",
+    "answerable": true,
+    "expected_document": "gdpr",
+    "expected_sections": [
+      "Article 37",
+      "Article 39"
+    ],
+    "expected_pages": [
+      55,
+      56
+    ],
+    "expected_answer": "Article 37(1): where processing is by a public authority, where core activities require regular and systematic monitoring of data subjects on a large scale, or where core activities consist of large-scale processing of special categories or criminal-offence data. Article 39(1): inform and advise, monitor compliance, advise on DPIAs, cooperate with and act as contact point for the supervisory authority.",
+    "notes": "Multi-hop: requires evidence from both provisions (see expected_pages)."
+  },
+  {
+    "id": "q25",
+    "question": "What is the governing law of the subcontractor agreement?",
+    "type": "unanswerable",
+    "answerable": false,
+    "expected_document": null,
+    "expected_sections": [],
+    "expected_pages": [],
+    "expected_answer": null,
+    "notes": "Assignment example follow-up; no subcontractor agreement exists in the bundle."
+  }
 ]

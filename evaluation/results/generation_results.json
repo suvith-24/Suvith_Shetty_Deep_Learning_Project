@@ -1,0 +1,2178 @@
+[
+  {
+    "id": "q01",
+    "type": "factual",
+    "question": "What principles govern the processing of personal data?",
+    "answerable": true,
+    "expected_answer": "Personal data must be processed lawfully, fairly and transparently; collected for specified purposes; limited to what is necessary; kept accurate and no longer than needed; and protected with appropriate security. The controller is responsible for and must demonstrate compliance.",
+    "expected_sections": [
+      "Article 5"
+    ],
+    "expected_pages": [
+      35,
+      36
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "HIGH",
+    "answer": "Direct answer:\nPersonal data shall be processed lawfully, fairly and in a transparent manner in relation to the data subject. [S1]\n\nKey findings:\n- Personal data should be kept for no longer than necessary for the purposes for which they are processed. [S3]\n- Personal data should be accurate and kept up to date. [S3]\n- The processing of personal data should be designed to serve mankind. [S4]\n- The controller shall be responsible for, and be able to demonstrate compliance with, paragraph 1. [S5][S6]\n\nEvidence and reasoning:\nThe sources provide various principles governing the processing of personal data, including lawfulness, fairness, transparency, purpose limitation, data minimization, accuracy, accountability, and integrity and confidentiality. The sources also emphasize the importance of balancing the right to personal data protection with other fundamental rights.",
+    "abstention_reason": null,
+    "claims_shown": 5,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 5,
+      "supported": 5,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": true,
+      "deterministic_supported": 3,
+      "llm_supported": 2,
+      "attempts": 1,
+      "retry_count": 0
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"Personal data shall be processed lawfully, fairly and in a transparent manner in relation to the data subject.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"Personal data shall be: (a) processed lawfully, fairly and in a transparent manner in relation to the data subject (‘lawfulness, fairness and transparency’);\"\n    },\n    {\n      \"text\": \"Personal data should be kept for no longer than necessary for the purposes for which they are processed.\",\n      \"sources\": [\"S3\"],\n      \"quote\": \"Personal data shall be kept in a form which permits identification of data subjects for no longer than is necessary for the purposes for which they are processed;\"\n    },\n    {\n      \"text\": \"Personal data should be accurate and kept up to date.\",\n      \"sources\": [\"S3\"],\n      \"quote\": \"Personal data should be accurate and, where necessary, kept up to date;\"\n    },\n    {\n      \"text\": \"The processing of personal data should be designed to serve mankind.\",\n      \"sources\": [\"S4\"],\n      \"quote\": \"The processing of personal data should be designed to serve mankind.\"\n    },\n    {\n      \"text\": \"The controller shall be responsible for, and be able to demonstrate compliance with, paragraph 1.\",\n      \"sources\": [\"S5\", \"S6\"],\n      \"quote\": \"The controller shall be responsible for, and be able to demonstrate compliance with, paragraph 1 (‘accountability’).\"\n    }\n  ],\n  \"explanation\": \"The sources provide various principles governing the processing of personal data, including lawfulness, fairness, transparency, purpose limitation, data minimization, accuracy, accountability, and integrity and confidentiality. The sources also emphasize the importance of balancing the right to personal data protection with other fundamental rights.\",\n  \"conflicts\": \"\"\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S1",
+        "section": "Article 5 — Principles relating to processing of personal data",
+        "pages": [
+          35
+        ]
+      },
+      {
+        "source_id": "S3",
+        "section": "Article 5 — Principles relating to processing of personal data",
+        "pages": [
+          35
+        ]
+      },
+      {
+        "source_id": "S3",
+        "section": "Article 5 — Principles relating to processing of personal data",
+        "pages": [
+          35
+        ]
+      },
+      {
+        "source_id": "S4",
+        "section": "General",
+        "pages": [
+          2
+        ]
+      },
+      {
+        "source_id": "S5",
+        "section": "General",
+        "pages": [
+          12
+        ]
+      },
+      {
+        "source_id": "S6",
+        "section": "Article 5 — Principles relating to processing of personal data",
+        "pages": [
+          36
+        ]
+      }
+    ],
+    "citation_section_precision": 0.6666666666666666,
+    "expected_provisions_cited": 1.0,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 0.492,
+    "generation_seconds": 15.817,
+    "total_seconds": 16.312,
+    "llm_calls": 3,
+    "prompt_tokens": 2287,
+    "completion_tokens": 606,
+    "plan": {
+      "question": "What principles govern the processing of personal data?",
+      "sub_queries": [
+        "What principles govern the processing of personal data?"
+      ],
+      "strategy": "single",
+      "is_multi_hop": false,
+      "references": []
+    }
+  },
+  {
+    "id": "q02",
+    "type": "factual",
+    "question": "What must a controller be able to demonstrate under the accountability principle?",
+    "answerable": true,
+    "expected_answer": "The controller is responsible for compliance with the Article 5(1) principles and must be able to demonstrate it.",
+    "expected_sections": [
+      "Article 5"
+    ],
+    "expected_pages": [
+      35,
+      36
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "MEDIUM",
+    "answer": "Direct answer:\nThe controller should implement appropriate technical and organisational measures to ensure and to be able to demonstrate that processing is performed in accordance with this Regulation. [S4]\n\nKey findings:\n- The controller should adopt internal policies and implement measures which meet in particular the principles of data protection by design and data protection by default. [S5]\n\nEvidence and reasoning:\nThe sources indicate that the controller must be able to demonstrate compliance with the accountability principle, which includes implementing appropriate technical and organisational measures and adopting internal policies to ensure data protection by design and by default.\n\nLimitations:\n- 1 drafted claim(s) were removed because they failed evidence verification.",
+    "abstention_reason": null,
+    "claims_shown": 2,
+    "claims_removed": 1,
+    "verification": {
+      "total_claims": 3,
+      "supported": 2,
+      "contradicted": 0,
+      "insufficient": 1,
+      "inconclusive": 0,
+      "all_claims_supported": false,
+      "deterministic_supported": 2,
+      "llm_supported": 0,
+      "attempts": 2,
+      "retry_count": 1
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [
+          {
+            "text": "The controller shall be responsible for, and be able to demonstrate compliance with, paragraph 1 (accountability).",
+            "sources": [
+              "S2"
+            ],
+            "status": "INSUFFICIENT",
+            "reason": "The quotation does not occur verbatim in the cited evidence.; Number(s) not found in the cited evidence: 1."
+          }
+        ],
+        "corrective_prompt": "Your previous answer failed evidence verification.\n\nFAILED CLAIMS:\n- \"The controller shall be responsible for, and be able to demonstrate compliance with, paragraph 1 (accountability).\" (cited S2): INSUFFICIENT — The quotation does not occur verbatim in the cited evidence.; Number(s) not found in the cited evidence: 1.\n\nRewrite the complete JSON answer. For every failed claim either:\n- shorten the claim so it states ONLY what its quote says (no qualifiers taken from other sources),\n- copy the quote exactly from the cited source and keep the claim's wording and numbers faithful to it,\n- cite the source that actually contains the fact, or\n- remove the claim.\nDo not add new facts. Keep the claims that passed. Return only the JSON object.\n",
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"The controller shall be responsible for, and be able to demonstrate compliance with, paragraph 1 (accountability).\",\n      \"sources\": [\"S2\"],\n      \"quote\": \"The controller shall be responsible for, and be able to demonstrate compliance with, paragraph 1 (accountability).\"\n    },\n    {\n      \"text\": \"The controller should implement appropriate technical and organisational measures to ensure and to be able to demonstrate that processing is performed in accordance with this Regulation.\",\n      \"sources\": [\"S4\"],\n      \"quote\": \"The controller shall implement appropriate technical and organisational measures to ensure and to be able to demonstrate that processing is performed in accordance with this Regulation.\"\n    },\n    {\n      \"text\": \"The controller should adopt internal policies and implement measures which meet in particular the principles of data protection by design and data protection by default.\",\n      \"sources\": [\"S5\"],\n      \"quote\": \"The controller should adopt internal policies and implement measures which meet in particular the principles of data protection by design and data protection by default.\"\n    }\n  ],\n  \"explanation\": \"The sources indicate that the controller must be able to demonstrate compliance with the accountability principle, which includes implementing appropriate technical and organisational measures and adopting internal policies to ensure data protection by design and by default.\",\n  \"conflicts\": \"\"\n}"
+      },
+      {
+        "attempt": 2,
+        "parse_error": false,
+        "failed_claims": [
+          {
+            "text": "The controller shall be responsible for, and be able to demonstrate compliance with, paragraph 1 (accountability).",
+            "sources": [
+              "S2"
+            ],
+            "status": "INSUFFICIENT",
+            "reason": "The quotation does not occur verbatim in the cited evidence.; Number(s) not found in the cited evidence: 1."
+          }
+        ],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"The controller shall be responsible for, and be able to demonstrate compliance with, paragraph 1 (accountability).\",\n      \"sources\": [\"S2\"],\n      \"quote\": \"The controller shall be responsible for, and be able to demonstrate compliance with, paragraph 1 (accountability).\"\n    },\n    {\n      \"text\": \"The controller should implement appropriate technical and organisational measures to ensure and to be able to demonstrate that processing is performed in accordance with this Regulation.\",\n      \"sources\": [\"S4\"],\n      \"quote\": \"The controller shall implement appropriate technical and organisational measures to ensure and to be able to demonstrate that processing is performed in accordance with this Regulation.\"\n    },\n    {\n      \"text\": \"The controller should adopt internal policies and implement measures which meet in particular the principles of data protection by design and data protection by default.\",\n      \"sources\": [\"S5\"],\n      \"quote\": \"The controller should adopt internal policies and implement measures which meet in particular the principles of data protection by design and data protection by default.\"\n    }\n  ],\n  \"explanation\": \"The sources indicate that the controller must be able to demonstrate compliance with the accountability principle, which includes implementing appropriate technical and organisational measures and adopting internal policies to ensure data protection by design and by default.\",\n  \"conflicts\": \"\"\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S4",
+        "section": "Article 24 — Responsibility of the controller",
+        "pages": [
+          47
+        ]
+      },
+      {
+        "source_id": "S5",
+        "section": "General",
+        "pages": [
+          15
+        ]
+      }
+    ],
+    "citation_section_precision": 0.0,
+    "expected_provisions_cited": 0.0,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 0.317,
+    "generation_seconds": 13.652,
+    "total_seconds": 13.971,
+    "llm_calls": 2,
+    "prompt_tokens": 3877,
+    "completion_tokens": 578,
+    "plan": {
+      "question": "What must a controller be able to demonstrate under the accountability principle?",
+      "sub_queries": [
+        "What must a controller be able to demonstrate under the accountability principle?"
+      ],
+      "strategy": "single",
+      "is_multi_hop": false,
+      "references": []
+    }
+  },
+  {
+    "id": "q03",
+    "type": "factual",
+    "question": "When is processing of personal data lawful under the GDPR?",
+    "answerable": true,
+    "expected_answer": "Processing is lawful only if at least one Article 6(1) basis applies, such as consent, contract necessity, legal obligation, vital interests, public task or legitimate interests subject to the stated conditions.",
+    "expected_sections": [
+      "Article 6"
+    ],
+    "expected_pages": [
+      36,
+      37
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "HIGH",
+    "answer": "Direct answer:\nProcessing of personal data for information society services to children is lawful if they are at least 16 years old, or below 16 with parental consent, or for public interest purposes or official authority tasks, or for criminal convictions and offences, or for legitimate interests of the controller or third party, except when the child's interests override them. [S1][S2][S6][S3][S7][S8]\n\nEvidence and reasoning:\nThe GDPR allows processing of personal data for information society services to children if they are at least 16 years old, or below 16 with parental consent, or for public interest purposes or official authority tasks, or for criminal convictions and offences, or for legitimate interests of the controller or third party, except when the child's interests override them.",
+    "abstention_reason": null,
+    "claims_shown": 1,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 1,
+      "supported": 1,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": true,
+      "deterministic_supported": 1,
+      "llm_supported": 0,
+      "attempts": 1,
+      "retry_count": 0
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"Processing of personal data for information society services to children is lawful if they are at least 16 years old, or below 16 with parental consent, or for public interest purposes or official authority tasks, or for criminal convictions and offences, or for legitimate interests of the controller or third party, except when the child's interests override them.\", \n      \"sources\": [\"S1\", \"S2\", \"S6\", \"S3\", \"S7\", \"S8\"],\n      \"quote\": \"Where the child is below the age of 16 years, such processing shall be lawful only if and to the extent that consent is given or authorised by the holder of parental responsibility over the child.\"\n    }\n  ],\n  \"explanation\": \"The GDPR allows processing of personal data for information society services to children if they are at least 16 years old, or below 16 with parental consent, or for public interest purposes or official authority tasks, or for criminal convictions and offences, or for legitimate interests of the controller or third party, except when the child's interests override them.\",\n  \"conflicts\": \"The sources do not explicitly state that processing for legitimate interests of the controller or third party is lawful without overriding the child's interests, only that it is lawful except when the child's interests override them.\",\n  \"missing\": []\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S1",
+        "section": "Article 8 — Conditions applicable to child's consent in relation to information society services",
+        "pages": [
+          37
+        ]
+      },
+      {
+        "source_id": "S2",
+        "section": "General",
+        "pages": [
+          8
+        ]
+      },
+      {
+        "source_id": "S6",
+        "section": "Article 8 — Conditions applicable to child's consent in relation to information society services",
+        "pages": [
+          38
+        ]
+      },
+      {
+        "source_id": "S3",
+        "section": "Article 6 — Lawfulness of processing",
+        "pages": [
+          36
+        ]
+      },
+      {
+        "source_id": "S7",
+        "section": "General",
+        "pages": [
+          9
+        ]
+      },
+      {
+        "source_id": "S8",
+        "section": "Article 6 — Lawfulness of processing",
+        "pages": [
+          36
+        ]
+      }
+    ],
+    "citation_section_precision": 0.3333333333333333,
+    "expected_provisions_cited": 1.0,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 0.437,
+    "generation_seconds": 6.944,
+    "total_seconds": 7.383,
+    "llm_calls": 1,
+    "prompt_tokens": 1641,
+    "completion_tokens": 296,
+    "plan": {
+      "question": "When is processing of personal data lawful under the GDPR?",
+      "sub_queries": [
+        "When is processing of personal data lawful under the GDPR?"
+      ],
+      "strategy": "single",
+      "is_multi_hop": false,
+      "references": []
+    }
+  },
+  {
+    "id": "q04",
+    "type": "factual",
+    "question": "What conditions apply to consent, and how can a data subject withdraw it?",
+    "answerable": true,
+    "expected_answer": "The controller must be able to demonstrate consent; a consent request must be distinguishable, intelligible, accessible and in clear language; withdrawal must be as easy as giving consent and does not affect prior lawful processing.",
+    "expected_sections": [
+      "Article 7"
+    ],
+    "expected_pages": [
+      37
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "HIGH",
+    "answer": "Direct answer:\nWhere processing is based on consent, the controller shall be able to demonstrate that the data subject has consented to processing of his or her personal data. [S1]\n\nKey findings:\n- When assessing whether consent is freely given, utmost account shall be taken of whether, inter alia, the performance of a contract, including the provision of a service, is conditional on consent to the processing of personal data that is not necessary for the performance of that contract. [S2]\n- The data subject shall have the right to withdraw his or her consent at any time. The withdrawal of consent shall not affect the lawfulness of processing based on consent before its withdrawal. Prior to giving consent, the data subject shall be informed thereof. It shall be as easy to withdraw as to give consent. [S1][S2]\n- The right to withdraw consent applies to all conditions for consent as stated in Article 7 of the GDPR. [S1][S2]\n- The data subject can withdraw consent by informing the controller of their decision to withdraw consent. [S1][S2]\n- The right to withdraw consent is not affected by the fact that the processing of personal data is necessary for the performance of a contract, including the provision of a service. [S2]\n\nEvidence and reasoning:\nThe GDPR stipulates conditions for consent and the right to withdraw consent. Conditions for consent include demonstrating that the data subject has consented, assessing whether consent is freely given, and the right to withdraw consent being as easy as giving consent. The right to withdraw consent is not affected by the necessity of processing for a contract.",
+    "abstention_reason": null,
+    "claims_shown": 6,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 6,
+      "supported": 6,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": true,
+      "deterministic_supported": 4,
+      "llm_supported": 2,
+      "attempts": 1,
+      "retry_count": 0
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"Where processing is based on consent, the controller shall be able to demonstrate that the data subject has consented to processing of his or her personal data.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"Where processing is based on consent, the controller shall be able to demonstrate that the data subject has consented to processing of his or her personal data.\"\n    },\n    {\n      \"text\": \"When assessing whether consent is freely given, utmost account shall be taken of whether, inter alia, the performance of a contract, including the provision of a service, is conditional on consent to the processing of personal data that is not necessary for the performance of that contract.\",\n      \"sources\": [\"S2\"],\n      \"quote\": \"When assessing whether consent is freely given, utmost account shall be taken of whether, inter alia, the performance of a contract, including the provision of a service, is conditional on consent to the processing of personal data that is not necessary for the performance of that contract.\"\n    },\n    {\n      \"text\": \"The data subject shall have the right to withdraw his or her consent at any time. The withdrawal of consent shall not affect the lawfulness of processing based on consent before its withdrawal. Prior to giving consent, the data subject shall be informed thereof. It shall be as easy to withdraw as to give consent.\",\n      \"sources\": [\"S1\", \"S2\"],\n      \"quote\": \"The data subject shall have the right to withdraw his or her consent at any time. The withdrawal of consent shall not affect the lawfulness of processing based on consent before its withdrawal. Prior to giving consent, the data subject shall be informed thereof. It shall be as easy to withdraw as to give consent.\"\n    },\n    {\n      \"text\": \"The right to withdraw consent applies to all conditions for consent as stated in Article 7 of the GDPR.\",\n      \"sources\": [\"S1\", \"S2\"],\n      \"quote\": \"The right to withdraw consent applies to all conditions for consent as stated in Article 7 of the GDPR.\"\n    },\n    {\n      \"text\": \"The data subject can withdraw consent by informing the controller of their decision to withdraw consent.\",\n      \"sources\": [\"S1\", \"S2\"],\n      \"quote\": \"The data subject shall have the right to withdraw his or her consent at any time. The withdrawal of consent shall not affect the lawfulness of processing based on consent before its withdrawal. Prior to giving consent, the data subject shall be informed thereof. It shall be as easy to withdraw as to give consent.\"\n    },\n    {\n      \"text\": \"The right to withdraw consent is not affected by the fact that the processing of personal data is necessary for the performance of a contract, including the provision of a service.\",\n      \"sources\": [\"S2\"],\n      \"quote\": \"When assessing whether consent is freely given, utmost account shall be taken of whether, inter alia, the performance of a contract, including the provision of a service, is conditional on consent to the processing of personal data that is not necessary for the performance of that contract.\"\n    }\n  ],\n  \"explanation\": \"The GDPR stipulates conditions for consent and the right to withdraw consent. Conditions for consent include demonstrating that the data subject has consented, assessing whether consent is freely given, and the right to withdraw consent being as easy as giving consent. The right to withdraw consent is not affected by the necessity of processing for a contract.\",\n  \"conflicts\": \"The sources do not explicitly state that the right to withdraw consent is not affected by the necessity of processing for a contract. The sources suggest that consent should not be conditional on processing that is not necessary for the contract.\",\n  \"missing\": [\"How can a data subject withdraw it (conditions apply consent)\"]\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S1",
+        "section": "Article 7 — Conditions for consent",
+        "pages": [
+          37
+        ]
+      },
+      {
+        "source_id": "S2",
+        "section": "Article 7 — Conditions for consent",
+        "pages": [
+          37
+        ]
+      },
+      {
+        "source_id": "S1",
+        "section": "Article 7 — Conditions for consent",
+        "pages": [
+          37
+        ]
+      },
+      {
+        "source_id": "S2",
+        "section": "Article 7 — Conditions for consent",
+        "pages": [
+          37
+        ]
+      },
+      {
+        "source_id": "S1",
+        "section": "Article 7 — Conditions for consent",
+        "pages": [
+          37
+        ]
+      },
+      {
+        "source_id": "S2",
+        "section": "Article 7 — Conditions for consent",
+        "pages": [
+          37
+        ]
+      },
+      {
+        "source_id": "S1",
+        "section": "Article 7 — Conditions for consent",
+        "pages": [
+          37
+        ]
+      },
+      {
+        "source_id": "S2",
+        "section": "Article 7 — Conditions for consent",
+        "pages": [
+          37
+        ]
+      },
+      {
+        "source_id": "S2",
+        "section": "Article 7 — Conditions for consent",
+        "pages": [
+          37
+        ]
+      }
+    ],
+    "citation_section_precision": 1.0,
+    "expected_provisions_cited": 1.0,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 1.07,
+    "generation_seconds": 21.445,
+    "total_seconds": 22.518,
+    "llm_calls": 3,
+    "prompt_tokens": 2725,
+    "completion_tokens": 999,
+    "plan": {
+      "question": "What conditions apply to consent, and how can a data subject withdraw it?",
+      "sub_queries": [
+        "What conditions apply to consent",
+        "How can a data subject withdraw it (conditions apply consent)"
+      ],
+      "strategy": "coordinated_clauses",
+      "is_multi_hop": true,
+      "references": []
+    }
+  },
+  {
+    "id": "q05",
+    "type": "factual",
+    "question": "What information must be provided when personal data is collected directly from the data subject?",
+    "answerable": true,
+    "expected_answer": "The controller must provide its identity and contact details, purposes and legal basis, relevant legitimate interests, recipients, international transfer information, retention period, rights and complaint information, whether provision is statutory or contractual, and applicable automated decision information.",
+    "expected_sections": [
+      "Article 13"
+    ],
+    "expected_pages": [
+      40,
+      41
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "MEDIUM",
+    "answer": "Direct answer:\nThe controller must provide the identity and contact details of the controller and, where applicable, of the controller's representative at the time personal data are obtained. [S1]\n\nKey findings:\n- The controller must provide the contact details of the data protection officer, where applicable, at the time personal data are obtained. [S1]\n- The controller must provide the purposes of the processing for which the personal data are intended as well as the legal basis for the processing at the time personal data are obtained. [S1]\n\nEvidence and reasoning:\nThe sources provide detailed information on what must be provided when personal data are collected from the data subject, including contact details, purposes of processing, categories of personal data, and rights of the data subject.\n\nLimitations:\n- 2 drafted claim(s) were removed because they failed evidence verification.",
+    "abstention_reason": null,
+    "claims_shown": 3,
+    "claims_removed": 2,
+    "verification": {
+      "total_claims": 5,
+      "supported": 3,
+      "contradicted": 0,
+      "insufficient": 2,
+      "inconclusive": 0,
+      "all_claims_supported": false,
+      "deterministic_supported": 0,
+      "llm_supported": 3,
+      "attempts": 2,
+      "retry_count": 1
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [
+          {
+            "text": "The controller must provide the data subject with the contact details of the data protection officer, where applicable, at the time personal data are obtained.",
+            "sources": [
+              "S1"
+            ],
+            "status": "INCONCLUSIVE",
+            "reason": "Generated quotation failed exact evidence validation."
+          },
+          {
+            "text": "The controller must provide the data subject with the categories of personal data concerned at the time personal data are obtained.",
+            "sources": [
+              "S1"
+            ],
+            "status": "INSUFFICIENT",
+            "reason": "The evidence does not contain any information about the categories of personal data concerned at the time personal data are obtained."
+          },
+          {
+            "text": "The controller must provide the data subject with the contact details of the data protection officer, where applicable, at the time personal data are obtained.",
+            "sources": [
+              "S1"
+            ],
+            "status": "INCONCLUSIVE",
+            "reason": "Generated quotation failed exact evidence validation."
+          },
+          {
+            "text": "The controller must provide the data subject with the right to request access to and rectification or erasure of personal data or restriction of processing concerning the data subject or to object to processing as well as the right to data portability at the time personal data are obtained.",
+            "sources": [
+              "S6"
+            ],
+            "status": "INSUFFICIENT",
+            "reason": "The evidence provided does not contain any information regarding the rights of data subjects such as the right to request access to and rectification or erasure of personal data, restriction of processing, objection to processing, or data portability."
+          }
+        ],
+        "corrective_prompt": "Your previous answer failed evidence verification.\n\nFAILED CLAIMS:\n- \"The controller must provide the data subject with the contact details of the data protection officer, where applicable, at the time personal data are obtained.\" (cited S1): INCONCLUSIVE — Generated quotation failed exact evidence validation.\n- \"The controller must provide the data subject with the categories of personal data concerned at the time personal data are obtained.\" (cited S1): INSUFFICIENT — The evidence does not contain any information about the categories of personal data concerned at the time personal data are obtained.\n- \"The controller must provide the data subject with the contact details of the data protection officer, where applicable, at the time personal data are obtained.\" (cited S1): INCONCLUSIVE — Generated quotation failed exact evidence validation.\n- \"The controller must provide the data subject with the right to request access to and rectification or erasure of personal data or restriction of processing concerning the data subject or to object to processing as well as the right to data portability at the time personal data are obtained.\" (cited S6): INSUFFICIENT — The evidence provided does not contain any information regarding the rights of data subjects such as the right to request access to and rectification or erasure of personal data, restriction of processing, objection to processing, or data portability.\n\nRewrite the complete JSON answer. For every failed claim either:\n- shorten the claim so it states ONLY what its quote says (no qualifiers taken from other sources),\n- copy the quote exactly from the cited source and keep the claim's wording and numbers faithful to it,\n- cite the source that actually contains the fact, or\n- remove the claim.\nDo not add new facts. Keep the claims that passed. Return only the JSON object.\n",
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"The controller must provide the data subject with the identity and contact details of the controller and, where applicable, of the controller's representative at the time personal data are obtained.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"the controller shall, at the time when personal data are obtained, provide the data subject with the identity and the contact details of the controller and, where applicable, of the controller's representative;\"\n    },\n    {\n      \"text\": \"The controller must provide the data subject with the contact details of the data protection officer, where applicable, at the time personal data are obtained.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"the controller shall, at the time when personal data are obtained, provide the data subject with the contact details of the data protection officer, where applicable;\"\n    },\n    {\n      \"text\": \"The controller must provide the data subject with the purposes of the processing for which the personal data are intended as well as the legal basis for the processing at the time personal data are obtained.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"the controller shall, at the time when personal data are obtained, provide the data subject with the purposes of the processing for which the personal data are intended as well as the legal basis for the processing;\"\n    },\n    {\n      \"text\": \"The controller must provide the data subject with the categories of personal data concerned at the time personal data are obtained.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"the controller shall, at the time when personal data are obtained, provide the data subject with the categories of personal data concerned;\"\n    },\n    {\n      \"text\": \"The controller must provide the data subject with the contact details of the data protection officer, where applicable, at the time personal data are obtained.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"the controller shall, at the time when personal data are obtained, provide the data subject with the contact details of the data protection officer, where applicable;\"\n    },\n    {\n      \"text\": \"The controller must provide the data subject with the right to request access to and rectification or erasure of personal data or restriction of processing concerning the data subject or to object to processing as well as the right to data portability at the time personal data are obtained.\",\n      \"sources\": [\"S2\"],\n      \"quote\": \"the controller shall, at the time when personal data are obtained, provide the data subject with the following further information necessary to ensure fair and transparent processing:\"\n    }\n  ],\n  \"explanation\": \"The sources provide detailed information on what must be provided when personal data are collected from the data subject, including contact details, purposes of processing, categories of personal data, and rights of the data subject.\",\n  \"conflicts\": \"\",\n  \"missing\": []\n}"
+      },
+      {
+        "attempt": 2,
+        "parse_error": false,
+        "failed_claims": [
+          {
+            "text": "The controller must provide the categories of personal data concerned at the time personal data are obtained.",
+            "sources": [
+              "S1"
+            ],
+            "status": "INSUFFICIENT",
+            "reason": "The evidence does not contain any information about the categories of personal data concerned at the time personal data are obtained."
+          },
+          {
+            "text": "The controller must provide the right to request access to and rectification or erasure of personal data or restriction of processing concerning the data subject or to object to processing as well as the right to data portability at the time personal data are obtained.",
+            "sources": [
+              "S6"
+            ],
+            "status": "INSUFFICIENT",
+            "reason": "The provided evidence does not contain information about the rights to request access to and rectification or erasure of personal data, restriction of processing, objection to processing, or data portability."
+          }
+        ],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"The controller must provide the identity and contact details of the controller and, where applicable, of the controller's representative at the time personal data are obtained.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"the controller shall, at the time when personal data are obtained, provide the data subject with the identity and the contact details of the controller and, where applicable, of the controller's representative;\"\n    },\n    {\n      \"text\": \"The controller must provide the contact details of the data protection officer, where applicable, at the time personal data are obtained.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"the controller shall, at the time when personal data are obtained, provide the data subject with the contact details of the data protection officer, where applicable;\"\n    },\n    {\n      \"text\": \"The controller must provide the purposes of the processing for which the personal data are intended as well as the legal basis for the processing at the time personal data are obtained.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"the controller shall, at the time when personal data are obtained, provide the data subject with the purposes of the processing for which the personal data are intended as well as the legal basis for the processing;\"\n    },\n    {\n      \"text\": \"The controller must provide the categories of personal data concerned at the time personal data are obtained.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"the controller shall, at the time when personal data are obtained, provide the data subject with the categories of personal data concerned;\"\n    },\n    {\n      \"text\": \"The controller must provide the right to request access to and rectification or erasure of personal data or restriction of processing concerning the data subject or to object to processing as well as the right to data portability at the time personal data are obtained.\",\n      \"sources\": [\"S2\"],\n      \"quote\": \"the controller shall, at the time when personal data are obtained, provide the data subject with the following further information necessary to ensure fair and transparent processing:\"\n    }\n  ],\n  \"explanation\": \"The sources provide detailed information on what must be provided when personal data are collected from the data subject, including contact details, purposes of processing, categories of personal data, and rights of the data subject.\",\n  \"conflicts\": \"\",\n  \"missing\": []\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S1",
+        "section": "Article 13 — Information to be provided where personal data are collected from the data subject",
+        "pages": [
+          40
+        ]
+      },
+      {
+        "source_id": "S1",
+        "section": "Article 13 — Information to be provided where personal data are collected from the data subject",
+        "pages": [
+          40
+        ]
+      },
+      {
+        "source_id": "S1",
+        "section": "Article 13 — Information to be provided where personal data are collected from the data subject",
+        "pages": [
+          40
+        ]
+      }
+    ],
+    "citation_section_precision": 1.0,
+    "expected_provisions_cited": 1.0,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 0.479,
+    "generation_seconds": 80.678,
+    "total_seconds": 81.159,
+    "llm_calls": 20,
+    "prompt_tokens": 12947,
+    "completion_tokens": 2435,
+    "plan": {
+      "question": "What information must be provided when personal data is collected directly from the data subject?",
+      "sub_queries": [
+        "What information must be provided when personal data is collected directly from the data subject?"
+      ],
+      "strategy": "single",
+      "is_multi_hop": false,
+      "references": []
+    }
+  },
+  {
+    "id": "q06",
+    "type": "factual",
+    "question": "What is the deadline for responding to a data subject rights request, and when may it be extended?",
+    "answerable": true,
+    "expected_answer": "The controller must act without undue delay and within one month; that period may be extended by two further months where necessary, considering complexity and number of requests, with notice and reasons within the first month.",
+    "expected_sections": [
+      "Article 12"
+    ],
+    "expected_pages": [
+      39,
+      40
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "HIGH",
+    "answer": "Direct answer:\nThe controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request. That period may be extended by two further months where necessary, taking into account the complexity and number of the requests. [S1]\n\nKey findings:\n- The controller should be obliged to respond to requests from the data subject without undue delay and at the latest within one month and to give reasons where the controller does not intend to comply with any such requests. [S2]\n\nEvidence and reasoning:\nThe sources indicate that the controller must respond to requests within one month, with an additional two months allowed if necessary. The controller must also respond without undue delay and provide reasons if they do not intend to comply.",
+    "abstention_reason": null,
+    "claims_shown": 2,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 2,
+      "supported": 2,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": true,
+      "deterministic_supported": 1,
+      "llm_supported": 1,
+      "attempts": 1,
+      "retry_count": 0
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request. That period may be extended by two further months where necessary, taking into account the complexity and number of the requests.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request. That period may be extended by two further months where necessary, taking into account the complexity and number of the requests.\"\n    },\n    {\n      \"text\": \"The controller should be obliged to respond to requests from the data subject without undue delay and at the latest within one month and to give reasons where the controller does not intend to comply with any such requests.\",\n      \"sources\": [\"S2\"],\n      \"quote\": \"The controller should be obliged to respond to requests from the data subject without undue delay and at the latest within one month and to give reasons where the controller does not intend to comply with any such requests.\"\n    }\n  ],\n  \"explanation\": \"The sources indicate that the controller must respond to requests within one month, with an additional two months allowed if necessary. The controller must also respond without undue delay and provide reasons if they do not intend to comply.\",\n  \"conflicts\": \"The sources do not explicitly state a deadline for responding to a data subject rights request, only the extension of the deadline.\",\n  \"missing\": [\"What may happen if the controller does not take action on a request and when may it be extended\"]\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S1",
+        "section": "Article 12 — Transparent information, communication and modalities for the exercise of the rights of the data",
+        "pages": [
+          40
+        ]
+      },
+      {
+        "source_id": "S2",
+        "section": "General",
+        "pages": [
+          11
+        ]
+      }
+    ],
+    "citation_section_precision": 0.5,
+    "expected_provisions_cited": 1.0,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 1.326,
+    "generation_seconds": 11.464,
+    "total_seconds": 12.795,
+    "llm_calls": 2,
+    "prompt_tokens": 2295,
+    "completion_tokens": 438,
+    "plan": {
+      "question": "What is the deadline for responding to a data subject rights request, and when may it be extended?",
+      "sub_queries": [
+        "What is the deadline for responding to a data subject rights request",
+        "When may it be extended (deadline responding data subject)"
+      ],
+      "strategy": "coordinated_clauses",
+      "is_multi_hop": true,
+      "references": []
+    }
+  },
+  {
+    "id": "q07",
+    "type": "factual",
+    "question": "What is the right to erasure and what exceptions can prevent erasure?",
+    "answerable": true,
+    "expected_answer": "A data subject may obtain erasure in specified circumstances, including where data is no longer necessary, consent is withdrawn without another basis, or processing is unlawful. Exceptions include freedom of expression, legal obligations or public tasks, public health, archiving/research/statistics, and legal claims, subject to the Article's conditions.",
+    "expected_sections": [
+      "Article 17"
+    ],
+    "expected_pages": [
+      43,
+      44
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "HIGH",
+    "answer": "Direct answer:\nThe right to erasure, also known as the right to be forgotten, allows individuals to request the erasure of personal data collected by controllers without undue delay if the data are no longer necessary for the original purpose. [S1]\n\nEvidence and reasoning:\nThe right to erasure allows individuals to request the deletion of their personal data without undue delay if the data are no longer necessary for the original purpose. The exceptions to this right are when the data subject withdraws consent, objects to processing, or when the data are unlawfully processed.",
+    "abstention_reason": null,
+    "claims_shown": 1,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 1,
+      "supported": 1,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": true,
+      "deterministic_supported": 1,
+      "llm_supported": 0,
+      "attempts": 2,
+      "retry_count": 1
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [
+          {
+            "text": "Exceptions to the right to erasure include when the data subject withdraws consent, objects to processing, or when the data are unlawfully processed.",
+            "sources": [
+              "S4"
+            ],
+            "status": "INCONCLUSIVE",
+            "reason": "Generated quotation failed exact evidence validation."
+          }
+        ],
+        "corrective_prompt": "Your previous answer failed evidence verification.\n\nFAILED CLAIMS:\n- \"Exceptions to the right to erasure include when the data subject withdraws consent, objects to processing, or when the data are unlawfully processed.\" (cited S4): INCONCLUSIVE — Generated quotation failed exact evidence validation.\n\nRewrite the complete JSON answer. For every failed claim either:\n- shorten the claim so it states ONLY what its quote says (no qualifiers taken from other sources),\n- copy the quote exactly from the cited source and keep the claim's wording and numbers faithful to it,\n- cite the source that actually contains the fact, or\n- remove the claim.\nDo not add new facts. Keep the claims that passed. Return only the JSON object.\n",
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"The right to erasure, also known as the right to be forgotten, allows individuals to request the erasure of personal data collected by controllers without undue delay if the data are no longer necessary for the original purpose.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"The data subject shall have the right to obtain from the controller the erasure of personal data concerning him or her without undue delay and the controller shall have the obligation to erase personal data without undue delay where one of the following grounds applies:\"\n    },\n    {\n      \"text\": \"Exceptions to the right to erasure include when the data subject withdraws consent, objects to processing, or when the data are unlawfully processed.\",\n      \"sources\": [\"S4\"],\n      \"quote\": \"(b) the data subject withdraws consent on which the processing is based according to point (a) of Article 6(1), or point (a) of Article 9(2), and where there is no other legal ground for the processing;\"\n    }\n  ],\n  \"explanation\": \"The right to erasure allows individuals to request the deletion of their personal data without undue delay if the data are no longer necessary for the original purpose. Exceptions include situations where the data subject withdraws consent, objects to processing, or when the data are unlawfully processed.\",\n  \"conflicts\": \"\"\n}"
+      },
+      {
+        "attempt": 2,
+        "parse_error": false,
+        "failed_claims": [],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"The right to erasure, also known as the right to be forgotten, allows individuals to request the erasure of personal data collected by controllers without undue delay if the data are no longer necessary for the original purpose.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"The data subject shall have the right to obtain from the controller the erasure of personal data concerning him or her without undue delay and the controller shall have the obligation to erase personal data without undue delay where one of the following grounds applies:\"\n    }\n  ],\n  \"explanation\": \"The right to erasure allows individuals to request the deletion of their personal data without undue delay if the data are no longer necessary for the original purpose. The exceptions to this right are when the data subject withdraws consent, objects to processing, or when the data are unlawfully processed.\",\n  \"conflicts\": \"\"\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S1",
+        "section": "Article 17 — Right to erasure (‘right to be forgotten’)",
+        "pages": [
+          43
+        ]
+      }
+    ],
+    "citation_section_precision": 1.0,
+    "expected_provisions_cited": 1.0,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 1.479,
+    "generation_seconds": 21.409,
+    "total_seconds": 22.891,
+    "llm_calls": 4,
+    "prompt_tokens": 4637,
+    "completion_tokens": 843,
+    "plan": {
+      "question": "What is the right to erasure and what exceptions can prevent erasure?",
+      "sub_queries": [
+        "What is the right to erasure",
+        "What exceptions can prevent erasure?"
+      ],
+      "strategy": "coordinated_clauses",
+      "is_multi_hop": true,
+      "references": []
+    }
+  },
+  {
+    "id": "q08",
+    "type": "factual",
+    "question": "What does the right to data portability require?",
+    "answerable": true,
+    "expected_answer": "For qualifying automated processing based on consent or contract, the data subject can receive provided personal data in a structured, commonly used, machine-readable format and transmit it to another controller; direct transmission is required where technically feasible.",
+    "expected_sections": [
+      "Article 20"
+    ],
+    "expected_pages": [
+      45
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "HIGH",
+    "answer": "Direct answer:\nThe data subject shall have the right to receive the personal data concerning him or her, which he or she has provided to a controller, in a structured, commonly used and machine-readable format and have the right to transmit those data to another controller without hindrance from the controller to which the personal data have been provided, where: [S1][S2]\n\nEvidence and reasoning:\nBoth S1 and S2 state that the data subject has the right to receive personal data in a structured, commonly used, and machine-readable format and transmit them to another controller without hindrance. This right is subject to certain conditions, as stated in clauses 20(1) and 20(2) of S2.",
+    "abstention_reason": null,
+    "claims_shown": 1,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 1,
+      "supported": 1,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": true,
+      "deterministic_supported": 1,
+      "llm_supported": 0,
+      "attempts": 1,
+      "retry_count": 0
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"The data subject shall have the right to receive the personal data concerning him or her, which he or she has provided to a controller, in a structured, commonly used and machine-readable format and have the right to transmit those data to another controller without hindrance from the controller to which the personal data have been provided, where:\",\n      \"sources\": [\"S1\", \"S2\"],\n      \"quote\": \"the data subject shall have the right to receive the personal data concerning him or her, which he or she has provided to a controller, in a structured, commonly used and machine-readable format and have the right to transmit those data to another controller without hindrance from the controller to which the personal data have been provided, where:\"\n    }\n  ],\n  \"explanation\": \"Both S1 and S2 state that the data subject has the right to receive personal data in a structured, commonly used, and machine-readable format and transmit them to another controller without hindrance. This right is subject to certain conditions, as stated in clauses 20(1) and 20(2) of S2.\",\n  \"conflicts\": \"\",\n  \"missing\": []\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S1",
+        "section": "Article 20 — Right to data portability",
+        "pages": [
+          45
+        ]
+      },
+      {
+        "source_id": "S2",
+        "section": "Article 20 — Right to data portability",
+        "pages": [
+          45
+        ]
+      }
+    ],
+    "citation_section_precision": 1.0,
+    "expected_provisions_cited": 1.0,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 0.417,
+    "generation_seconds": 6.199,
+    "total_seconds": 6.619,
+    "llm_calls": 1,
+    "prompt_tokens": 1541,
+    "completion_tokens": 258,
+    "plan": {
+      "question": "What does the right to data portability require?",
+      "sub_queries": [
+        "What does the right to data portability require?"
+      ],
+      "strategy": "single",
+      "is_multi_hop": false,
+      "references": []
+    }
+  },
+  {
+    "id": "q09",
+    "type": "factual",
+    "question": "When must a personal data breach be notified to the supervisory authority?",
+    "answerable": true,
+    "expected_answer": "The controller must notify the competent supervisory authority without undue delay and, where feasible, within 72 hours after becoming aware, unless the breach is unlikely to result in a risk to individuals' rights and freedoms.",
+    "expected_sections": [
+      "Article 33"
+    ],
+    "expected_pages": [
+      52
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "HIGH",
+    "answer": "Direct answer:\nThe controller shall notify the supervisory authority without undue delay and, where feasible, not later than 72 hours after having become aware of a personal data breach. [S1]\n\nEvidence and reasoning:\nThe GDPR requires the controller to notify the supervisory authority within 72 hours of becoming aware of a personal data breach, unless the breach is unlikely to result in a risk to the rights and freedoms of individuals.",
+    "abstention_reason": null,
+    "claims_shown": 1,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 1,
+      "supported": 1,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": true,
+      "deterministic_supported": 0,
+      "llm_supported": 1,
+      "attempts": 1,
+      "retry_count": 0
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"The controller shall notify the supervisory authority without undue delay and, where feasible, not later than 72 hours after having become aware of a personal data breach.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"The controller shall notify the supervisory authority without undue delay and, where feasible, not later than 72 hours after having become aware of it.\"\n    }\n  ],\n  \"explanation\": \"The GDPR requires the controller to notify the supervisory authority within 72 hours of becoming aware of a personal data breach, unless the breach is unlikely to result in a risk to the rights and freedoms of individuals.\",\n  \"conflicts\": \"\",\n  \"missing\": []\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S1",
+        "section": "Article 33 — Notification of a personal data breach to the supervisory authority",
+        "pages": [
+          52
+        ]
+      }
+    ],
+    "citation_section_precision": 1.0,
+    "expected_provisions_cited": 1.0,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 0.392,
+    "generation_seconds": 8.627,
+    "total_seconds": 9.022,
+    "llm_calls": 2,
+    "prompt_tokens": 2175,
+    "completion_tokens": 246,
+    "plan": {
+      "question": "When must a personal data breach be notified to the supervisory authority?",
+      "sub_queries": [
+        "When must a personal data breach be notified to the supervisory authority?"
+      ],
+      "strategy": "single",
+      "is_multi_hop": false,
+      "references": []
+    }
+  },
+  {
+    "id": "q10",
+    "type": "factual",
+    "question": "When must a controller communicate a personal data breach to affected individuals?",
+    "answerable": true,
+    "expected_answer": "When the breach is likely to result in a high risk to individuals' rights and freedoms, the controller must communicate it without undue delay, subject to the Article's exceptions.",
+    "expected_sections": [
+      "Article 34"
+    ],
+    "expected_pages": [
+      52,
+      53
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "HIGH",
+    "answer": "Direct answer:\nThe controller must communicate a personal data breach to the data subject without undue delay when the breach is likely to result in a high risk to the rights and freedoms of the natural person. [S1]\n\nEvidence and reasoning:\nThis requirement is stated in Article 34(1) of the GDPR, which mandates that the controller must communicate a personal data breach to the affected individuals without undue delay if the breach is likely to result in a high risk to their rights and freedoms.",
+    "abstention_reason": null,
+    "claims_shown": 1,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 1,
+      "supported": 1,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": true,
+      "deterministic_supported": 1,
+      "llm_supported": 0,
+      "attempts": 1,
+      "retry_count": 0
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"The controller must communicate a personal data breach to the data subject without undue delay when the breach is likely to result in a high risk to the rights and freedoms of the natural person.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"When the personal data breach is likely to result in a high risk to the rights and freedoms of natural persons, the controller shall communicate the personal data breach to the data subject without undue delay.\"\n    }\n  ],\n  \"explanation\": \"This requirement is stated in Article 34(1) of the GDPR, which mandates that the controller must communicate a personal data breach to the affected individuals without undue delay if the breach is likely to result in a high risk to their rights and freedoms.\",\n  \"conflicts\": \"\",\n  \"missing\": []\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S1",
+        "section": "Article 34 — Communication of a personal data breach to the data subject",
+        "pages": [
+          52
+        ]
+      }
+    ],
+    "citation_section_precision": 1.0,
+    "expected_provisions_cited": 1.0,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 0.343,
+    "generation_seconds": 5.159,
+    "total_seconds": 5.505,
+    "llm_calls": 1,
+    "prompt_tokens": 1401,
+    "completion_tokens": 181,
+    "plan": {
+      "question": "When must a controller communicate a personal data breach to affected individuals?",
+      "sub_queries": [
+        "When must a controller communicate a personal data breach to affected individuals?"
+      ],
+      "strategy": "single",
+      "is_multi_hop": false,
+      "references": []
+    }
+  },
+  {
+    "id": "q11",
+    "type": "factual",
+    "question": "What safeguards may be used for transfers to a third country without an adequacy decision?",
+    "answerable": true,
+    "expected_answer": "Transfers may take place where appropriate safeguards are provided, enforceable data subject rights and effective legal remedies are available; safeguards include binding instruments, binding corporate rules, standard data protection clauses, approved codes or certification with binding commitments, and specified administrative arrangements.",
+    "expected_sections": [
+      "Article 46"
+    ],
+    "expected_pages": [
+      62
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "HIGH",
+    "answer": "Direct answer:\nA transfer can occur if the data subject consents to the transfer, provided they are informed of risks. [S1]\n\nKey findings:\n- Transfers are permissible if necessary for the performance of a contract between the data subject and the controller. [S1]\n- Transfers are allowed if necessary for the conclusion or performance of a contract concluded in the interest of the data subject. [S1]\n- Transfers are permitted if necessary for important reasons of public interest. [S6]\n- Transfers are allowed if necessary for the establishment, exercise or defence of legal claims. [S6]\n- Transfers are permitted if necessary for the protection of the vital interests of the data subject or of other persons. [S6]\n- Transfers are allowed if the data subject consents to the transfer, provided they are informed of risks. [S1]\n- Transfers are allowed if the transfer is necessary for the establishment, exercise or defence of legal claims. [S6]\n- Transfers are allowed if the transfer is necessary for the protection of the vital interests of the data subject or of other persons. [S6]\n\nEvidence and reasoning:\nThe GDPR provides various conditions under which transfers to a third country can occur without an adequacy decision, including explicit consent, necessity for contract performance, public interest, legal claims, vital interests, and appropriate safeguards.",
+    "abstention_reason": null,
+    "claims_shown": 9,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 9,
+      "supported": 9,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": true,
+      "deterministic_supported": 9,
+      "llm_supported": 0,
+      "attempts": 1,
+      "retry_count": 0
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"A transfer can occur if the data subject consents to the transfer, provided they are informed of risks.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"the data subject has explicitly consented to the proposed transfer, after having been informed of the possible risks of such transfers for the data subject due to the absence of an adequacy decision and appropriate safeguards;\"\n    },\n    {\n      \"text\": \"Transfers are permissible if necessary for the performance of a contract between the data subject and the controller.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"the transfer is necessary for the performance of a contract between the data subject and the controller or the implementation of pre-contractual measures taken at the data subject's request;\"\n    },\n    {\n      \"text\": \"Transfers are allowed if necessary for the conclusion or performance of a contract concluded in the interest of the data subject.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"the transfer is necessary for the conclusion or performance of a contract concluded in the interest of the data subject between the controller and another natural or legal person;\"\n    },\n    {\n      \"text\": \"Transfers are permitted if necessary for important reasons of public interest.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"the transfer is necessary for important reasons of public interest;\"\n    },\n    {\n      \"text\": \"Transfers are allowed if necessary for the establishment, exercise or defence of legal claims.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"the transfer is necessary for the establishment, exercise or defence of legal claims;\"\n    },\n    {\n      \"text\": \"Transfers are permitted if necessary for the protection of the vital interests of the data subject or of other persons.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"the transfer is necessary in order to protect the vital interests of the data subject or of other persons, where the data subject is physically or legally incapable of giving consent;\"\n    },\n    {\n      \"text\": \"Transfers are allowed if the data subject consents to the transfer, provided they are informed of risks.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"the data subject has explicitly consented to the proposed transfer, after having been informed of the possible risks of such transfers for the data subject due to the absence of an adequacy decision and appropriate safeguards;\"\n    },\n    {\n      \"text\": \"Transfers are allowed if the transfer is necessary for the establishment, exercise or defence of legal claims.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"the transfer is necessary for the establishment, exercise or defence of legal claims;\"\n    },\n    {\n      \"text\": \"Transfers are allowed if the transfer is necessary for the protection of the vital interests of the data subject or of other persons.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"the transfer is necessary in order to protect the vital interests of the data subject or of other persons, where the data subject is physically or legally incapable of giving consent;\"\n    }\n  ],\n  \"explanation\": \"The GDPR provides various conditions under which transfers to a third country can occur without an adequacy decision, including explicit consent, necessity for contract performance, public interest, legal claims, vital interests, and appropriate safeguards.\",\n  \"conflicts\": \"\",\n  \"missing\": []\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S1",
+        "section": "Article 49 — Derogations for specific situations",
+        "pages": [
+          64
+        ]
+      },
+      {
+        "source_id": "S1",
+        "section": "Article 49 — Derogations for specific situations",
+        "pages": [
+          64
+        ]
+      },
+      {
+        "source_id": "S1",
+        "section": "Article 49 — Derogations for specific situations",
+        "pages": [
+          64
+        ]
+      },
+      {
+        "source_id": "S6",
+        "section": "Article 49 — Derogations for specific situations",
+        "pages": [
+          64
+        ]
+      },
+      {
+        "source_id": "S6",
+        "section": "Article 49 — Derogations for specific situations",
+        "pages": [
+          64
+        ]
+      },
+      {
+        "source_id": "S6",
+        "section": "Article 49 — Derogations for specific situations",
+        "pages": [
+          64
+        ]
+      },
+      {
+        "source_id": "S1",
+        "section": "Article 49 — Derogations for specific situations",
+        "pages": [
+          64
+        ]
+      },
+      {
+        "source_id": "S6",
+        "section": "Article 49 — Derogations for specific situations",
+        "pages": [
+          64
+        ]
+      },
+      {
+        "source_id": "S6",
+        "section": "Article 49 — Derogations for specific situations",
+        "pages": [
+          64
+        ]
+      }
+    ],
+    "citation_section_precision": 0.0,
+    "expected_provisions_cited": 0.0,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 0.376,
+    "generation_seconds": 12.801,
+    "total_seconds": 13.178,
+    "llm_calls": 1,
+    "prompt_tokens": 2055,
+    "completion_tokens": 707,
+    "plan": {
+      "question": "What safeguards may be used for transfers to a third country without an adequacy decision?",
+      "sub_queries": [
+        "What safeguards may be used for transfers to a third country without an adequacy decision?"
+      ],
+      "strategy": "single",
+      "is_multi_hop": false,
+      "references": []
+    }
+  },
+  {
+    "id": "q12",
+    "type": "multi_hop",
+    "question": "What are the maximum administrative fines for the two tiers of GDPR infringements?",
+    "answerable": true,
+    "expected_answer": "The lower tier is up to EUR 10 million or, for an undertaking, 2% of total worldwide annual turnover, whichever is higher. The higher tier is up to EUR 20 million or 4%, whichever is higher.",
+    "expected_sections": [
+      "Article 83"
+    ],
+    "expected_pages": [
+      82,
+      83
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "MEDIUM",
+    "answer": "Direct answer:\nFor infringements of the obligations of controllers and processors, the maximum fine is 10,000,000 EUR or 2% of the total worldwide annual turnover, whichever is higher. [S1]\n\nKey findings:\n- For infringements of the basic principles for processing, including conditions for consent, the maximum fine is 20,000,000 EUR or 4% of the total worldwide annual turnover, whichever is higher. [S2]\n\nEvidence and reasoning:\nThe sources provide specific maximum fines for different GDPR infringements. For the first tier, the maximum fine is 10,000,000 EUR or 2% of the total worldwide annual turnover, and for the second tier, it is 20,000,000 EUR or 4% of the total worldwide annual turnover, whichever is higher.",
+    "abstention_reason": null,
+    "claims_shown": 2,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 2,
+      "supported": 2,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": true,
+      "deterministic_supported": 2,
+      "llm_supported": 0,
+      "attempts": 1,
+      "retry_count": 0
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"For infringements of the obligations of controllers and processors, the maximum fine is 10,000,000 EUR or 2% of the total worldwide annual turnover, whichever is higher.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"Infringements of the following provisions shall, in accordance with paragraph 2, be subject to administrative fines up to 10 000 000 EUR, or in the case of an undertaking, up to 2 % of the total worldwide annual turnover of the preceding financial year, whichever is higher:\"\n    },\n    {\n      \"text\": \"For infringements of the basic principles for processing, including conditions for consent, the maximum fine is 20,000,000 EUR or 4% of the total worldwide annual turnover, whichever is higher.\",\n      \"sources\": [\"S2\"],\n      \"quote\": \"Infringements of the following provisions shall, in accordance with paragraph 2, be subject to administrative fines up to 20 000 000 EUR, or in the case of an undertaking, up to 4 % of the total worldwide annual turnover of the preceding financial year, whichever is higher:\"\n    }\n  ],\n  \"explanation\": \"The sources provide specific maximum fines for different GDPR infringements. For the first tier, the maximum fine is 10,000,000 EUR or 2% of the total worldwide annual turnover, and for the second tier, it is 20,000,000 EUR or 4% of the total worldwide annual turnover, whichever is higher.\",\n  \"conflicts\": \"\"\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S1",
+        "section": "Article 83 — General conditions for imposing administrative fines",
+        "pages": [
+          82
+        ]
+      },
+      {
+        "source_id": "S2",
+        "section": "Article 83 — General conditions for imposing administrative fines",
+        "pages": [
+          83
+        ]
+      }
+    ],
+    "citation_section_precision": 1.0,
+    "expected_provisions_cited": 1.0,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 0.419,
+    "generation_seconds": 8.074,
+    "total_seconds": 8.497,
+    "llm_calls": 1,
+    "prompt_tokens": 1829,
+    "completion_tokens": 372,
+    "plan": {
+      "question": "What are the maximum administrative fines for the two tiers of GDPR infringements?",
+      "sub_queries": [
+        "What are the maximum administrative fines for the two tiers of GDPR infringements?"
+      ],
+      "strategy": "single",
+      "is_multi_hop": false,
+      "references": []
+    }
+  },
+  {
+    "id": "q13",
+    "type": "factual",
+    "question": "What age threshold does the GDPR set for a child's consent to information society services, and may a Member State lower it?",
+    "answerable": true,
+    "expected_answer": "The default threshold is 16 years; a Member State may provide by law for a lower age, but not below 13.",
+    "expected_sections": [
+      "Article 8"
+    ],
+    "expected_pages": [
+      37,
+      38
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "HIGH",
+    "answer": "Direct answer:\nThe GDPR sets the age threshold for a child's consent to 16 years old. [S1]\n\nKey findings:\n- Member States may provide by law for a lower age for those purposes provided that such lower age is not below 13 years. [S1]\n\nEvidence and reasoning:\nThe GDPR sets a minimum age of 16 for a child's consent to information society services. However, Member States can set a lower age, but not below 13 years. This is stated in Article 8 of the GDPR.",
+    "abstention_reason": null,
+    "claims_shown": 2,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 2,
+      "supported": 2,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": true,
+      "deterministic_supported": 1,
+      "llm_supported": 1,
+      "attempts": 1,
+      "retry_count": 0
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"The GDPR sets the age threshold for a child's consent to 16 years old.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"Where the child is below the age of 16 years, such processing shall be lawful only if and to the extent that consent is given or authorised by the holder of parental responsibility over the child.\"\n    },\n    {\n      \"text\": \"Member States may provide by law for a lower age for those purposes provided that such lower age is not below 13 years.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"Member States may provide by law for a lower age for those purposes provided that such lower age is not below 13 years.\"\n    }\n  ],\n  \"explanation\": \"The GDPR sets a minimum age of 16 for a child's consent to information society services. However, Member States can set a lower age, but not below 13 years. This is stated in Article 8 of the GDPR.\",\n  \"conflicts\": \"\"\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S1",
+        "section": "Article 8 — Conditions applicable to child's consent in relation to information society services",
+        "pages": [
+          37
+        ]
+      },
+      {
+        "source_id": "S1",
+        "section": "Article 8 — Conditions applicable to child's consent in relation to information society services",
+        "pages": [
+          37
+        ]
+      }
+    ],
+    "citation_section_precision": 1.0,
+    "expected_provisions_cited": 1.0,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 1.314,
+    "generation_seconds": 9.845,
+    "total_seconds": 11.161,
+    "llm_calls": 2,
+    "prompt_tokens": 2189,
+    "completion_tokens": 342,
+    "plan": {
+      "question": "What age threshold does the GDPR set for a child's consent to information society services, and may a Member State lower it?",
+      "sub_queries": [
+        "What age threshold does the GDPR set for a child's consent to information society services",
+        "May a Member State lower it (age threshold set child's)"
+      ],
+      "strategy": "coordinated_clauses",
+      "is_multi_hop": true,
+      "references": []
+    }
+  },
+  {
+    "id": "q14",
+    "type": "factual",
+    "question": "What rights does a data subject have regarding solely automated decisions with legal or similarly significant effects?",
+    "answerable": true,
+    "expected_answer": "The data subject has the right not to be subject to such a decision, subject to exceptions for contractual necessity, legal authorization with safeguards, or explicit consent. Safeguards include human intervention, expressing a view and contesting the decision where applicable.",
+    "expected_sections": [
+      "Article 22"
+    ],
+    "expected_pages": [
+      46
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "HIGH",
+    "answer": "Direct answer:\nThe data subject has the right not to be subject to a decision based solely on automated processing, including profiling, which produces legal effects concerning him or her or similarly significantly affects him or her. [S1]\n\nEvidence and reasoning:\nThe GDPR Article 22(1) states that data subjects have the right not to be subject to decisions based solely on automated processing, including profiling, that produces legal effects for them. This directly answers the question.",
+    "abstention_reason": null,
+    "claims_shown": 1,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 1,
+      "supported": 1,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": true,
+      "deterministic_supported": 1,
+      "llm_supported": 0,
+      "attempts": 1,
+      "retry_count": 0
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"The data subject has the right not to be subject to a decision based solely on automated processing, including profiling, which produces legal effects concerning him or her or similarly significantly affects him or her.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"The data subject shall have the right not to be subject to a decision based solely on automated processing, including profiling, which produces legal effects concerning him or her or similarly significantly affects him or her.\"\n    }\n  ],\n  \"explanation\": \"The GDPR Article 22(1) states that data subjects have the right not to be subject to decisions based solely on automated processing, including profiling, that produces legal effects for them. This directly answers the question.\",\n  \"conflicts\": \"\",\n  \"missing\": []\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S1",
+        "section": "Article 22 — Automated individual decision-making, including profiling",
+        "pages": [
+          46
+        ]
+      }
+    ],
+    "citation_section_precision": 1.0,
+    "expected_provisions_cited": 1.0,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 0.428,
+    "generation_seconds": 5.258,
+    "total_seconds": 5.688,
+    "llm_calls": 1,
+    "prompt_tokens": 1716,
+    "completion_tokens": 177,
+    "plan": {
+      "question": "What rights does a data subject have regarding solely automated decisions with legal or similarly significant effects?",
+      "sub_queries": [
+        "What rights does a data subject have regarding solely automated decisions with legal or similarly significant effects?"
+      ],
+      "strategy": "single",
+      "is_multi_hop": false,
+      "references": []
+    }
+  },
+  {
+    "id": "q15",
+    "type": "unanswerable",
+    "question": "How long must a controller retain records of every employee's annual leave balance?",
+    "answerable": false,
+    "expected_answer": "The GDPR text does not specify this employee leave-record retention period.",
+    "expected_sections": [],
+    "expected_pages": [],
+    "status": "abstained",
+    "abstained": true,
+    "confidence": "INSUFFICIENT",
+    "answer": "The uploaded documents do not provide sufficient evidence to answer this question reliably. Documents searched: gdpr.pdf.",
+    "abstention_reason": "The best passage scored -5.08, below the relevance threshold 0.00.",
+    "claims_shown": 0,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 0,
+      "supported": 0,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": false,
+      "deterministic_supported": 0,
+      "llm_supported": 0,
+      "attempts": 0,
+      "retry_count": 0
+    },
+    "retry_log": [],
+    "cited_sources": [],
+    "citation_section_precision": null,
+    "expected_provisions_cited": null,
+    "citation_coverage": null,
+    "retrieval_seconds": 0.384,
+    "generation_seconds": 0.0,
+    "total_seconds": 0.388,
+    "llm_calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "plan": {
+      "question": "How long must a controller retain records of every employee's annual leave balance?",
+      "sub_queries": [
+        "How long must a controller retain records of every employee's annual leave balance?"
+      ],
+      "strategy": "single",
+      "is_multi_hop": false,
+      "references": []
+    }
+  },
+  {
+    "id": "q16",
+    "type": "unanswerable",
+    "question": "Which court has jurisdiction over a dispute between two private companies under their supply contract?",
+    "answerable": false,
+    "expected_answer": "The GDPR does not identify a court for disputes under an unrelated private supply contract.",
+    "expected_sections": [],
+    "expected_pages": [],
+    "status": "abstained",
+    "abstained": true,
+    "confidence": "INSUFFICIENT",
+    "answer": "The uploaded documents do not provide sufficient evidence to answer this question reliably. Documents searched: gdpr.pdf.",
+    "abstention_reason": "The best passage scored -6.63, below the relevance threshold 0.00.",
+    "claims_shown": 0,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 0,
+      "supported": 0,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": false,
+      "deterministic_supported": 0,
+      "llm_supported": 0,
+      "attempts": 0,
+      "retry_count": 0
+    },
+    "retry_log": [],
+    "cited_sources": [],
+    "citation_section_precision": null,
+    "expected_provisions_cited": null,
+    "citation_coverage": null,
+    "retrieval_seconds": 0.387,
+    "generation_seconds": 0.0,
+    "total_seconds": 0.389,
+    "llm_calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "plan": {
+      "question": "Which court has jurisdiction over a dispute between two private companies under their supply contract?",
+      "sub_queries": [
+        "Which court has jurisdiction over a dispute between two private companies under their supply contract?"
+      ],
+      "strategy": "single",
+      "is_multi_hop": false,
+      "references": []
+    }
+  },
+  {
+    "id": "q17",
+    "type": "unanswerable",
+    "question": "What is the current market price of the controller's shares?",
+    "answerable": false,
+    "expected_answer": "A market share price is not provided by the GDPR text.",
+    "expected_sections": [],
+    "expected_pages": [],
+    "status": "abstained",
+    "abstained": true,
+    "confidence": "INSUFFICIENT",
+    "answer": "The uploaded documents do not provide sufficient evidence to answer this question reliably. Documents searched: gdpr.pdf.",
+    "abstention_reason": "The best passage scored -8.92, below the relevance threshold 0.00.",
+    "claims_shown": 0,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 0,
+      "supported": 0,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": false,
+      "deterministic_supported": 0,
+      "llm_supported": 0,
+      "attempts": 0,
+      "retry_count": 0
+    },
+    "retry_log": [],
+    "cited_sources": [],
+    "citation_section_precision": null,
+    "expected_provisions_cited": null,
+    "citation_coverage": null,
+    "retrieval_seconds": 0.377,
+    "generation_seconds": 0.0,
+    "total_seconds": 0.379,
+    "llm_calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "plan": {
+      "question": "What is the current market price of the controller's shares?",
+      "sub_queries": [
+        "What is the current market price of the controller's shares?"
+      ],
+      "strategy": "single",
+      "is_multi_hop": false,
+      "references": []
+    }
+  },
+  {
+    "id": "q18",
+    "type": "unanswerable",
+    "question": "What encryption algorithm must every organization use for all personal data?",
+    "answerable": false,
+    "expected_answer": "The GDPR does not mandate one specific encryption algorithm for every organization and all personal data.",
+    "expected_sections": [],
+    "expected_pages": [],
+    "status": "abstained",
+    "abstained": true,
+    "confidence": "INSUFFICIENT",
+    "answer": "The uploaded documents do not provide sufficient evidence to answer this question reliably. Documents searched: gdpr.pdf.",
+    "abstention_reason": "The best passage scored -4.11, below the relevance threshold 0.00.",
+    "claims_shown": 0,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 0,
+      "supported": 0,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": false,
+      "deterministic_supported": 0,
+      "llm_supported": 0,
+      "attempts": 0,
+      "retry_count": 0
+    },
+    "retry_log": [],
+    "cited_sources": [],
+    "citation_section_precision": null,
+    "expected_provisions_cited": null,
+    "citation_coverage": null,
+    "retrieval_seconds": 0.379,
+    "generation_seconds": 0.0,
+    "total_seconds": 0.382,
+    "llm_calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "plan": {
+      "question": "What encryption algorithm must every organization use for all personal data?",
+      "sub_queries": [
+        "What encryption algorithm must every organization use for all personal data?"
+      ],
+      "strategy": "single",
+      "is_multi_hop": false,
+      "references": []
+    }
+  },
+  {
+    "id": "q19",
+    "type": "multi_hop",
+    "question": "How quickly must a controller notify a personal data breach to the supervisory authority, and when must the breach also be communicated to the data subjects?",
+    "answerable": true,
+    "expected_answer": "Article 33(1): notify the supervisory authority without undue delay and, where feasible, not later than 72 hours after becoming aware, unless the breach is unlikely to result in a risk. Article 34(1): communicate to the data subject without undue delay when the breach is likely to result in a high risk to the rights and freedoms of natural persons.",
+    "expected_sections": [
+      "Article 33",
+      "Article 34"
+    ],
+    "expected_pages": [
+      52,
+      53
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "HIGH",
+    "answer": "Direct answer:\nThe controller should notify the supervisory authority without undue delay and, where feasible, not later than 72 hours after having become aware of the personal data breach. [S1][S2]\n\nKey findings:\n- The controller should communicate to the data subject a personal data breach without undue delay where that personal data breach is likely to result in a high risk to the rights and freedoms of the natural person. [S3][S4][S5]\n\nEvidence and reasoning:\nThe sources provide clear guidelines on the timing of notifications to the supervisory authority and data subjects. The controller must notify the supervisory authority within 72 hours of becoming aware of the breach, and must communicate the breach to data subjects without undue delay if it is likely to result in a high risk to their rights and freedoms.",
+    "abstention_reason": null,
+    "claims_shown": 2,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 2,
+      "supported": 2,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": true,
+      "deterministic_supported": 1,
+      "llm_supported": 1,
+      "attempts": 1,
+      "retry_count": 0
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"The controller should notify the supervisory authority without undue delay and, where feasible, not later than 72 hours after having become aware of the personal data breach.\",\n      \"sources\": [\"S1\", \"S2\"],\n      \"quote\": \"the controller shall without undue delay and, where feasible, not later than 72 hours after having become aware of it, notify the personal data breach to the supervisory authority\"\n    },\n    {\n      \"text\": \"The controller should communicate to the data subject a personal data breach without undue delay where that personal data breach is likely to result in a high risk to the rights and freedoms of the natural person.\",\n      \"sources\": [\"S3\", \"S4\", \"S5\"],\n      \"quote\": \"the controller shall communicate the personal data breach to the data subject without undue delay when the personal data breach is likely to result in a high risk to the rights and freedoms of natural persons\"\n    }\n  ],\n  \"explanation\": \"The sources provide clear guidelines on the timing of notifications to the supervisory authority and data subjects. The controller must notify the supervisory authority within 72 hours of becoming aware of the breach, and must communicate the breach to data subjects without undue delay if it is likely to result in a high risk to their rights and freedoms.\",\n  \"conflicts\": \"The sources do not explicitly state that the notification to the supervisory authority must be made within 72 hours, only that it should be 'not later than 72 hours after having become aware of it'. There is also no explicit mention of the need for the notification to be made without undue delay to data subjects.\",\n  \"missing\": [\"How quickly must a controller notify a personal data breach to the supervisory authority\", \"When must the breach also be communicated to the data subjects\"]\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S1",
+        "section": "General",
+        "pages": [
+          17
+        ]
+      },
+      {
+        "source_id": "S2",
+        "section": "Article 33 — Notification of a personal data breach to the supervisory authority",
+        "pages": [
+          52
+        ]
+      },
+      {
+        "source_id": "S3",
+        "section": "General",
+        "pages": [
+          17
+        ]
+      },
+      {
+        "source_id": "S4",
+        "section": "Article 34 — Communication of a personal data breach to the data subject",
+        "pages": [
+          53
+        ]
+      },
+      {
+        "source_id": "S5",
+        "section": "Article 34 — Communication of a personal data breach to the data subject",
+        "pages": [
+          52
+        ]
+      }
+    ],
+    "citation_section_precision": 0.6,
+    "expected_provisions_cited": 1.0,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 2.381,
+    "generation_seconds": 12.271,
+    "total_seconds": 14.655,
+    "llm_calls": 2,
+    "prompt_tokens": 2480,
+    "completion_tokens": 504,
+    "plan": {
+      "question": "How quickly must a controller notify a personal data breach to the supervisory authority, and when must the breach also be communicated to the data subjects?",
+      "sub_queries": [
+        "How quickly must a controller notify a personal data breach to the supervisory authority",
+        "When must the breach also be communicated to the data subjects?"
+      ],
+      "strategy": "coordinated_clauses",
+      "is_multi_hop": true,
+      "references": []
+    }
+  },
+  {
+    "id": "q20",
+    "type": "multi_hop",
+    "question": "Which legal bases make processing of personal data lawful, and what is the rule for processing health data as a special category?",
+    "answerable": true,
+    "expected_answer": "Article 6(1) lists consent, contract, legal obligation, vital interests, public task and legitimate interests. Article 9(1) prohibits processing special categories (including data concerning health) unless an Article 9(2) exception applies, such as explicit consent.",
+    "expected_sections": [
+      "Article 6",
+      "Article 9"
+    ],
+    "expected_pages": [
+      36,
+      37,
+      38,
+      39
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "HIGH",
+    "answer": "Direct answer:\nProcessing of personal data should be necessary for reasons of public interest in the area of public health, such as protecting against serious cross-border threats to health or ensuring high standards of quality and safety of health care and of medicinal products or medical devices, on the basis of Union or Member State law which provides for suitable and specific measures to safeguard the rights and freedoms of the data subject, in particular professional secrecy. [S3]\n\nKey findings:\n- Processing of special categories of personal data, such as health data, is prohibited unless one of the specified exceptions applies. [S2][S4]\n\nEvidence and reasoning:\nThe GDPR outlines various legal bases for processing personal data, including public interest, professional secrecy, and health-related purposes. Health data is specifically addressed as a special category of data, which is prohibited unless one of the specified exceptions applies.",
+    "abstention_reason": null,
+    "claims_shown": 2,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 2,
+      "supported": 2,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": true,
+      "deterministic_supported": 2,
+      "llm_supported": 0,
+      "attempts": 1,
+      "retry_count": 0
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"Processing of personal data should be necessary for reasons of public interest in the area of public health, such as protecting against serious cross-border threats to health or ensuring high standards of quality and safety of health care and of medicinal products or medical devices, on the basis of Union or Member State law which provides for suitable and specific measures to safeguard the rights and freedoms of the data subject, in particular professional secrecy.\",\n      \"sources\": [\"S3\"],\n      \"quote\": \"processing is necessary for reasons of public interest in the area of public health, such as protecting against serious cross-border threats to health or ensuring high standards of quality and safety of health care and of medicinal products or medical devices, on the basis of Union or Member State law which provides for suitable and specific measures to safeguard the rights and freedoms of the data subject, in particular professional secrecy;\"\n    },\n    {\n      \"text\": \"Processing of special categories of personal data, such as health data, is prohibited unless one of the specified exceptions applies.\",\n      \"sources\": [\"S2\", \"S4\"],\n      \"quote\": \"Processing of personal data revealing racial or ethnic origin, political opinions, religious or philosophical beliefs, or trade union membership, and the processing of genetic data, biometric data for the purpose of uniquely identifying a natural person, data concerning health or data concerning a natural person's sex life or sexual orientation shall be prohibited.\"\n    }\n  ],\n  \"explanation\": \"The GDPR outlines various legal bases for processing personal data, including public interest, professional secrecy, and health-related purposes. Health data is specifically addressed as a special category of data, which is prohibited unless one of the specified exceptions applies.\",\n  \"conflicts\": \"\",\n  \"missing\": []\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S3",
+        "section": "Article 9 — Processing of special categories of personal data",
+        "pages": [
+          38
+        ]
+      },
+      {
+        "source_id": "S2",
+        "section": "General",
+        "pages": [
+          9
+        ]
+      },
+      {
+        "source_id": "S4",
+        "section": "Article 9 — Processing of special categories of personal data",
+        "pages": [
+          38
+        ]
+      }
+    ],
+    "citation_section_precision": 0.6666666666666666,
+    "expected_provisions_cited": 0.5,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 1.253,
+    "generation_seconds": 8.067,
+    "total_seconds": 9.324,
+    "llm_calls": 1,
+    "prompt_tokens": 2337,
+    "completion_tokens": 369,
+    "plan": {
+      "question": "Which legal bases make processing of personal data lawful, and what is the rule for processing health data as a special category?",
+      "sub_queries": [
+        "Which legal bases make processing of personal data lawful",
+        "What is the rule for processing health data as a special category?"
+      ],
+      "strategy": "coordinated_clauses",
+      "is_multi_hop": true,
+      "references": []
+    }
+  },
+  {
+    "id": "q21",
+    "type": "multi_hop",
+    "question": "What information can a data subject obtain under the right of access, and within what time limit must the controller respond to such a request?",
+    "answerable": true,
+    "expected_answer": "Article 15(1): confirmation of processing, access to the data and information on purposes, categories, recipients, retention period, rights, source and automated decision-making. Article 12(3): without undue delay and in any event within one month of receipt, extendable by two further months where necessary.",
+    "expected_sections": [
+      "Article 15",
+      "Article 12"
+    ],
+    "expected_pages": [
+      39,
+      40,
+      43
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "LOW",
+    "answer": "Direct answer:\nThe controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request. [S1]\n\nKey findings:\n- The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request. [S1]\n\nEvidence and reasoning:\nThe sources provide consistent information that the controller must provide information on action taken on a request under Articles 15 to 22 to the data subject within one month of receipt of the request, without undue delay.\n\nLimitations:\n- 4 drafted claim(s) were removed because they failed evidence verification.",
+    "abstention_reason": null,
+    "claims_shown": 2,
+    "claims_removed": 4,
+    "verification": {
+      "total_claims": 6,
+      "supported": 2,
+      "contradicted": 0,
+      "insufficient": 4,
+      "inconclusive": 0,
+      "all_claims_supported": false,
+      "deterministic_supported": 2,
+      "llm_supported": 0,
+      "attempts": 2,
+      "retry_count": 1
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [
+          {
+            "text": "The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.",
+            "sources": [
+              "S3"
+            ],
+            "status": "INSUFFICIENT",
+            "reason": "The quotation appears in S1, not in the cited source(s).; Number(s) not found in the cited evidence: 22."
+          },
+          {
+            "text": "The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.",
+            "sources": [
+              "S4"
+            ],
+            "status": "INSUFFICIENT",
+            "reason": "The quotation appears in S1, not in the cited source(s).; Number(s) not found in the cited evidence: 1, 15, 22."
+          },
+          {
+            "text": "The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.",
+            "sources": [
+              "S5"
+            ],
+            "status": "INSUFFICIENT",
+            "reason": "The quotation appears in S1, not in the cited source(s).; Number(s) not found in the cited evidence: 15, 22."
+          },
+          {
+            "text": "The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.",
+            "sources": [
+              "S6"
+            ],
+            "status": "INSUFFICIENT",
+            "reason": "The quotation appears in S1, not in the cited source(s).; Number(s) not found in the cited evidence: 1, 22."
+          }
+        ],
+        "corrective_prompt": "Your previous answer failed evidence verification.\n\nFAILED CLAIMS:\n- \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\" (cited S3): INSUFFICIENT — The quotation appears in S1, not in the cited source(s).; Number(s) not found in the cited evidence: 22.\n- \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\" (cited S4): INSUFFICIENT — The quotation appears in S1, not in the cited source(s).; Number(s) not found in the cited evidence: 1, 15, 22.\n- \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\" (cited S5): INSUFFICIENT — The quotation appears in S1, not in the cited source(s).; Number(s) not found in the cited evidence: 15, 22.\n- \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\" (cited S6): INSUFFICIENT — The quotation appears in S1, not in the cited source(s).; Number(s) not found in the cited evidence: 1, 22.\n\nRewrite the complete JSON answer. For every failed claim either:\n- shorten the claim so it states ONLY what its quote says (no qualifiers taken from other sources),\n- copy the quote exactly from the cited source and keep the claim's wording and numbers faithful to it,\n- cite the source that actually contains the fact, or\n- remove the claim.\nDo not add new facts. Keep the claims that passed. Return only the JSON object.\n",
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\"\n    },\n    {\n      \"text\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\",\n      \"sources\": [\"S2\"],\n      \"quote\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\"\n    },\n    {\n      \"text\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\",\n      \"sources\": [\"S3\"],\n      \"quote\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\"\n    },\n    {\n      \"text\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\",\n      \"sources\": [\"S4\"],\n      \"quote\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\"\n    },\n    {\n      \"text\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\",\n      \"sources\": [\"S5\"],\n      \"quote\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\"\n    },\n    {\n      \"text\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\",\n      \"sources\": [\"S6\"],\n      \"quote\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\"\n    }\n  ],\n  \"explanation\": \"The sources provide consistent information that the controller must provide information on action taken on a request under Articles 15 to 22 to the data subject within one month of receipt of the request, without undue delay.\",\n  \"conflicts\": \"\",\n  \"missing\": []\n}"
+      },
+      {
+        "attempt": 2,
+        "parse_error": false,
+        "failed_claims": [
+          {
+            "text": "The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.",
+            "sources": [
+              "S3"
+            ],
+            "status": "INSUFFICIENT",
+            "reason": "The quotation appears in S1, not in the cited source(s).; Number(s) not found in the cited evidence: 22."
+          },
+          {
+            "text": "The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.",
+            "sources": [
+              "S4"
+            ],
+            "status": "INSUFFICIENT",
+            "reason": "The quotation appears in S1, not in the cited source(s).; Number(s) not found in the cited evidence: 1, 15, 22."
+          },
+          {
+            "text": "The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.",
+            "sources": [
+              "S5"
+            ],
+            "status": "INSUFFICIENT",
+            "reason": "The quotation appears in S1, not in the cited source(s).; Number(s) not found in the cited evidence: 15, 22."
+          },
+          {
+            "text": "The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.",
+            "sources": [
+              "S6"
+            ],
+            "status": "INSUFFICIENT",
+            "reason": "The quotation appears in S1, not in the cited source(s).; Number(s) not found in the cited evidence: 1, 22."
+          }
+        ],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\"\n    },\n    {\n      \"text\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\",\n      \"sources\": [\"S2\"],\n      \"quote\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\"\n    },\n    {\n      \"text\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\",\n      \"sources\": [\"S3\"],\n      \"quote\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\"\n    },\n    {\n      \"text\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\",\n      \"sources\": [\"S4\"],\n      \"quote\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\"\n    },\n    {\n      \"text\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\",\n      \"sources\": [\"S5\"],\n      \"quote\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\"\n    },\n    {\n      \"text\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\",\n      \"sources\": [\"S6\"],\n      \"quote\": \"The controller shall provide information on action taken on a request under Articles 15 to 22 to the data subject without undue delay and in any event within one month of receipt of the request.\"\n    }\n  ],\n  \"explanation\": \"The sources provide consistent information that the controller must provide information on action taken on a request under Articles 15 to 22 to the data subject within one month of receipt of the request, without undue delay.\",\n  \"conflicts\": \"\",\n  \"missing\": []\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S1",
+        "section": "Article 12 — Transparent information, communication and modalities for the exercise of the rights of the data",
+        "pages": [
+          40
+        ]
+      },
+      {
+        "source_id": "S1",
+        "section": "Article 12 — Transparent information, communication and modalities for the exercise of the rights of the data",
+        "pages": [
+          40
+        ]
+      }
+    ],
+    "citation_section_precision": 1.0,
+    "expected_provisions_cited": 0.5,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 0.39,
+    "generation_seconds": 24.685,
+    "total_seconds": 25.079,
+    "llm_calls": 2,
+    "prompt_tokens": 4878,
+    "completion_tokens": 1378,
+    "plan": {
+      "question": "What information can a data subject obtain under the right of access, and within what time limit must the controller respond to such a request?",
+      "sub_queries": [
+        "What information can a data subject obtain under the right of access, and within what time limit must the controller respond to such a request?"
+      ],
+      "strategy": "single",
+      "is_multi_hop": false,
+      "references": []
+    }
+  },
+  {
+    "id": "q22",
+    "type": "multi_hop",
+    "question": "On which grounds can a data subject obtain erasure of personal data, and must the controller inform recipients to whom the data were disclosed?",
+    "answerable": true,
+    "expected_answer": "Article 17(1) grounds include data no longer necessary, consent withdrawn, objection, unlawful processing, legal obligation and children's information-society data. Article 19: the controller must communicate any erasure to each recipient unless this proves impossible or involves disproportionate effort.",
+    "expected_sections": [
+      "Article 17",
+      "Article 19"
+    ],
+    "expected_pages": [
+      43,
+      44,
+      45
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "HIGH",
+    "answer": "Direct answer:\nThe data subject can obtain erasure of personal data if the data are no longer necessary for the original purpose or if the data subject withdraws consent. [S1][S5]\n\nKey findings:\n- The controller must inform recipients to whom the data were disclosed if the data subject requests it. [S1][S2]\n\nEvidence and reasoning:\nThe sources provide grounds for a data subject to obtain erasure of personal data and specify that the controller must inform recipients to whom the data were disclosed if requested by the data subject.",
+    "abstention_reason": null,
+    "claims_shown": 2,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 2,
+      "supported": 2,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": true,
+      "deterministic_supported": 2,
+      "llm_supported": 0,
+      "attempts": 1,
+      "retry_count": 0
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"The data subject can obtain erasure of personal data if the data are no longer necessary for the original purpose or if the data subject withdraws consent.\",\n      \"sources\": [\"S1\", \"S5\"],\n      \"quote\": \"The data subject shall have the right to obtain from the controller the erasure of personal data concerning him or her without undue delay and the controller shall have the obligation to erase personal data without undue delay where one of the following grounds applies:\"\n    },\n    {\n      \"text\": \"The controller must inform recipients to whom the data were disclosed if the data subject requests it.\",\n      \"sources\": [\"S1\", \"S2\"],\n      \"quote\": \"The controller shall communicate any rectification or erasure of personal data or restriction of processing carried out in accordance with Article 16, Article 17(1) and Article 18 to each recipient to whom the personal data have been disclosed, unless this proves impossible or involves disproportionate effort. The controller shall inform the data subject about those recipients if the data subject requests it.\"\n    }\n  ],\n  \"explanation\": \"The sources provide grounds for a data subject to obtain erasure of personal data and specify that the controller must inform recipients to whom the data were disclosed if requested by the data subject.\",\n  \"conflicts\": \"\"\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S1",
+        "section": "Article 17 — Right to erasure (‘right to be forgotten’)",
+        "pages": [
+          43
+        ]
+      },
+      {
+        "source_id": "S5",
+        "section": "Article 17 — Right to erasure (‘right to be forgotten’)",
+        "pages": [
+          44
+        ]
+      },
+      {
+        "source_id": "S1",
+        "section": "Article 17 — Right to erasure (‘right to be forgotten’)",
+        "pages": [
+          43
+        ]
+      },
+      {
+        "source_id": "S2",
+        "section": "Article 19 — Notification obligation regarding rectification or erasure of personal data or restriction of",
+        "pages": [
+          45
+        ]
+      }
+    ],
+    "citation_section_precision": 1.0,
+    "expected_provisions_cited": 1.0,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 1.336,
+    "generation_seconds": 7.085,
+    "total_seconds": 8.425,
+    "llm_calls": 1,
+    "prompt_tokens": 2076,
+    "completion_tokens": 289,
+    "plan": {
+      "question": "On which grounds can a data subject obtain erasure of personal data, and must the controller inform recipients to whom the data were disclosed?",
+      "sub_queries": [
+        "On which grounds can a data subject obtain erasure of personal data",
+        "Must the controller inform recipients to whom the data were disclosed?"
+      ],
+      "strategy": "coordinated_clauses",
+      "is_multi_hop": true,
+      "references": []
+    }
+  },
+  {
+    "id": "q23",
+    "type": "multi_hop",
+    "question": "What is the general principle for transfers of personal data to third countries, and which derogations allow a transfer without an adequacy decision or appropriate safeguards?",
+    "answerable": true,
+    "expected_answer": "Article 44: transfers may take place only if the controller and processor comply with the conditions of Chapter V. Article 49(1) derogations include explicit consent, contract performance, important reasons of public interest, legal claims, vital interests and transfers from a public register.",
+    "expected_sections": [
+      "Article 44",
+      "Article 49"
+    ],
+    "expected_pages": [
+      60,
+      64,
+      65
+    ],
+    "status": "partial",
+    "abstained": false,
+    "confidence": "LOW",
+    "answer": "Direct answer:\nAny transfer of personal data which are undergoing processing or are intended for processing after transfer to a third country or to an international organization shall take place only if, subject to the other provisions of this Regulation, the conditions laid down in this Chapter are complied with by the controller and processor, including for onward transfers of personal data from the third country or an international organization to another third country or to another international organization. [S1]\n\nLimitations:\n- Not answered by the documents: Which derogations allow a transfer without an adequacy decision or appropriate safeguards?\n- The model reported missing information: Which specific derogations allow a transfer without an adequacy decision or appropriate safeguards.\n- 1 drafted claim(s) were removed because they failed evidence verification.",
+    "abstention_reason": null,
+    "claims_shown": 1,
+    "claims_removed": 1,
+    "verification": {
+      "total_claims": 2,
+      "supported": 1,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 1,
+      "all_claims_supported": false,
+      "deterministic_supported": 0,
+      "llm_supported": 1,
+      "attempts": 2,
+      "retry_count": 1
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [
+          {
+            "text": "Derogations for specific situations allow a transfer without an adequacy decision or appropriate safeguards if the data subject has explicitly consented to the proposed transfer, the transfer is necessary for the performance of a contract between the data subject and the controller, or the transfer is necessary for the conclusion or performance of a contract concluded in the interest of the data subject between the controller and another natural or legal person.",
+            "sources": [
+              "S2",
+              "S4",
+              "S6",
+              "S7",
+              "S9"
+            ],
+            "status": "INCONCLUSIVE",
+            "reason": "Generated quotation failed exact evidence validation."
+          }
+        ],
+        "corrective_prompt": "Your previous answer failed evidence verification.\n\nFAILED CLAIMS:\n- \"Derogations for specific situations allow a transfer without an adequacy decision or appropriate safeguards if the data subject has explicitly consented to the proposed transfer, the transfer is necessary for the performance of a contract between the data subject and the controller, or the transfer is necessary for the conclusion or performance of a contract concluded in the interest of the data subject between the controller and another natural or legal person.\" (cited S2, S4, S6, S7, S9): INCONCLUSIVE — Generated quotation failed exact evidence validation.\n\nRewrite the complete JSON answer. For every failed claim either:\n- shorten the claim so it states ONLY what its quote says (no qualifiers taken from other sources),\n- copy the quote exactly from the cited source and keep the claim's wording and numbers faithful to it,\n- cite the source that actually contains the fact, or\n- remove the claim.\nDo not add new facts. Keep the claims that passed. Return only the JSON object.\n",
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"Any transfer of personal data to a third country or international organization shall take place only if the conditions laid down in this Chapter are complied with by the controller and processor, including for onward transfers of personal data from the third country or an international organization to another third country or to another international organization.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"Any transfer of personal data which are undergoing processing or are intended for processing after transfer to a third country or to an international organization shall take place only if, subject to the other provisions of this Regulation, the conditions laid down in this Chapter are complied with by the controller and processor, including for onward transfers of personal data from the third country or an international organization to another third country or to another international organization.\"\n    },\n    {\n      \"text\": \"Derogations for specific situations allow a transfer without an adequacy decision or appropriate safeguards if the data subject has explicitly consented to the proposed transfer, the transfer is necessary for the performance of a contract between the data subject and the controller, or the transfer is necessary for the conclusion or performance of a contract concluded in the interest of the data subject between the controller and another natural or legal person.\",\n      \"sources\": [\"S2\", \"S4\", \"S6\", \"S7\", \"S9\"],\n      \"quote\": \"In the absence of an adequacy decision pursuant to Article 45(3), or of appropriate safeguards pursuant to Article 46, including binding corporate rules, a transfer or a set of transfers of personal data to a third country or an international organization shall take place only on one of the following conditions:\"\n    }\n  ],\n  \"explanation\": \"The general principle for transfers of personal data to third countries is outlined in Article 44, which requires compliance with the conditions laid down in this Chapter, including for onward transfers. Derogations for specific situations, as detailed in Article 49, allow transfers without an adequacy decision or appropriate safeguards under certain conditions.\",\n  \"conflicts\": \"The sources do not explicitly state which specific derogations allow a transfer without an adequacy decision or appropriate safeguards, only that such transfers are allowed under certain conditions.\",\n  \"missing\": [\"Which specific derogations allow a transfer without an adequacy decision or appropriate safeguards.\"]\n}"
+      },
+      {
+        "attempt": 2,
+        "parse_error": false,
+        "failed_claims": [
+          {
+            "text": "Derogations for specific situations allow a transfer without an adequacy decision or appropriate safeguards if the data subject has explicitly consented to the proposed transfer, the transfer is necessary for the performance of a contract between the data subject and the controller, or the transfer is necessary for the conclusion or performance of a contract concluded in the interest of the data subject between the controller and another natural or legal person.",
+            "sources": [
+              "S2",
+              "S4",
+              "S6",
+              "S7",
+              "S9"
+            ],
+            "status": "INCONCLUSIVE",
+            "reason": "Generated quotation failed exact evidence validation."
+          }
+        ],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"Any transfer of personal data which are undergoing processing or are intended for processing after transfer to a third country or to an international organization shall take place only if, subject to the other provisions of this Regulation, the conditions laid down in this Chapter are complied with by the controller and processor, including for onward transfers of personal data from the third country or an international organization to another third country or to another international organization.\",\n      \"sources\": [\"S1\"],\n      \"quote\": \"Any transfer of personal data which are undergoing processing or are intended for processing after transfer to a third country or to an international organization shall take place only if, subject to the other provisions of this Regulation, the conditions laid down in this Chapter are complied with by the controller and processor, including for onward transfers of personal data from the third country or an international organization to another third country or to another international organization.\"\n    },\n    {\n      \"text\": \"Derogations for specific situations allow a transfer without an adequacy decision or appropriate safeguards if the data subject has explicitly consented to the proposed transfer, the transfer is necessary for the performance of a contract between the data subject and the controller, or the transfer is necessary for the conclusion or performance of a contract concluded in the interest of the data subject between the controller and another natural or legal person.\",\n      \"sources\": [\"S2\", \"S4\", \"S6\", \"S7\", \"S9\"],\n      \"quote\": \"In the absence of an adequacy decision pursuant to Article 45(3), or of appropriate safeguards pursuant to Article 46, including binding corporate rules, a transfer or a set of transfers of personal data to a third country or an international organization shall take place only on one of the following conditions:\"\n    }\n  ],\n  \"explanation\": \"The general principle for transfers of personal data to third countries is outlined in Article 44, which requires compliance with the conditions laid down in this Chapter, including for onward transfers. Derogations for specific situations, as detailed in Article 49, allow transfers without an adequacy decision or appropriate safeguards under certain conditions.\",\n  \"conflicts\": \"The sources do not explicitly state which specific derogations allow a transfer without an adequacy decision or appropriate safeguards, only that such transfers are allowed under certain conditions.\",\n  \"missing\": [\"Which specific derogations allow a transfer without an adequacy decision or appropriate safeguards.\"]\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S1",
+        "section": "Article 44 — General principle for transfers",
+        "pages": [
+          60
+        ]
+      }
+    ],
+    "citation_section_precision": 1.0,
+    "expected_provisions_cited": 0.5,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 1.42,
+    "generation_seconds": 46.118,
+    "total_seconds": 47.543,
+    "llm_calls": 8,
+    "prompt_tokens": 11451,
+    "completion_tokens": 1853,
+    "plan": {
+      "question": "What is the general principle for transfers of personal data to third countries, and which derogations allow a transfer without an adequacy decision or appropriate safeguards?",
+      "sub_queries": [
+        "What is the general principle for transfers of personal data to third countries",
+        "Which derogations allow a transfer without an adequacy decision or appropriate safeguards?"
+      ],
+      "strategy": "coordinated_clauses",
+      "is_multi_hop": true,
+      "references": []
+    }
+  },
+  {
+    "id": "q24",
+    "type": "multi_hop",
+    "question": "When must a controller designate a data protection officer, and what tasks does the data protection officer have?",
+    "answerable": true,
+    "expected_answer": "Article 37(1): where processing is by a public authority, where core activities require regular and systematic monitoring of data subjects on a large scale, or where core activities consist of large-scale processing of special categories or criminal-offence data. Article 39(1): inform and advise, monitor compliance, advise on DPIAs, cooperate with and act as contact point for the supervisory authority.",
+    "expected_sections": [
+      "Article 37",
+      "Article 39"
+    ],
+    "expected_pages": [
+      55,
+      56
+    ],
+    "status": "answered",
+    "abstained": false,
+    "confidence": "MEDIUM",
+    "answer": "Direct answer:\nThe data protection officer has tasks such as advising the controller or processor and employees, monitoring compliance, and cooperating with the supervisory authority. [S1][S2]\n\nEvidence and reasoning:\nThe sources provide the conditions under which a controller must designate a data protection officer and the tasks that the officer is expected to perform. The sources also specify the designation process and the responsibilities of the data protection officer.\n\nLimitations:\n- The model reported missing information: What are the specific tasks of the data protection officer in cases where the core activities involve processing on a large scale of special categories of data or criminal convictions.\n- 1 drafted claim(s) were removed because they failed evidence verification.",
+    "abstention_reason": null,
+    "claims_shown": 1,
+    "claims_removed": 1,
+    "verification": {
+      "total_claims": 2,
+      "supported": 1,
+      "contradicted": 0,
+      "insufficient": 1,
+      "inconclusive": 0,
+      "all_claims_supported": false,
+      "deterministic_supported": 1,
+      "llm_supported": 0,
+      "attempts": 2,
+      "retry_count": 1
+    },
+    "retry_log": [
+      {
+        "attempt": 1,
+        "parse_error": false,
+        "failed_claims": [
+          {
+            "text": "A controller must designate a data protection officer if their core activities involve processing on a large scale of special categories of data or criminal convictions.",
+            "sources": [
+              "S1",
+              "S2",
+              "S3",
+              "S6"
+            ],
+            "status": "INCONCLUSIVE",
+            "reason": "Generated quotation failed exact evidence validation."
+          }
+        ],
+        "corrective_prompt": "Your previous answer failed evidence verification.\n\nFAILED CLAIMS:\n- \"A controller must designate a data protection officer if their core activities involve processing on a large scale of special categories of data or criminal convictions.\" (cited S1, S2, S3, S6): INCONCLUSIVE — Generated quotation failed exact evidence validation.\n\nRewrite the complete JSON answer. For every failed claim either:\n- shorten the claim so it states ONLY what its quote says (no qualifiers taken from other sources),\n- copy the quote exactly from the cited source and keep the claim's wording and numbers faithful to it,\n- cite the source that actually contains the fact, or\n- remove the claim.\nDo not add new facts. Keep the claims that passed. Return only the JSON object.\n",
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"A controller must designate a data protection officer if their core activities involve processing on a large scale of special categories of data or criminal convictions.\",\n      \"sources\": [\"S1\", \"S2\", \"S3\", \"S6\"],\n      \"quote\": \"The controller and processor shall designate a data protection officer in any case where: (a) the processing is carried out by a public authority or body, except for courts acting in their judicial capacity;\"\n    },\n    {\n      \"text\": \"The data protection officer has tasks such as advising the controller or processor and employees, monitoring compliance, and cooperating with the supervisory authority.\",\n      \"sources\": [\"S1\", \"S2\"],\n      \"quote\": \"The data protection officer shall have at least the following tasks: (a) to inform and advise the controller or the processor and the employees who carry out processing of their obligations pursuant to this Regulation and to other Union or Member State data protection provisions;\"\n    }\n  ],\n  \"explanation\": \"The sources provide the conditions under which a controller must designate a data protection officer and the tasks that the officer is expected to perform. The sources also specify the designation process and the responsibilities of the data protection officer.\",\n  \"conflicts\": \"The sources do not explicitly state when a controller must designate a data protection officer, only that it is required in certain cases. The sources also do not specify the exact tasks of the data protection officer, only that they should have at least certain tasks.\",\n  \"missing\": [\"What are the specific tasks of the data protection officer in cases where the core activities involve processing on a large scale of special categories of data or criminal convictions.\"]\n}"
+      },
+      {
+        "attempt": 2,
+        "parse_error": false,
+        "failed_claims": [
+          {
+            "text": "A controller must designate a data protection officer if their core activities involve processing on a large scale of special categories of data or criminal convictions.",
+            "sources": [
+              "S3",
+              "S6"
+            ],
+            "status": "INSUFFICIENT",
+            "reason": "The evidence does not contain any information related to the claim."
+          }
+        ],
+        "corrective_prompt": null,
+        "draft": "{\n  \"status\": \"answered\",\n  \"claims\": [\n    {\n      \"text\": \"A controller must designate a data protection officer if their core activities involve processing on a large scale of special categories of data or criminal convictions.\",\n      \"sources\": [\"S3\", \"S6\"],\n      \"quote\": \"The controller and processor shall designate a data protection officer in any case where: (a) the processing is carried out by a public authority or body, except for courts acting in their judicial capacity;\"\n    },\n    {\n      \"text\": \"The data protection officer has tasks such as advising the controller or processor and employees, monitoring compliance, and cooperating with the supervisory authority.\",\n      \"sources\": [\"S1\", \"S2\"],\n      \"quote\": \"The data protection officer shall have at least the following tasks: (a) to inform and advise the controller or the processor and the employees who carry out processing of their obligations pursuant to this Regulation and to other Union or Member State data protection provisions;\"\n    }\n  ],\n  \"explanation\": \"The sources provide the conditions under which a controller must designate a data protection officer and the tasks that the officer is expected to perform. The sources also specify the designation process and the responsibilities of the data protection officer.\",\n  \"conflicts\": \"The sources do not explicitly state when a controller must designate a data protection officer, only that it is required in certain cases. The sources also do not specify the exact tasks of the data protection officer, only that they should have at least certain tasks.\",\n  \"missing\": [\"What are the specific tasks of the data protection officer in cases where the core activities involve processing on a large scale of special categories of data or criminal convictions.\"]\n}"
+      }
+    ],
+    "cited_sources": [
+      {
+        "source_id": "S1",
+        "section": "Article 39 — Tasks of the data protection officer",
+        "pages": [
+          56
+        ]
+      },
+      {
+        "source_id": "S2",
+        "section": "Article 39 — Tasks of the data protection officer",
+        "pages": [
+          56
+        ]
+      }
+    ],
+    "citation_section_precision": 1.0,
+    "expected_provisions_cited": 0.5,
+    "citation_coverage": 1.0,
+    "retrieval_seconds": 1.003,
+    "generation_seconds": 30.435,
+    "total_seconds": 31.441,
+    "llm_calls": 6,
+    "prompt_tokens": 6941,
+    "completion_tokens": 1085,
+    "plan": {
+      "question": "When must a controller designate a data protection officer, and what tasks does the data protection officer have?",
+      "sub_queries": [
+        "When must a controller designate a data protection officer",
+        "What tasks does the data protection officer have?"
+      ],
+      "strategy": "coordinated_clauses",
+      "is_multi_hop": true,
+      "references": []
+    }
+  },
+  {
+    "id": "q25",
+    "type": "unanswerable",
+    "question": "What is the governing law of the subcontractor agreement?",
+    "answerable": false,
+    "expected_answer": null,
+    "expected_sections": [],
+    "expected_pages": [],
+    "status": "abstained",
+    "abstained": true,
+    "confidence": "INSUFFICIENT",
+    "answer": "The uploaded documents do not provide sufficient evidence to answer this question reliably. Documents searched: gdpr.pdf.",
+    "abstention_reason": "The best passage scored -9.09, below the relevance threshold 0.00.",
+    "claims_shown": 0,
+    "claims_removed": 0,
+    "verification": {
+      "total_claims": 0,
+      "supported": 0,
+      "contradicted": 0,
+      "insufficient": 0,
+      "inconclusive": 0,
+      "all_claims_supported": false,
+      "deterministic_supported": 0,
+      "llm_supported": 0,
+      "attempts": 0,
+      "retry_count": 0
+    },
+    "retry_log": [],
+    "cited_sources": [],
+    "citation_section_precision": null,
+    "expected_provisions_cited": null,
+    "citation_coverage": null,
+    "retrieval_seconds": 0.377,
+    "generation_seconds": 0.001,
+    "total_seconds": 0.38,
+    "llm_calls": 0,
+    "prompt_tokens": 0,
+    "completion_tokens": 0,
+    "plan": {
+      "question": "What is the governing law of the subcontractor agreement?",
+      "sub_queries": [
+        "What is the governing law of the subcontractor agreement?"
+      ],
+      "strategy": "single",
+      "is_multi_hop": false,
+      "references": []
+    }
+  }
+]
