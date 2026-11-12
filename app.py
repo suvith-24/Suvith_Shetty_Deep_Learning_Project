@@ -159,7 +159,7 @@ if case:
             for source in result["sources"]
         }
         display_answer = re.sub(
-            r"\\[(S\\d+)\\]",
+            r"\[(S\d+)\]",
             lambda match: f"[{citation_labels.get(match.group(1), match.group(1))}]",
             result["answer"],
         )
