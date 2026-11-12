@@ -164,6 +164,24 @@ def test_extract_claims_without_citation():
     assert claims[0]["source_ids"] == []
 
 
+def test_detects_uncited_claim_among_cited_claims():
+    answer = (
+        "The controller must ensure safeguards [S1].\\n"
+        "The processor must follow instructions."
+    )
+
+    assert AnswerGenerator._has_uncited_claims(answer) is True
+
+
+def test_all_claims_cited_passes_uncited_claim_check():
+    answer = (
+        "The controller must ensure safeguards [S1].\\n"
+        "The processor must follow instructions [S2]."
+    )
+
+    assert AnswerGenerator._has_uncited_claims(answer) is False
+
+
 def test_extract_claims_removes_markdown_list_markers():
     answer = (
         "Key Conditions:\n"
