@@ -1,74 +1,207 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title description">
-  <title id="title">LexiSyncAI system architecture</title>
-  <desc id="description">PDF ingestion flows into legal chunking, sparse and dense retrieval, fusion, reranking, context expansion, local answer generation, verification, and a cited answer UI.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="1600" height="1000" font-family="Segoe UI, Inter, Arial, sans-serif">
   <defs>
-    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 Z" fill="#506078"/></marker>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b91c1c"/>
+    </marker>
+    <marker id="arrowViolet" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6d28d9"/>
+    </marker>
+    <linearGradient id="title" x1="0" x2="1">
+      <stop offset="0" stop-color="#1d4ed8"/><stop offset="1" stop-color="#0891b2"/>
+    </linearGradient>
     <style>
-      .box { fill:#fff; stroke:#52657d; stroke-width:2; rx:14; }
-      .stage { fill:#eef4fb; stroke:#426b91; stroke-width:2; rx:14; }
-      .result { fill:#eaf6ef; stroke:#3a7953; stroke-width:2; rx:14; }
-      .title { font:700 23px 'Segoe UI',Arial,sans-serif; fill:#172438; }
-      .label { font:600 17px 'Segoe UI',Arial,sans-serif; fill:#172438; }
-      .detail { font:14px 'Segoe UI',Arial,sans-serif; fill:#42536a; }
-      .arrow { stroke:#506078; stroke-width:2.5; fill:none; marker-end:url(#arrow); }
-      .line { stroke:#7a8ba0; stroke-width:2; fill:none; }
+      .lane { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.5; }
+      .lane-label { font-size: 15px; font-weight: 700; fill: #1e293b; letter-spacing: .5px; }
+      .box { fill: #ffffff; stroke: #64748b; stroke-width: 1.4; }
+      .box.ml { fill: #eff6ff; stroke: #2563eb; }
+      .box.llm { fill: #f5f3ff; stroke: #7c3aed; }
+      .box.guard { fill: #fef2f2; stroke: #dc2626; }
+      .box.store { fill: #ecfeff; stroke: #0891b2; }
+      .box.ui { fill: #f0fdf4; stroke: #16a34a; }
+      .t { font-size: 14px; font-weight: 700; fill: #0f172a; }
+      .s { font-size: 12px; fill: #334155; }
+      .edge { stroke: #334155; stroke-width: 1.6; fill: none; marker-end: url(#arrow); }
+      .edge-red { stroke: #b91c1c; stroke-width: 1.6; fill: none; stroke-dasharray: 6 4; marker-end: url(#arrowRed); }
+      .edge-violet { stroke: #6d28d9; stroke-width: 1.6; fill: none; stroke-dasharray: 5 4; marker-end: url(#arrowViolet); }
+      .note { font-size: 12px; fill: #475569; font-style: italic; }
+      .legend { font-size: 12px; fill: #334155; }
     </style>
   </defs>
-  <rect width="1200" height="760" fill="#f7f9fc"/>
-  <text x="600" y="45" text-anchor="middle" class="title">LexiSyncAI · Evidence-Grounded Legal Document Analyst</text>
-  <text x="600" y="72" text-anchor="middle" class="detail">Local document processing · hybrid retrieval · cited generation · abstention</text>
 
-  <rect x="40" y="118" width="205" height="100" class="box"/>
-  <text x="142" y="153" text-anchor="middle" class="label">Public legal PDFs</text>
-  <text x="142" y="181" text-anchor="middle" class="detail">2–5 documents per case</text>
-  <text x="142" y="201" text-anchor="middle" class="detail">Local uploads</text>
+  <rect width="1600" height="1000" fill="#ffffff"/>
+  <text x="40" y="48" font-size="28" font-weight="800" fill="url(#title)">LexiSyncAI — evidence-grounded legal document analyst</text>
+  <text x="40" y="74" class="s">Hybrid retrieval-augmented generation with claim-level verification and abstention. Everything runs locally: FastAPI + single-page UI, retrieval models on CPU, Ollama LLM (GPU if available).</text>
 
-  <rect x="300" y="118" width="245" height="100" class="stage"/>
-  <text x="422" y="153" text-anchor="middle" class="label">PDF ingestion</text>
-  <text x="422" y="181" text-anchor="middle" class="detail">PyMuPDF · page numbers</text>
-  <text x="422" y="201" text-anchor="middle" class="detail">scan-page flagging</text>
+  <!-- Lane 1: ingestion -->
+  <rect class="lane" x="20" y="96" width="1560" height="200" rx="14"/>
+  <text class="lane-label" x="40" y="122">1  INGESTION (per uploaded PDF)</text>
 
-  <rect x="600" y="118" width="255" height="100" class="stage"/>
-  <text x="727" y="153" text-anchor="middle" class="label">Legal chunking</text>
-  <text x="727" y="181" text-anchor="middle" class="detail">Heading + paragraph boundaries</text>
-  <text x="727" y="201" text-anchor="middle" class="detail">page and section metadata</text>
+  <rect class="box" x="40" y="140" width="190" height="120" rx="10"/>
+  <text class="t" x="54" y="166">Upload 2–5 PDFs / URL</text>
+  <text class="s" x="54" y="188">%PDF signature, size limit</text>
+  <text class="s" x="54" y="206">password / corrupt / empty</text>
+  <text class="s" x="54" y="224">SHA-256 duplicate check</text>
+  <text class="s" x="54" y="242">one case = isolated bundle</text>
 
-  <path d="M245 168 H295" class="arrow"/><path d="M545 168 H595" class="arrow"/>
-  <path d="M727 218 V264 H370 V290" class="arrow"/>
-  <path d="M727 264 H830 V290" class="arrow"/>
+  <rect class="box" x="270" y="140" width="260" height="120" rx="10"/>
+  <text class="t" x="284" y="166">PyMuPDF text extraction</text>
+  <text class="s" x="284" y="188">word-level lines, soft-hyphen repair</text>
+  <text class="s" x="284" y="206">column detection (gutter) → reading order</text>
+  <text class="s" x="284" y="224">recurring headers/footers removed</text>
+  <text class="s" x="284" y="242">footnotes detected, paragraphs rebuilt</text>
 
-  <rect x="220" y="292" width="300" height="115" class="box"/>
-  <text x="370" y="330" text-anchor="middle" class="label">Sparse retrieval</text>
-  <text x="370" y="358" text-anchor="middle" class="detail">BM25 keyword matching</text>
-  <text x="370" y="380" text-anchor="middle" class="detail">clause numbers and exact terms</text>
+  <rect class="box ml" x="570" y="140" width="220" height="54" rx="10"/>
+  <text class="t" x="584" y="163">OCR fallback (Tesseract)</text>
+  <text class="s" x="584" y="182">image-only pages · confidence</text>
+  <rect class="box ml" x="570" y="206" width="220" height="54" rx="10"/>
+  <text class="t" x="584" y="229">Table extraction</text>
+  <text class="s" x="584" y="248">ruled tables · spanning cells filled</text>
 
-  <rect x="680" y="292" width="300" height="115" class="box"/>
-  <text x="830" y="330" text-anchor="middle" class="label">Dense retrieval</text>
-  <text x="830" y="358" text-anchor="middle" class="detail">Sentence Transformer embeddings</text>
-  <text x="830" y="380" text-anchor="middle" class="detail">FAISS vector search</text>
+  <rect class="box" x="830" y="140" width="300" height="120" rx="10"/>
+  <text class="t" x="844" y="166">Legal-aware chunking</text>
+  <text class="s" x="844" y="188">Chapter / Article / Section / § / Schedule</text>
+  <text class="s" x="844" y="206">clause IDs e.g. 83(4), 7.2 · tables kept whole</text>
+  <text class="s" x="844" y="224">paragraph-first splits, 1000 chars / 150 overlap</text>
+  <text class="s" x="844" y="242">metadata: doc, page, section, clause, method</text>
 
-  <path d="M370 407 V443 H600" class="arrow"/><path d="M830 407 V443 H600" class="arrow"/>
-  <rect x="465" y="450" width="270" height="92" class="stage"/>
-  <text x="600" y="486" text-anchor="middle" class="label">RRF + cross-encoder</text>
-  <text x="600" y="515" text-anchor="middle" class="detail">candidate fusion and reranking</text>
+  <rect class="box ui" x="1170" y="140" width="390" height="120" rx="10"/>
+  <text class="t" x="1184" y="166">Structure report (Document Library)</text>
+  <text class="s" x="1184" y="188">pages · sections · passages · tables</text>
+  <text class="s" x="1184" y="206">scanned pages flagged, OCR pages + confidence</text>
+  <text class="s" x="1184" y="224">running heads removed · multi-column pages</text>
+  <text class="s" x="1184" y="242">extraction warnings</text>
 
-  <path d="M600 542 V570" class="arrow"/>
-  <rect x="465" y="578" width="270" height="76" class="stage"/>
-  <text x="600" y="610" text-anchor="middle" class="label">Context expansion</text>
-  <text x="600" y="635" text-anchor="middle" class="detail">adjacent passages as supporting context</text>
+  <path class="edge" d="M230,200 L268,200"/>
+  <path class="edge" d="M530,180 L568,167"/>
+  <path class="edge" d="M530,220 L568,233"/>
+  <path class="edge" d="M790,167 L828,180"/>
+  <path class="edge" d="M790,233 L828,220"/>
+  <path class="edge" d="M1130,200 L1168,200"/>
 
-  <path d="M735 616 H805" class="arrow"/>
-  <rect x="815" y="572" width="310" height="92" class="box"/>
-  <text x="970" y="608" text-anchor="middle" class="label">Ollama local LLM</text>
-  <text x="970" y="636" text-anchor="middle" class="detail">answers only from retrieved evidence</text>
-  <rect x="40" y="490" width="300" height="150" class="result"/>
-  <text x="190" y="526" text-anchor="middle" class="label">Citation & claim checks</text>
-  <text x="190" y="554" text-anchor="middle" class="detail">validate source IDs and cited claims</text>
-  <text x="190" y="578" text-anchor="middle" class="detail">one citation repair attempt</text>
-  <text x="190" y="610" text-anchor="middle" class="detail">insufficient evidence → abstain</text>
-  <path d="M815 618 H345" class="arrow"/>
+  <!-- Lane 2: indexing -->
+  <rect class="lane" x="20" y="312" width="1560" height="150" rx="14"/>
+  <text class="lane-label" x="40" y="338">2  PER-CASE INDEX (persisted, isolated)</text>
 
-  <rect x="395" y="680" width="730" height="52" class="result"/>
-  <text x="760" y="712" text-anchor="middle" class="label">Streamlit UI · answer + document/page/section citations + source page preview + confidence</text>
-  <path d="M190 640 V706 H390" class="arrow"/>
+  <rect class="box ml" x="270" y="356" width="260" height="86" rx="10"/>
+  <text class="t" x="284" y="380">BM25 sparse index</text>
+  <text class="s" x="284" y="400">clause-preserving tokens: 7.2, 83(4),</text>
+  <text class="s" x="284" y="418">article:83 · contextual section header</text>
+
+  <rect class="box ml" x="570" y="356" width="300" height="86" rx="10"/>
+  <text class="t" x="584" y="380">Dense embeddings → FAISS</text>
+  <text class="s" x="584" y="400">all-MiniLM-L6-v2 (384-d, normalised)</text>
+  <text class="s" x="584" y="418">IndexFlatIP = exact cosine search</text>
+
+  <rect class="box store" x="910" y="356" width="330" height="86" rx="10"/>
+  <text class="t" x="924" y="380">storage/indexes/&lt;case&gt;/</text>
+  <text class="s" x="924" y="400">legal_documents.faiss + chunks.json</text>
+  <text class="s" x="924" y="418">a case only ever loads its own index</text>
+
+  <path class="edge" d="M980,262 C980,300 400,300 400,354"/>
+  <path class="edge" d="M980,262 C980,300 720,300 720,354"/>
+  <path class="edge" d="M530,399 L568,399"/>
+  <path class="edge" d="M870,399 L908,399"/>
+
+  <!-- Lane 3: question answering -->
+  <rect class="lane" x="20" y="478" width="1560" height="420" rx="14"/>
+  <text class="lane-label" x="40" y="504">3  QUESTION ANSWERING (planner + verifier loop)</text>
+
+  <rect class="box" x="40" y="524" width="190" height="96" rx="10"/>
+  <text class="t" x="54" y="548">Question</text>
+  <text class="s" x="54" y="570">Query planner (rules):</text>
+  <text class="s" x="54" y="588">multi-hop → sub-questions</text>
+  <text class="s" x="54" y="606">one per provision / clause</text>
+
+  <rect class="box ml" x="270" y="524" width="220" height="96" rx="10"/>
+  <text class="t" x="284" y="548">Hybrid retrieval</text>
+  <text class="s" x="284" y="570">BM25 top-20 + FAISS top-20</text>
+  <text class="s" x="284" y="588">per (sub-)question</text>
+  <text class="s" x="284" y="606">metadata filters (doc/section)</text>
+
+  <rect class="box ml" x="530" y="524" width="200" height="96" rx="10"/>
+  <text class="t" x="544" y="548">Reciprocal Rank</text>
+  <text class="t" x="544" y="566">Fusion (k = 60)</text>
+  <text class="s" x="544" y="588">Σ 1/(k + rank)</text>
+  <text class="s" x="544" y="606">rank-based, scale-free</text>
+
+  <rect class="box ml" x="770" y="524" width="240" height="96" rx="10"/>
+  <text class="t" x="784" y="548">Cross-encoder rerank</text>
+  <text class="s" x="784" y="570">ms-marco-MiniLM-L-6-v2</text>
+  <text class="s" x="784" y="588">joint (query, passage) scoring</text>
+  <text class="s" x="784" y="606">top-5 + 3 per sub-question</text>
+
+  <rect class="box guard" x="1050" y="524" width="230" height="96" rx="10"/>
+  <text class="t" x="1064" y="548">Evidence gate</text>
+  <text class="s" x="1064" y="570">best logit &lt; 0 → abstain</text>
+  <text class="s" x="1064" y="588">(no LLM call; threshold</text>
+  <text class="s" x="1064" y="606">calibrated on a dev set)</text>
+
+  <rect class="box" x="1320" y="524" width="240" height="96" rx="10"/>
+  <text class="t" x="1334" y="548">Evidence preparation</text>
+  <text class="s" x="1334" y="570">context expansion (next chunk)</text>
+  <text class="s" x="1334" y="588">cross-document conflict</text>
+  <text class="s" x="1334" y="606">detector (dates, €, %, periods)</text>
+
+  <path class="edge" d="M230,572 L268,572"/>
+  <path class="edge" d="M490,572 L528,572"/>
+  <path class="edge" d="M730,572 L768,572"/>
+  <path class="edge" d="M1010,572 L1048,572"/>
+  <path class="edge" d="M1280,572 L1318,572"/>
+  <path class="edge" d="M1075,442 C1075,500 470,492 455,522"/>
+
+  <rect class="box llm" x="1180" y="664" width="380" height="96" rx="10"/>
+  <text class="t" x="1194" y="688">Local LLM — qwen2.5:3b via Ollama</text>
+  <text class="s" x="1194" y="710">structured JSON: one fact per claim, each with</text>
+  <text class="s" x="1194" y="728">source IDs [S#] + verbatim quote; T = 0, seed 42</text>
+  <text class="s" x="1194" y="746">sources are untrusted text (prompt-injection rule)</text>
+
+  <rect class="box guard" x="640" y="664" width="500" height="96" rx="10"/>
+  <text class="t" x="654" y="688">Claim verifier (per claim)</text>
+  <text class="s" x="654" y="710">citation IDs exist · quote verbatim in a CITED source · every number</text>
+  <text class="s" x="654" y="728">present · content-word coverage ≥ 70 % · negation agrees → SUPPORTED</text>
+  <text class="s" x="654" y="746">otherwise LLM reviewer → SUPPORTED / CONTRADICTED / INSUFFICIENT</text>
+
+  <rect class="box guard" x="270" y="664" width="330" height="96" rx="10"/>
+  <text class="t" x="284" y="688">Decision</text>
+  <text class="s" x="284" y="710">show only SUPPORTED claims · list removed</text>
+  <text class="s" x="284" y="728">uncovered sub-question → partial / abstain</text>
+  <text class="s" x="284" y="746">confidence: HIGH / MEDIUM / LOW / INSUFFICIENT</text>
+
+  <path class="edge" d="M1440,622 L1440,662"/>
+  <path class="edge" d="M1178,712 L1142,712"/>
+  <path class="edge" d="M638,712 L602,712"/>
+  <path class="edge-violet" d="M890,762 C890,800 1370,800 1370,763"/>
+  <text x="980" y="816" font-size="12" fill="#6d28d9" font-weight="600">bounded corrective retry (max 1): failed claims + reasons sent back; every attempt logged</text>
+  <path class="edge-red" d="M1165,620 L1165,634 L440,634 L440,662"/>
+  <text x="470" y="653" font-size="12" fill="#b91c1c" font-weight="600">abstain: “The uploaded documents do not provide sufficient evidence …” + documents searched</text>
+
+  <rect class="box ui" x="40" y="664" width="190" height="200" rx="10"/>
+  <text class="t" x="54" y="688">Web UI (FastAPI)</text>
+  <text class="s" x="54" y="710">split-screen workspace</text>
+  <text class="s" x="54" y="728">clickable citations [S#·p.]</text>
+  <text class="s" x="54" y="746">original PDF page with</text>
+  <text class="s" x="54" y="764">highlighted passage +</text>
+  <text class="s" x="54" y="782">quote (bounding boxes)</text>
+  <text class="s" x="54" y="800">confidence badge, diagnostics</text>
+  <text class="s" x="54" y="818">(BM25 / dense / RRF /</text>
+  <text class="s" x="54" y="836">rerank, retry log)</text>
+  <path class="edge" d="M268,712 L232,712"/>
+
+  <rect class="box" x="270" y="800" width="330" height="78" rx="10"/>
+  <text class="t" x="284" y="824">Evaluation (scripts/evaluate.py)</text>
+  <text class="s" x="284" y="846">Recall@1/3/5/10, MRR: dense vs BM25 vs hybrid</text>
+  <text class="s" x="284" y="864">abstention accuracy, citations, latency, tokens</text>
+
+  <!-- Legend -->
+  <g transform="translate(40,920)">
+    <rect x="0" y="0" width="16" height="16" rx="3" fill="#eff6ff" stroke="#2563eb"/><text class="legend" x="24" y="13">transformer / IR model</text>
+    <rect x="200" y="0" width="16" height="16" rx="3" fill="#f5f3ff" stroke="#7c3aed"/><text class="legend" x="224" y="13">generative LLM</text>
+    <rect x="360" y="0" width="16" height="16" rx="3" fill="#fef2f2" stroke="#dc2626"/><text class="legend" x="384" y="13">grounding / abstention guard</text>
+    <rect x="590" y="0" width="16" height="16" rx="3" fill="#ecfeff" stroke="#0891b2"/><text class="legend" x="614" y="13">persistent storage</text>
+    <rect x="760" y="0" width="16" height="16" rx="3" fill="#f0fdf4" stroke="#16a34a"/><text class="legend" x="784" y="13">user interface</text>
+    <text class="note" x="0" y="44">Metadata (case, document, page, section, clause, chunk ID, extraction method) is preserved from extraction to the cited page shown in the UI.</text>
+  </g>
 </svg>
