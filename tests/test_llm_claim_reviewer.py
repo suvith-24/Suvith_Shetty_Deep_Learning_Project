@@ -91,9 +91,16 @@ def test_invalid_quote_retries_and_accepts_exact_quote():
         make_response("SUPPORTED", "A paraphrased quotation that is not exact."),
         make_response("SUPPORTED", exact_quote),
     ])
+    class RetryQuoteValidator:
+        def __init__(self):
+            self.results = [False, True]
+
+        def validate(self, evidence, quotation):
+            return self.results.pop(0)
+
     reviewer = LLMClaimReviewer(
         ollama_client=client,
-        quote_validator=MockQuoteValidator(),
+        quote_validator=RetryQuoteValidator(),
     )
     result = reviewer.verify(
         claim="The controller must ensure appropriate safeguards.",
