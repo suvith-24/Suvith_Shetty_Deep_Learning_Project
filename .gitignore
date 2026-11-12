@@ -1,32 +1,50 @@
-# Python
-__pycache__/
-*.py[cod]
+# Python virtual environments
 .venv/
 venv/
+env/
+
+# Environment variables and secrets
 .env
+.env.*
+!.env.example
 
-# IDE
-.vscode/
-.idea/
+# Python cache and test artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
 
-# Data and generated indexes
-data/raw/*
-data/processed/*
-storage/indexes/*
-storage/metadata/*
-
-!data/raw/.gitkeep
-!data/processed/.gitkeep
-!data/evaluation/.gitkeep
-!storage/indexes/.gitkeep
-!storage/metadata/.gitkeep
-
-# Models
+# Downloaded models and model weights
+models/
+*.safetensors
+*.onnx
 *.pt
 *.pth
-*.onnx
 *.bin
 
-# OS
+# Uploaded and generated documents
+data/uploads/*
+data/processed/*
+data/raw/*.pdf
+
+# Generated vector indexes and application storage
+storage/indexes/
+storage/cache/
+*.faiss
+*.pkl
+
+# Editor and operating-system files
+.vscode/
+.idea/
 .DS_Store
 Thumbs.db
+
+# Generated Python package metadata
+*.egg-info/
+
+# Application logs
+logs/
+*.log
