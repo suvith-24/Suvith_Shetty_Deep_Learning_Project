@@ -804,6 +804,14 @@ Do not generate a separate Sources section.
                 claim_verification["insufficient"],
                 claim_verification["inconclusive"],
             )
+            for review in claim_verification["reviews"]:
+                if review.get("status") != "supported":
+                    logger.warning(
+                        "Claim review detail | status=%s | reason=%s | claim=%s",
+                        review.get("status"),
+                        review.get("reason"),
+                        review.get("claim", "")[:240],
+                    )
 
         # Never expose a draft answer unless every extracted factual claim
         # has a valid source citation and passed evidence review. The model
