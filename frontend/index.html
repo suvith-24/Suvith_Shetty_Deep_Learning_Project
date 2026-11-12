@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LexiSyncAI — Evidence-Grounded Legal Analyst</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%233b82f6'/%3E%3Cstop offset='1' stop-color='%2322d3ee'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='8' fill='url(%23g)'/%3E%3Cpath d='M9 22h14M16 8v14M10 12l-3 6h6zM22 12l-3 6h6zM10 12h12' stroke='white' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script>
+    try { const t = localStorage.getItem("lexisync-theme"); if (t === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="app" id="app">
+    <aside class="sidebar" aria-label="Main navigation">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true" data-icon="scale"></div>
+        <div class="brand-text">
+          <div class="brand-name">LexiSync<span>AI</span></div>
+          <div class="brand-sub">Grounded legal AI</div>
+        </div>
+      </div>
+      <nav class="nav" id="nav">
+        <button data-route="dashboard"><span data-icon="dashboard"></span><span class="nav-label">Dashboard</span></button>
+        <button data-route="cases"><span data-icon="briefcase"></span><span class="nav-label">My Cases</span></button>
+        <button data-route="library"><span data-icon="files"></span><span class="nav-label">Document Library</span></button>
+        <button data-route="workspace"><span data-icon="sparkles"></span><span class="nav-label">Legal AI Workspace</span></button>
+        <button data-route="evaluation"><span data-icon="chart"></span><span class="nav-label">Evaluation &amp; Analytics</span></button>
+        <button data-route="settings"><span data-icon="settings"></span><span class="nav-label">Settings</span></button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="status-line" id="ollama-status" title="Local LLM status"><span class="dot"></span><span class="footer-text">Checking Ollama…</span></div>
+        <div class="status-line footer-text" id="model-line">Model: —</div>
+        <div class="footer-row">
+          <button class="btn ghost sm icon" id="theme-toggle" title="Toggle light/dark theme" aria-label="Toggle theme"><span data-icon="moon"></span></button>
+          <button class="btn ghost sm icon" id="collapse-toggle" title="Collapse sidebar" aria-label="Collapse sidebar"><span data-icon="panel"></span></button>
+          <span class="faint footer-text" id="version-line">v—</span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div>
+          <div class="crumb" id="crumb">LexiSyncAI</div>
+          <h1 id="page-title">Dashboard</h1>
+        </div>
+        <div class="spacer"></div>
+        <div id="topbar-actions" class="row"></div>
+      </header>
+      <main class="content" id="view" tabindex="-1"></main>
+    </div>
+  </div>
+
+  <div class="toasts" id="toasts" aria-live="polite"></div>
+  <div class="tooltip" id="tooltip" hidden></div>
+
+  <dialog id="dialog"><form method="dialog" class="dlg-body" id="dialog-form"></form></dialog>
+
+  <script type="module" src="/static/app.js"></script>
+</body>
+</html>

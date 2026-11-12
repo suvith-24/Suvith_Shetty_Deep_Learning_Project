@@ -1,211 +1,74 @@
+"""Launch LexiSyncAI (API + web interface) on http://127.0.0.1:8000.
+
+    python app.py                 # start and open the browser
+    python app.py --no-browser    # start only
+    python app.py --port 8080
+"""
+
 from __future__ import annotations
 
-import re
+import argparse
+import json
+import socket
+import sys
+import threading
+import time
+import webbrowser
 from pathlib import Path
+from urllib.request import urlopen
 
-import pymupdf
-import streamlit as st
-
-from lexisync.chunking.legal_chunker import chunk_document
-from lexisync.config import INDEX_DIR, UPLOADS_DIR
-from lexisync.generation.answer_generator import AnswerGenerator
-from lexisync.ingestion.pdf_loader import load_pdf
-from lexisync.retrieval.context_expander import ContextExpander
-from lexisync.retrieval.index_store import IndexStore
-from lexisync.retrieval.indexing_pipeline import DocumentIndexingPipeline
-from lexisync.retrieval.retrieval_pipeline import RetrievalPipeline
+sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
 
 
-st.set_page_config(
-    page_title="LexiSyncAI | Legal Evidence Analyst",
-    page_icon="⚖️",
-    layout="wide",
-)
-
-
-def _safe_case_name(value: str) -> str:
-    normalized = re.sub(r"[^A-Za-z0-9_-]+", "-", value.strip()).strip("-")
-    return normalized[:48] or "case"
-
-
-@st.cache_resource(show_spinner="Loading the local answer model…")
-def answer_generator() -> AnswerGenerator:
-    return AnswerGenerator()
-
-
-def build_case(files, case_name: str):
-    if not 1 <= len(files) <= 5:
-        raise ValueError("Upload between 1 and 5 public legal PDFs for a case.")
-
-    case_id = _safe_case_name(case_name)
-    case_dir = UPLOADS_DIR / case_id
-    case_dir.mkdir(parents=True, exist_ok=True)
-    paths = []
-    used_names = set()
-
-    for uploaded in files:
-        name = Path(uploaded.name).name
-        if Path(name).suffix.lower() != ".pdf":
-            raise ValueError(f"{name} is not a PDF file.")
-        if name.casefold() in used_names:
-            raise ValueError(f"The upload contains duplicate filename: {name}")
-        used_names.add(name.casefold())
-        destination = case_dir / name
-        destination.write_bytes(uploaded.getvalue())
-        paths.append(destination)
-
-    # Isolate persisted FAISS files by case so a new case cannot overwrite another case.
-    case_index_store = IndexStore(index_dir=INDEX_DIR / case_id, index_name="legal_documents")
-    indexer = DocumentIndexingPipeline(index_store=case_index_store)
-    indexed = indexer.build(paths)
-    pipeline = RetrievalPipeline(indexing_pipeline=indexer)
-    pipeline.initialize()
-    return case_id, paths, indexed.chunks, pipeline
-
-
-st.title("⚖️ LexiSyncAI")
-st.caption("Evidence grounded analysis of public legal documents")
-st.markdown(
-    "Upload a small bundle of public legal PDFs, index their sections, and ask a question. "
-    "Answers are generated from retrieved passages and include page and section citations."
-)
-
-with st.sidebar:
-    st.header("Create a case")
-    case_name = st.text_input("Case name", value="legal-case")
-    uploads = st.file_uploader(
-        "Public legal PDF documents (1–5; 2–5 recommended)",
-        type=["pdf"],
-        accept_multiple_files=True,
-        help="Use public documents only. Uploaded PDFs are stored locally under data/uploads.",
-    )
-    index_clicked = st.button("Index documents", type="primary", use_container_width=True)
-    st.divider()
-    st.caption("Retrieval: BM25 + dense vectors → reciprocal rank fusion → cross encoder")
-    st.caption("Generation: local Ollama model with citation validation and abstention")
-
-if index_clicked:
-    if not uploads:
-        st.error("Choose 1–5 PDF documents first.")
-    else:
+def _port_is_free(host: str, port: int) -> bool:
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as probe:
         try:
-            with st.spinner("Extracting, chunking, embedding, and indexing documents…"):
-                case_id, paths, chunks, pipeline = build_case(uploads, case_name)
-            documents = [load_pdf(path) for path in paths]
-            st.session_state.case = {
-                "id": case_id,
-                "paths": paths,
-                "documents": documents,
-                "chunks": chunks,
-                "pipeline": pipeline,
-            }
-            st.session_state.pop("last_result", None)
-            st.session_state.pop("last_retrieval", None)
-            st.session_state.pop("last_context", None)
-            st.success(f"Indexed {len(documents)} documents into {len(chunks)} searchable passages.")
-        except Exception as exc:
-            st.exception(exc)
+            probe.bind((host, port))
+        except OSError:
+            return False
+    return True
 
-case = st.session_state.get("case")
-if case:
-    st.subheader(f"Case: {case['id']}")
-    with st.expander("Indexed document structure", expanded=True):
-        for document in case["documents"]:
-            page_cols = st.columns([3, 1, 2])
-            page_cols[0].markdown(f"**{document.file_name}**")
-            page_cols[1].write(f"{document.total_pages} pages")
-            page_cols[2].write(
-                f"{sum(page.is_scanned for page in document.pages)} potentially scanned"
-            )
-            scanned = [str(page.page_number) for page in document.pages if page.is_scanned]
-            if scanned:
-                st.warning(f"Pages needing OCR (not currently OCR processed): {', '.join(scanned)}")
-            sections = sorted({chunk.section for chunk in case["chunks"] if chunk.document_id == document.document_id})
-            st.caption("Detected sections: " + ("; ".join(sections[:20]) or "No headings detected"))
 
-    question = st.text_area(
-        "Ask a question about this case",
-        placeholder="For example: What safeguards apply to transfers of personal data to a third country?",
-        height=90,
-    )
-    if st.button("Find evidence and answer", type="primary", disabled=not question.strip()):
-        try:
-            with st.spinner("Retrieving evidence and generating a grounded answer…"):
-                retrieval = case["pipeline"].search(question)
-                primary = [chunk for chunk, _ in retrieval]
-                context = ContextExpander(previous_chunks=1, next_chunks=1).expand(
-                    primary_chunks=primary,
-                    all_chunks=case["chunks"],
-                )
-                result = answer_generator().generate_answer(
-                    query=question,
-                    evidence=retrieval,
-                    context_evidence=context,
-                )
-            st.session_state.last_result = result
-            st.session_state.last_retrieval = retrieval
-            st.session_state.last_context = context
-        except Exception as exc:
-            st.exception(exc)
+def _lexisync_already_running(url: str) -> bool:
+    try:
+        with urlopen(f"{url}/api/health", timeout=2) as response:
+            return json.loads(response.read().decode("utf-8")).get("status") == "ok"
+    except (OSError, ValueError):
+        return False
 
-    result = st.session_state.get("last_result")
-    if result:
-        st.markdown("### Answer")
-        validation = result["validation"]
-        if result["abstained"]:
-            st.error("INSUFFICIENT EVIDENCE — the system abstained")
-        elif validation.get("all_claims_supported"):
-            st.success("HIGH — all extracted claims passed citation and claim review")
-        elif validation.get("citations_valid"):
-            st.warning("MEDIUM — citations are valid, but one or more claims need review")
-        else:
-            st.warning("LOW — citation or claim verification needs review")
-        citation_labels = {
-            source["source_id"]: (
-                f"{source['document_id']}, p. {', '.join(map(str, source['pages'])) or '?'}"
-                f", {source['section'] or 'section not detected'}"
-            )
-            for source in result["sources"]
-        }
-        display_answer = re.sub(
-            r"\[(S\d+)\]",
-            lambda match: f"[{citation_labels.get(match.group(1), match.group(1))}]",
-            result["answer"],
-        )
-        st.markdown(display_answer)
 
-        st.markdown("### Evidence")
-        chunks_by_id = {
-            chunk.chunk_id: chunk
-            for chunk, _ in st.session_state.last_retrieval
-        }
-        chunks_by_id.update({chunk.chunk_id: chunk for chunk in st.session_state.last_context})
-        for source in result["sources"]:
-            chunk = chunks_by_id.get(source["chunk_id"])
-            if chunk is None:
-                continue
-            pages = ", ".join(map(str, source["pages"])) or "unknown"
-            label = f"[{source['source_id']}] {source['document_id']} · p. {pages} · {source['section'] or 'Section not detected'}"
-            with st.expander(label):
-                st.write(chunk.text)
-                document_path = next(
-                    (path for path in case["paths"] if path.stem == source["document_id"]),
-                    None,
-                )
-                if document_path and source["pages"]:
-                    with pymupdf.open(document_path) as pdf:
-                        page_number = source["pages"][0]
-                        if 1 <= page_number <= len(pdf):
-                            page_image = pdf[page_number - 1].get_pixmap(
-                                matrix=pymupdf.Matrix(1.25, 1.25),
-                                alpha=False,
-                            ).tobytes("png")
-                            st.image(page_image, caption=f"{document_path.name} · page {page_number}")
-        if result["claim_verification"]["reviews"]:
-            with st.expander("Claim verification details"):
-                for review in result["claim_verification"]["reviews"]:
-                    st.write(f"**{review['status'].upper()}** — {review['claim']}")
-                    if review.get("reason"):
-                        st.caption(review["reason"])
-else:
-    st.info("Create a case in the sidebar to begin. The included demo bundle is the GDPR PDF in data/raw.")
+def main() -> None:
+    parser = argparse.ArgumentParser(description="LexiSyncAI — evidence-grounded legal document analyst")
+    parser.add_argument("--host", default="127.0.0.1")
+    parser.add_argument("--port", type=int, default=8000)
+    parser.add_argument("--no-browser", action="store_true")
+    args = parser.parse_args()
+
+    url = f"http://{args.host}:{args.port}"
+
+    # Check the port before loading any models, so a busy port fails fast
+    # with a useful message instead of a socket error after model loading.
+    if not _port_is_free(args.host, args.port):
+        if _lexisync_already_running(url):
+            print(f"\n  LexiSyncAI is already running at {url} (another terminal or window).")
+            print("  Opening it in the browser. Stop the other instance with Ctrl+C if you want to restart.\n")
+            if not args.no_browser:
+                webbrowser.open(url)
+            return
+        print(f"\n  ERROR: port {args.port} is already used by another program.")
+        print(f"  Start on a different port:   .\\run.ps1 -Port {args.port + 1}   (or: python app.py --port {args.port + 1})\n")
+        sys.exit(1)
+
+    import uvicorn
+
+    from lexisync.api.server import create_app
+
+    if not args.no_browser:
+        threading.Thread(target=lambda: (time.sleep(2.0), webbrowser.open(url)), daemon=True).start()
+
+    print(f"\n  LexiSyncAI is starting at {url}  (Ctrl+C to stop)\n")
+    uvicorn.run(create_app(), host=args.host, port=args.port, log_level="warning")
+
+
+if __name__ == "__main__":
+    main()
