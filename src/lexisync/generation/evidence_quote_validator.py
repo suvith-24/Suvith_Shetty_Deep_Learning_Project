@@ -1,19 +1,38 @@
-
 import re
+import unicodedata
+
+
+_TYPOGRAPHIC = str.maketrans({
+    "‘": "'", "’": "'", "‚": "'", "‛": "'",
+    "“": '"', "”": '"', "„": '"', "‟": '"',
+    "–": "-", "—": "-", "‒": "-", "−": "-",
+    " ": " ", " ": " ", " ": " ",
+    "­": None,
+})
 
 
 def normalize_whitespace(text: str) -> str:
     """
-    Normalize whitespace without modifying the actual wording.
+    Normalize whitespace and typography without modifying the wording.
 
     Preserves:
     - Capitalization
-    - Punctuation
     - Spelling
     - Word order
+
+    Normalizes only characters that print identically or near-identically:
+    curly vs straight quotes, en/em dashes vs hyphens, non-breaking spaces,
+    soft hyphens and Unicode compatibility forms (e.g. the "fi" ligature).
     """
 
+    text = unicodedata.normalize("NFKC", text).translate(_TYPOGRAPHIC)
     return re.sub(r"\s+", " ", text).strip()
+
+
+def _strip_edge_punctuation(text: str) -> str:
+    """Remove sentence punctuation a model may add at the quote's edges."""
+
+    return text.strip().strip(".,;:").strip()
 
 
 class EvidenceQuoteValidator:
@@ -21,7 +40,7 @@ class EvidenceQuoteValidator:
     Validate whether a generated quotation exists verbatim
     in the original evidence passage.
 
-    Only whitespace differences are tolerated.
+    Only whitespace, typographic and edge-punctuation differences are tolerated.
     """
 
     @staticmethod
@@ -33,7 +52,7 @@ class EvidenceQuoteValidator:
         Return True only if the quotation occurs in the evidence.
 
         Line breaks and repeated whitespace are normalized,
-        but wording and punctuation must match.
+        but wording, capitalization and inner punctuation must match.
         """
 
         if not isinstance(evidence, str) or not evidence.strip():
@@ -43,7 +62,12 @@ class EvidenceQuoteValidator:
             return False
 
         normalized_evidence = normalize_whitespace(evidence)
-        normalized_quotation = normalize_whitespace(quotation)
+        normalized_quotation = _strip_edge_punctuation(
+            normalize_whitespace(quotation)
+        )
+
+        if not normalized_quotation:
+            return False
 
         return normalized_quotation in normalized_evidence
 
