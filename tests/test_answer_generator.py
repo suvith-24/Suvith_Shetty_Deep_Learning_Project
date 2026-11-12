@@ -166,7 +166,7 @@ def test_extract_claims_without_citation():
 
 def test_detects_uncited_claim_among_cited_claims():
     answer = (
-        "The controller must ensure safeguards [S1].\\n"
+        "The controller must ensure safeguards [S1].\n"
         "The processor must follow instructions."
     )
 
