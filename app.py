@@ -150,16 +150,7 @@ if case:
 
     result = st.session_state.get("last_result")
     if result:
-        st.markdown("### Answer")
         validation = result["validation"]
-        if result["abstained"]:
-            st.error("INSUFFICIENT EVIDENCE — the system abstained")
-        elif validation.get("all_claims_supported"):
-            st.success("HIGH — all extracted claims passed citation and claim review")
-        elif validation.get("citations_valid"):
-            st.warning("MEDIUM — citations are valid, but one or more claims need review")
-        else:
-            st.warning("LOW — citation or claim verification needs review")
         citation_labels = {
             source["source_id"]: (
                 f"{source['document_id']}, p. {', '.join(map(str, source['pages'])) or '?'}"
@@ -168,44 +159,84 @@ if case:
             for source in result["sources"]
         }
         display_answer = re.sub(
-            r"\[(S\d+)\]",
+            r"\\[(S\\d+)\\]",
             lambda match: f"[{citation_labels.get(match.group(1), match.group(1))}]",
             result["answer"],
         )
-        st.markdown(display_answer)
 
-        st.markdown("### Evidence")
-        chunks_by_id = {
-            chunk.chunk_id: chunk
-            for chunk, _ in st.session_state.last_retrieval
-        }
-        chunks_by_id.update({chunk.chunk_id: chunk for chunk in st.session_state.last_context})
-        for source in result["sources"]:
-            chunk = chunks_by_id.get(source["chunk_id"])
-            if chunk is None:
-                continue
-            pages = ", ".join(map(str, source["pages"])) or "unknown"
-            label = f"[{source['source_id']}] {source['document_id']} · p. {pages} · {source['section'] or 'Section not detected'}"
-            with st.expander(label):
-                st.write(chunk.text)
-                document_path = next(
-                    (path for path in case["paths"] if path.stem == source["document_id"]),
-                    None,
+        # Keep the answer and its source pages visible together, as required
+        # by the assignment's cited-answer UI.
+        answer_col, evidence_col = st.columns([5, 7], gap="large")
+
+        with answer_col:
+            st.markdown("### Answer")
+            if result["abstained"]:
+                st.error("INSUFFICIENT EVIDENCE — the system abstained")
+                confidence = "INSUFFICIENT EVIDENCE"
+            elif validation.get("all_claims_supported"):
+                st.success("HIGH CONFIDENCE — all extracted claims passed review")
+                confidence = "HIGH"
+            elif validation.get("citations_valid"):
+                st.warning("MEDIUM CONFIDENCE — citations are valid; review claim checks")
+                confidence = "MEDIUM"
+            else:
+                st.warning("LOW CONFIDENCE — citation or claim verification needs review")
+                confidence = "LOW"
+
+            st.caption(f"Confidence: {confidence}")
+            st.markdown(display_answer)
+
+            if result.get("claim_verification", {}).get("reviews"):
+                with st.expander("Claim verification details"):
+                    for review in result["claim_verification"]["reviews"]:
+                        st.write(f"**{review['status'].upper()}** — {review['claim']}")
+                        if review.get("reason"):
+                            st.caption(review["reason"])
+
+        with evidence_col:
+            st.markdown("### Supporting evidence")
+            st.caption("Select a source to inspect its extracted passage and original PDF page.")
+            chunks_by_id = {
+                chunk.chunk_id: chunk
+                for chunk, _ in st.session_state.last_retrieval
+            }
+            chunks_by_id.update({
+                chunk.chunk_id: chunk
+                for chunk in st.session_state.last_context
+            })
+
+            if not result["sources"]:
+                st.info("No supporting passages were retrieved for this question.")
+
+            for source in result["sources"]:
+                chunk = chunks_by_id.get(source["chunk_id"])
+                if chunk is None:
+                    continue
+
+                pages = ", ".join(map(str, source["pages"])) or "unknown"
+                label = (
+                    f"[{source['source_id']}] {source['document_id']} · "
+                    f"p. {pages} · {source['section'] or 'Section not detected'}"
                 )
-                if document_path and source["pages"]:
-                    with pymupdf.open(document_path) as pdf:
-                        page_number = source["pages"][0]
-                        if 1 <= page_number <= len(pdf):
-                            page_image = pdf[page_number - 1].get_pixmap(
-                                matrix=pymupdf.Matrix(1.25, 1.25),
-                                alpha=False,
-                            ).tobytes("png")
-                            st.image(page_image, caption=f"{document_path.name} · page {page_number}")
-        if result["claim_verification"]["reviews"]:
-            with st.expander("Claim verification details"):
-                for review in result["claim_verification"]["reviews"]:
-                    st.write(f"**{review['status'].upper()}** — {review['claim']}")
-                    if review.get("reason"):
-                        st.caption(review["reason"])
-else:
-    st.info("Create a case in the sidebar to begin. The included demo bundle is the GDPR PDF in data/raw.")
+                with st.expander(label, expanded=False):
+                    st.write(chunk.text)
+                    document_path = next(
+                        (
+                            path for path in case["paths"]
+                            if path.stem == source["document_id"]
+                        ),
+                        None,
+                    )
+                    if document_path and source["pages"]:
+                        with pymupdf.open(document_path) as pdf:
+                            for page_number in source["pages"]:
+                                if 1 <= page_number <= len(pdf):
+                                    page_image = pdf[page_number - 1].get_pixmap(
+                                        matrix=pymupdf.Matrix(1.25, 1.25),
+                                        alpha=False,
+                                    ).tobytes("png")
+                                    st.image(
+                                        page_image,
+                                        caption=f"{document_path.name} · page {page_number}",
+                                        use_container_width=True,
+                                    )
