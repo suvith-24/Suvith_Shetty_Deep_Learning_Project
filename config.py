@@ -1,42 +1,42 @@
 
-import os
-from pathlib import Path
+"""
+Backward-compatible configuration imports.
 
-from dotenv import load_dotenv
+The canonical configuration is maintained in:
+src/lexisync/config.py
+"""
+
+from lexisync.config import (
+    PROJECT_ROOT,
+    DATA_DIR,
+    RAW_DATA_DIR,
+    PROCESSED_DATA_DIR,
+    UPLOADS_DIR,
+    STORAGE_DIR,
+    INDEX_DIR,
+    LOG_DIR,
+    OLLAMA_BASE_URL,
+    OLLAMA_MODEL,
+    EMBEDDING_MODEL,
+    RERANKER_MODEL,
+    RETRIEVAL_TOP_K,
+    RERANK_TOP_K,
+)
 
 
-# Project root
-PROJECT_ROOT = Path(__file__).resolve().parent
-
-# Load local environment variables
-load_dotenv(PROJECT_ROOT / ".env")
-
-# Data directories
-DATA_DIR = PROJECT_ROOT / "data"
-RAW_DATA_DIR = DATA_DIR / "raw"
-PROCESSED_DATA_DIR = DATA_DIR / "processed"
-UPLOADS_DIR = DATA_DIR / "uploads"
-
-# Storage directories
-STORAGE_DIR = PROJECT_ROOT / "storage"
-INDEX_DIR = STORAGE_DIR / "indexes"
-
-# Local language model
-OLLAMA_BASE_URL = os.getenv(
+__all__ = [
+    "PROJECT_ROOT",
+    "DATA_DIR",
+    "RAW_DATA_DIR",
+    "PROCESSED_DATA_DIR",
+    "UPLOADS_DIR",
+    "STORAGE_DIR",
+    "INDEX_DIR",
+    "LOG_DIR",
     "OLLAMA_BASE_URL",
-    "http://localhost:11434",
-)
-
-OLLAMA_MODEL = os.getenv(
     "OLLAMA_MODEL",
-    "qwen2.5:3b",
-)
-
-# Retrieval models
-EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
-
-RERANKER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
-
-# Retrieval settings
-RETRIEVAL_TOP_K = 10
-RERANK_TOP_K = 5
+    "EMBEDDING_MODEL",
+    "RERANKER_MODEL",
+    "RETRIEVAL_TOP_K",
+    "RERANK_TOP_K",
+]

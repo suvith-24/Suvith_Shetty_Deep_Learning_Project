@@ -1,12 +1,14 @@
 
 import logging
 
-from config import PROJECT_ROOT
+from lexisync.config import LOG_DIR
 
 
 # Create log directory
-LOG_DIR = PROJECT_ROOT / "logs"
-LOG_DIR.mkdir(parents=True, exist_ok=True)
+LOG_DIR.mkdir(
+    parents=True,
+    exist_ok=True,
+)
 
 LOG_FILE = LOG_DIR / "lexisync.log"
 

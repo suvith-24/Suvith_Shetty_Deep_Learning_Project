@@ -15,6 +15,7 @@ dependencies = [
     "faiss-cpu==1.16.0",
     "python-dotenv==1.2.4",
     "sentence-transformers==6.3.0",
+    "rank-bm25==0.2.2",
 ]
 
 [project.optional-dependencies]
@@ -27,3 +28,4 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
+

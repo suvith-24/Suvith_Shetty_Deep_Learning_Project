@@ -9,19 +9,55 @@ from lexisync.utils.logger import get_logger
 logger = get_logger(__name__)
 
 
-# Initial chunking configuration
+# Chunking configuration
 DEFAULT_CHUNK_SIZE = 1000
 DEFAULT_CHUNK_OVERLAP = 150
 MIN_CHUNK_SIZE = 100
 
+PARAGRAPH_BOUNDARY_THRESHOLD = 0.60
+
 
 # Legal heading patterns
 HEADING_PATTERNS = [
-    re.compile(r"^\s*CHAPTER\s+[IVXLCDM0-9]+.*$", re.IGNORECASE),
-    re.compile(r"^\s*Article\s+\d+[A-Za-z]?\b.*$", re.IGNORECASE),
-    re.compile(r"^\s*SECTION\s+\d+[A-Za-z]?\b.*$", re.IGNORECASE),
-    re.compile(r"^\s*\d+(?:\.\d+)+\.?\s+[A-Z].*$"),
+    re.compile(
+        r"^\s*CHAPTER\s+[IVXLCDM]+(?:\s*[-–—:]\s*.+)?\s*$",
+        re.IGNORECASE,
+    ),
+    re.compile(
+        r"^\s*Article\s+\d+[A-Za-z]?(?:\s*[-–—:]\s*.+)?\s*$",
+        re.IGNORECASE,
+    ),
+    re.compile(
+        r"^\s*SECTION\s+\d+[A-Za-z]?(?:\s*[-–—:]\s*.+)?\s*$",
+        re.IGNORECASE,
+    ),
+    re.compile(
+        r"^\s*\d{1,2}\.\d{1,2}\.?\s+[A-Z][^\n]{0,100}$"
+    ),
 ]
+
+
+# European Journal publication-header pattern.
+# Matches only complete page headers, not legal text
+# that merely references the Official Journal.
+PUBLICATION_HEADER_PATTERN = re.compile(
+    r"""
+    ^\s*
+    (?:
+        \d{1,2}\.\d{1,2}\.\d{4}
+        \s+EN
+        .*?
+        L\s+\d+/\d+
+        |
+        L\s+\d+/\d+
+        \s+EN
+        .*?
+        \d{1,2}\.\d{1,2}\.\d{4}
+    )
+    \s*$
+    """,
+    re.IGNORECASE | re.VERBOSE,
+)
 
 
 def detect_heading(line: str) -> bool:
@@ -33,39 +69,111 @@ def detect_heading(line: str) -> bool:
     )
 
 
-def split_into_sections(text: str) -> list[tuple[str, str, int, int]]:
+def clean_page_text(text: str) -> str:
+    """
+    Remove only complete recurring publication headers.
+
+    Replacements preserve the original character count
+    and newline positions, keeping character offsets valid.
+
+    Substantive legal references to the Official Journal
+    are preserved.
+    """
+
+    cleaned_lines = []
+
+    for line in text.splitlines(keepends=True):
+
+        stripped = line.strip()
+
+        is_publication_header = (
+            "official journal of the european union"
+            in stripped.casefold()
+            and PUBLICATION_HEADER_PATTERN.match(stripped)
+        )
+
+        if is_publication_header:
+
+            cleaned_line = "".join(
+                "\n" if character == "\n"
+                else "\r" if character == "\r"
+                else " "
+                for character in line
+            )
+
+            cleaned_lines.append(cleaned_line)
+
+        else:
+            cleaned_lines.append(line)
+
+    return "".join(cleaned_lines)
+
+
+def split_into_sections(
+    text: str,
+) -> list[tuple[str, str, int, int]]:
     """
     Split document text into sections using detected headings.
 
     Returns:
         List of (heading, section_text, start_char, end_char).
+
+    Character offsets refer to the original input text.
     """
 
     lines = text.splitlines(keepends=True)
 
     sections = []
+
     current_heading = "General"
     current_lines = []
 
     position = 0
     section_start = 0
 
+    def save_section(
+        heading: str,
+        section_lines: list[str],
+        raw_start: int,
+    ) -> None:
+        """Save a section while preserving its original offsets."""
+
+        if not section_lines:
+            return
+
+        raw_text = "".join(section_lines)
+        section_text = raw_text.strip()
+
+        if not section_text:
+            return
+
+        leading_whitespace = (
+            len(raw_text) - len(raw_text.lstrip())
+        )
+
+        actual_start = raw_start + leading_whitespace
+        actual_end = actual_start + len(section_text)
+
+        sections.append(
+            (
+                heading,
+                section_text,
+                actual_start,
+                actual_end,
+            )
+        )
+
     for line in lines:
+
         stripped = line.strip()
 
         if stripped and detect_heading(stripped):
-            if current_lines:
-                section_text = "".join(current_lines).strip()
 
-                if section_text:
-                    sections.append(
-                        (
-                            current_heading,
-                            section_text,
-                            section_start,
-                            position,
-                        )
-                    )
+            save_section(
+                current_heading,
+                current_lines,
+                section_start,
+            )
 
             current_heading = stripped
             current_lines = [line]
@@ -76,18 +184,11 @@ def split_into_sections(text: str) -> list[tuple[str, str, int, int]]:
 
         position += len(line)
 
-    if current_lines:
-        section_text = "".join(current_lines).strip()
-
-        if section_text:
-            sections.append(
-                (
-                    current_heading,
-                    section_text,
-                    section_start,
-                    position,
-                )
-            )
+    save_section(
+        current_heading,
+        current_lines,
+        section_start,
+    )
 
     return sections
 
@@ -100,45 +201,86 @@ def split_large_section(
     """
     Split an oversized section into smaller passages.
 
-    Prefer paragraph boundaries and fall back to whitespace
-    boundaries when necessary.
+    Prefer paragraph boundaries when they are reasonably
+    close to the target chunk size.
+
+    Otherwise, use the nearest whitespace boundary.
 
     Returns:
         List of (chunk_text, start_char, end_char).
+
+    Offsets refer to the original section_text.
     """
 
     chunks = []
+
     start = 0
     text_length = len(text)
 
     while start < text_length:
-        end = min(start + chunk_size, text_length)
+
+        end = min(
+            start + chunk_size,
+            text_length,
+        )
 
         if end < text_length:
-            # Prefer a paragraph boundary.
-            boundary = text.rfind("\n\n", start, end)
 
-            if boundary == -1 or boundary <= start:
-                # Fall back to a whitespace boundary.
-                boundary = text.rfind(" ", start, end)
+            minimum_boundary = (
+                start
+                + int(chunk_size * PARAGRAPH_BOUNDARY_THRESHOLD)
+            )
 
-            if boundary > start:
-                end = boundary
+            paragraph_boundary = text.rfind(
+                "\n\n",
+                start,
+                end,
+            )
 
-        chunk_text = text[start:end].strip()
+            if paragraph_boundary >= minimum_boundary:
+
+                end = paragraph_boundary
+
+            else:
+
+                whitespace_positions = [
+                    text.rfind(" ", start, end),
+                    text.rfind("\n", start, end),
+                    text.rfind("\t", start, end),
+                ]
+
+                boundary = max(whitespace_positions)
+
+                if boundary > start:
+                    end = boundary
+
+        raw_chunk = text[start:end]
+        chunk_text = raw_chunk.strip()
 
         if chunk_text:
-            actual_start = start + len(text[start:end]) - len(text[start:end].lstrip())
+
+            leading_whitespace = (
+                len(raw_chunk) - len(raw_chunk.lstrip())
+            )
+
+            actual_start = start + leading_whitespace
             actual_end = actual_start + len(chunk_text)
 
             chunks.append(
-                (chunk_text, actual_start, actual_end)
+                (
+                    chunk_text,
+                    actual_start,
+                    actual_end,
+                )
             )
 
         if end >= text_length:
             break
 
-        next_start = max(start + 1, end - overlap)
+        next_start = max(
+            start + 1,
+            end - overlap,
+        )
 
         # Avoid starting in the middle of a word.
         while (
@@ -153,7 +295,6 @@ def split_large_section(
     return chunks
 
 
-
 def chunk_document(
     document: Document,
     chunk_size: int = DEFAULT_CHUNK_SIZE,
@@ -162,12 +303,20 @@ def chunk_document(
     """
     Convert a structured legal document into searchable chunks.
 
-    Preserves document IDs, section headings and page numbers.
+    Preserves:
+        - Document IDs
+        - Legal section headings
+        - Original PDF page numbers
+        - Original extracted-text character offsets
+        - Configured maximum chunk size
+
     Carries section headings across consecutive PDF pages.
     """
 
     if chunk_size <= 0:
-        raise ValueError("chunk_size must be greater than zero.")
+        raise ValueError(
+            "chunk_size must be greater than zero."
+        )
 
     if overlap < 0 or overlap >= chunk_size:
         raise ValueError(
@@ -176,7 +325,6 @@ def chunk_document(
 
     chunks = []
 
-    # Tracks the most recently detected legal section.
     current_section = "General"
 
     logger.info(
@@ -187,21 +335,23 @@ def chunk_document(
     for page in document.pages:
 
         if not page.text.strip():
+
             logger.info(
                 "Skipping empty page %d.",
                 page.page_number,
             )
+
             continue
 
-        sections = split_into_sections(page.text)
+        cleaned_text = clean_page_text(page.text)
+
+        sections = split_into_sections(cleaned_text)
 
         for heading, section_text, section_start, _ in sections:
 
-            # Update the active section when a new heading is found.
             if heading != "General":
                 current_section = heading
 
-            # If no new heading exists, inherit the previous section.
             else:
                 heading = current_section
 
@@ -212,18 +362,6 @@ def chunk_document(
             )
 
             for passage, start, end in passages:
-
-                if len(passage) < MIN_CHUNK_SIZE:
-                    if chunks:
-                        previous = chunks[-1]
-
-                        if (
-                            previous.section == heading
-                            and previous.page_numbers == [page.page_number]
-                        ):
-                            previous.text += "\n" + passage
-                            previous.end_char = section_start + end
-                            continue
 
                 chunk = Chunk(
                     chunk_id=str(uuid4()),
