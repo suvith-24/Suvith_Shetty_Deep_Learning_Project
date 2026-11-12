@@ -321,7 +321,10 @@ Full system vs the original free-text generator, on **identical retrieved eviden
 | End-to-end latency, mean / median | 15.0 s / 9.3 s | 40.1 s / 25.1 s |
 | Citation precision, automated proxy | 79% | — |
 | Claims verified by deterministic checks (no LLM call) | 74% | — |
-| Answer correctness, manual citation precision | *pending manual scoring* | — |
+| Answer correctness, strict 0/1 (complete *and* correct) † | 35% (7/20) | — |
+| Citation precision, claim-level (supported / cited claims) † | **89%** (42/47) | — |
+
+† Claim-level scores are an assistant-scored draft for the author to confirm (see `evaluation/manual_scoring_template.csv`). 15 of 20 answers contain no wrong statement; most zeros are incomplete list answers.
 
 Out-of-scope questions are refused in about 0.4 s without calling the LLM. Full details, the failure analysis and evaluation limitations are in [`docs/EVALUATION_REPORT.md`](docs/EVALUATION_REPORT.md).
 
@@ -436,7 +439,7 @@ LexiSyncAI/
 
 ## ⚠️ Limitations
 
-- The benchmark uses one document (GDPR) and 25 questions; manual correctness scoring is still pending.
+- The benchmark uses one document (GDPR) and 25 questions. Answers are precise but often incomplete (strict correctness 35%), because the 3B model reports only a few facts per answer.
 - The query planner and layout analysis are rule-based heuristics.
 - The same 3B model generates answers and reviews claims.
 - Confidence levels are rule-based, not calibrated probabilities.

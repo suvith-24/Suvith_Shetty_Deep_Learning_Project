@@ -11,13 +11,13 @@ Phases were ordered by exam risk: anything visible in the five-minute demo came 
 | E | Grounded generation | Structured JSON claims; deterministic citation/quote/number/coverage/negation checks; LLM reviewer for inconclusive claims; bounded corrective retry with a log; calibrated evidence gate; explained abstention; rule-based confidence; `num_ctx` 8192 and a fixed seed | Done |
 | F | Bonus | Cross-document conflict detection, bounding-box highlights, latency/token report, retrieval ablation | Done |
 | G | UI | FastAPI + single-page app: dashboard, cases, library (drag and drop, URL, structure report), split-screen workspace with clickable citations and highlighted PDF pages, diagnostics, evaluation dashboard, settings, light/dark themes | Done (screenshots checked in headless Edge) |
-| H | Evaluation | 25 held-out questions with expected sections and pages; separate dev calibration set; Recall@1/3/5/10, MRR, multi-hop recall; full generation run; legacy baseline; manual scoring template; report | Done. **Manual scoring pending: needs the author.** |
+| H | Evaluation | 25 held-out questions with expected sections and pages; separate dev calibration set; Recall@1/3/5/10, MRR, multi-hop recall; full generation run; legacy baseline; manual scoring template; report | Done. **Claim-level scores are an assistant draft: the author must confirm them.** |
 | I | Tests | 351 passing tests; all LLM calls mocked; synthetic-PDF integration tests | Done |
 | J | Docs | README, architecture (+ SVG/PNG diagram), evaluation report, limitations, demo guide, theory Q&A | Done |
 
 ## Remaining manual tasks
 
-1. Fill in `evaluation/manual_scoring_template.csv`: answer correctness (0/1), supported cited claims and abstention correctness for each question (procedure in the README). The Evaluation dashboard picks it up automatically.
+1. Review `evaluation/manual_scoring_template.csv`: the assistant-scored draft (strict 0/1 correctness, supported cited claims, abstention correctness). Change any score you disagree with and remove the `[assistant draft - author to confirm]` marker from rows you have confirmed.
 2. Rehearse the demo (`docs/DEMO_GUIDE.md`) with a PDF you have not seen.
 3. Commit the work in reviewable steps and push to GitHub; put the repository link in the submitted documentation.
 

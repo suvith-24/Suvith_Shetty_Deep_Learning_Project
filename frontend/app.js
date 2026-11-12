@@ -900,8 +900,8 @@ async function renderEvaluation(view) {
       ${g ? card("Abstention accuracy", pct(g.abstention_accuracy), `${g.evaluated} questions · automated`) : card("Abstention accuracy", "—", "run with --generate", "pending")}
       ${g ? card("False abstention rate", pct(g.false_abstention_rate), `${g.false_abstentions} answerable question(s) refused`) : ""}
       ${g ? card("Citation precision (auto proxy)", pct(g.citation_section_precision), "cited passage in an expected provision") : ""}
-      ${card("Answer correctness", manualPending ? "Pending" : pct(m.answer_correctness), manualPending ? "manual scoring not yet entered" : `manual · ${m.scored_correctness} scored`, manualPending ? "pending" : "")}
-      ${card("Citation precision (manual)", m.citation_precision == null ? "Pending" : pct(m.citation_precision), "manual scoring sheet", m.citation_precision == null ? "pending" : "")}
+      ${card("Answer correctness (strict 0/1)", manualPending ? "Pending" : pct(m.answer_correctness), manualPending ? "manual scoring not yet entered" : `${m.draft_rows ? "assistant-scored draft, author to confirm" : "manual"} · ${m.scored_correctness} scored`, manualPending ? "pending" : "")}
+      ${card("Citation precision (claim-level)", m.citation_precision == null ? "Pending" : pct(m.citation_precision), m.citation_precision == null ? "manual scoring sheet" : `${m.draft_rows ? "assistant-scored draft" : "manual"} · ${m.scored_citations} answers`, m.citation_precision == null ? "pending" : "")}
       ${g ? card("End-to-end latency", `${fmt(g.latency_total.mean, 1)} s`, `median ${fmt(g.latency_total.median, 1)} s · p95 ${fmt(g.latency_total.p95, 1)} s`) : ""}
     </div>
     <div class="grid two" style="margin-bottom:16px">

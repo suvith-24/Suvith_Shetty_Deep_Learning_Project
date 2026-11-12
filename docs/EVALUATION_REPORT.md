@@ -100,7 +100,7 @@ Full system, 25 questions, `qwen2.5:3b`:
 | Claim verification pass rate (drafted claims kept) | 84% | automated |
 | Questions needing a corrective retry | 6 | automated |
 | Confidence distribution | HIGH 14, MEDIUM 4, LOW 2, INSUFFICIENT 5 | automated |
-| Answer correctness | **Pending** | manual |
+| Answer correctness (strict 0/1: complete and correct) | **35%** (7/20) | assistant-scored draft, author to confirm |
 
 Per question:
 
@@ -160,11 +160,26 @@ The root cause was format, not grounding: the 3B model writes paragraph answers 
 | Citation precision, automated proxy (cited passage in an expected article) | 79% | automated proxy |
 | Expected provisions cited (answered questions) | 80% | automated |
 | Expected provisions cited, multi-hop only | 71% | automated |
-| Citation precision (claim supported by cited passage) | **Pending** | manual |
+| Citation precision (cited claims supported by the cited passage) | **89%** (42/47) | assistant-scored draft, author to confirm |
 
 The proxy under-counts. Recitals (e.g. recital 85 for breach notification) and neighbouring articles (e.g. Article 24 for accountability) legitimately support claims but are not "expected articles". Every shown claim has already passed the per-claim verification (verbatim quote, numbers, coverage, or LLM review).
 
-**Manual scoring status: pending.** `evaluation/manual_scoring_template.csv` lists every question with the system answer and its cited sections and pages. Columns `manual_answer_correct_0_or_1`, `supported_cited_claims`, `citation_precision_0_to_1` and `abstention_correct_0_or_1` must be completed by the author, following the procedure in the README. `claims_total` and `end_to_end_latency_seconds` are pre-filled from the measured run. The Evaluation dashboard computes answer correctness and manual citation precision from this file as soon as it is filled in. Until then these metrics are reported as *Pending*, never estimated.
+**Claim-level scoring.** `evaluation/manual_scoring_template.csv` scores every question with the agreed rules: 0/1 answer correctness, supported cited claims / cited claims, and 0/1 abstention correctness. The scores in this version were produced by the AI coding assistant, which checked each answer against the expected answer and each claim against the GDPR article it cites. Every row is marked `[assistant draft - author to confirm]` in `reviewer_notes`, and the dashboard labels these metrics the same way. They are not presented as the author's own manual evaluation.
+
+| Scored outcome (20 answerable questions) | Count | Questions |
+|---|---:|---|
+| Correct and complete (scored 1) | 7 | q02, q06, q09, q10, q12, q13, q19 |
+| Correct but incomplete (scored 0) | 8 | q01, q05, q07, q08, q14, q21, q23, q24 |
+| Wrong or off-target (scored 0) | 5 | q03 (Art. 8 instead of Art. 6), q11 (Art. 49 derogations instead of Art. 46 safeguards), q20 (misses Art. 6), q04 and q22 (each adds a claim not in the cited article) |
+
+| Manual metric | Value |
+|---|---:|
+| Answer correctness, strict 0/1 | **35%** (7/20) |
+| Answers with no wrong statement (correct or correct-but-incomplete) | 75% (15/20) |
+| Citation precision (supported cited claims / cited claims) | **89%** (42/47) |
+| Abstention correctness | **100%** (25/25) |
+
+**Interpretation.** The system is precise but often incomplete. 89% of displayed claims are supported by the passage they cite, and no unanswerable question was answered. However, the 3B model usually reports only 1–3 facts, so answers to list-type questions (principles, information duties, exceptions) are scored 0 under the strict completeness rule. The 5 unsupported claims passed automated verification through the LLM reviewer (paraphrases such as "withdraw by informing the controller"), which shows the limit of using the same 3B model as reviewer. The most effective improvements would be a larger generator, asking for every listed item, and a stricter or independent reviewer.
 
 ## 6. Latency and cost
 
@@ -200,7 +215,7 @@ Tokens per question (mean): 2939 prompt + 558 completion, over 2.6 LLM calls.
 
 - One document, 25 questions. A difference of one question is 5 percentage points on answerable metrics and 20 points on unanswerable ones.
 - The unanswerable questions are clearly out of scope. Near-miss questions (topic present, fact absent) are harder and are not represented.
-- The automated citation metric is a proxy (expected-article match). Manual citation precision is pending.
+- The automated citation metric is a proxy (expected-article match). Claim-level citation precision and answer correctness are an assistant-scored draft that the author must confirm.
 - The LLM reviewer is the same 3B model as the generator.
 
 See `docs/KNOWN_LIMITATIONS.md` for system limitations.

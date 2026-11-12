@@ -65,7 +65,7 @@ def summarize_manual_scores(path: Path) -> dict:
     """
 
     manual = {
-        "rows": 0, "scored_correctness": 0, "scored_citations": 0, "scored_abstention": 0,
+        "rows": 0, "draft_rows": 0, "scored_correctness": 0, "scored_citations": 0, "scored_abstention": 0,
         "answer_correctness": None, "citation_precision": None, "abstention_accuracy": None,
     }
     if not path.exists():
@@ -83,6 +83,7 @@ def summarize_manual_scores(path: Path) -> dict:
         if _number(r.get("supported_cited_claims")) is not None
     ]
 
+    manual["draft_rows"] = sum(1 for r in rows if "assistant draft" in (r.get("reviewer_notes") or "").casefold())
     manual["scored_correctness"] = len(correctness)
     manual["scored_abstention"] = len(abstention)
     manual["scored_citations"] = len(cited)

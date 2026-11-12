@@ -281,4 +281,5 @@ def test_manual_score_summary_uses_sheet_schema(tmp_path):
     assert summary["citation_precision"] == pytest.approx(5 / 6)
     assert summary["abstention_accuracy"] == 1.0
     assert summary["scored_abstention"] == 3
+    assert summary["draft_rows"] == 0
     assert summarize_manual_scores(tmp_path / "missing.csv")["answer_correctness"] is None

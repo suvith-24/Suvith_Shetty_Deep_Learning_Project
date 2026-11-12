@@ -7,7 +7,8 @@ Stated plainly so that results are not over-claimed.
 - **One benchmark document.** The 25 held-out questions are all on the GDPR. Recall and abstention numbers may not transfer to contracts, judgments or filings with different structure.
 - **Small sample.** With 20 answerable and 5 unanswerable questions, one question is 5 or 20 percentage points. Treat differences between configurations as indicative, not significant.
 - **Easy unanswerables.** The unanswerable questions are clearly out of scope. Harder "near-miss" questions (the topic is present but the specific fact is not) are better tests, and the system has known risk there (see *Generation* below).
-- **Manual metrics pending.** Answer correctness and manual citation precision need a human to fill in `evaluation/manual_scoring_template.csv`. "Citation precision (auto proxy)" only checks whether a cited passage belongs to an expected article. A recital or a neighbouring article can legitimately support a claim and still counts as a miss.
+- **Claim-level scores are an assistant draft.** Answer correctness (35% strict) and claim-level citation precision (89%) in `evaluation/manual_scoring_template.csv` were scored by the AI assistant and must be confirmed by the author. The automated "citation precision (auto proxy)" only checks whether a cited passage belongs to an expected article.
+- **Incomplete answers.** The 3B model usually states 1–3 facts, so list-type questions (all principles, all exceptions) are often only partly answered. Of 20 answers, 8 are correct but incomplete and 5 are wrong or off-target.
 - **Threshold calibration.** The evidence gate (logit 0.0) was chosen from a 14-question dev set. Its unanswerables (VAT, minimum wage …) are easier than real out-of-scope questions.
 
 ## Ingestion

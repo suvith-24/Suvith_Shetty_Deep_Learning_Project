@@ -100,7 +100,7 @@ The model runs on the user's machine (Ollama, llama.cpp backend, 4-bit Q4_K_M qu
 
 ### Limitations (one-minute version)
 - One benchmark document (GDPR), and a small question set.
-- Manual correctness scoring is still pending.
+- Answers are precise (89% claim-level citation precision) but often incomplete (35% strict correctness).
 - Rule-based planner and heuristic layout analysis.
 - A 3B model as both generator and reviewer.
 - Verification proves textual support, not legal correctness.
