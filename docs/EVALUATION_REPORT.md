@@ -164,7 +164,7 @@ The root cause was format, not grounding: the 3B model writes paragraph answers 
 
 The proxy under-counts. Recitals (e.g. recital 85 for breach notification) and neighbouring articles (e.g. Article 24 for accountability) legitimately support claims but are not "expected articles". Every shown claim has already passed the per-claim verification (verbatim quote, numbers, coverage, or LLM review).
 
-**Manual scoring status: pending.** `evaluation/manual_scoring_template.csv` lists every question with the system answer and its cited sections and pages. Columns `manual_answer_correct (1/0.5/0)`, `manual_supported_citations` and `manual_total_citations` must be completed by the author. The Evaluation dashboard computes answer correctness and manual citation precision from this file as soon as it is filled in. Until then these metrics are reported as *Pending*, never estimated.
+**Manual scoring status: pending.** `evaluation/manual_scoring_template.csv` lists every question with the system answer and its cited sections and pages. Columns `manual_answer_correct_0_or_1`, `supported_cited_claims`, `citation_precision_0_to_1` and `abstention_correct_0_or_1` must be completed by the author, following the procedure in the README. `claims_total` and `end_to_end_latency_seconds` are pre-filled from the measured run. The Evaluation dashboard computes answer correctness and manual citation precision from this file as soon as it is filled in. Until then these metrics are reported as *Pending*, never estimated.
 
 ## 6. Latency and cost
 
@@ -210,5 +210,5 @@ See `docs/KNOWN_LIMITATIONS.md` for system limitations.
 ```powershell
 python scripts/evaluate.py --rebuild                         # retrieval ablation + calibration
 python scripts/evaluate.py --generate --legacy-baseline      # full answers + before/after baseline
-python -m pytest -q                                          # 350 tests
+python -m pytest -q                                          # 351 tests
 ```

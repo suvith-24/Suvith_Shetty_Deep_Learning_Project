@@ -260,21 +260,46 @@ def generation_summary(records: list[dict]) -> dict:
     }
 
 
+# Manual scoring columns (scoring rules in README "Manual evaluation procedure").
+MANUAL_COLUMNS = [
+    "question_id", "answerable", "manual_answer_correct_0_or_1", "claims_total",
+    "supported_cited_claims", "citation_precision_0_to_1", "abstention_correct_0_or_1",
+    "end_to_end_latency_seconds", "reviewer_notes",
+]
+# Read-only context for the reviewer, appended after the scoring columns.
+CONTEXT_COLUMNS = [
+    "type", "question", "expected_answer", "expected_sections", "expected_pages",
+    "system_status", "system_confidence", "system_answer", "cited_sources",
+]
+
+
 def write_manual_template(records: list[dict], path: Path) -> None:
-    fields = ["id", "type", "answerable", "question", "expected_answer", "expected_sections", "expected_pages",
-              "system_status", "system_confidence", "system_answer", "cited_sources",
-              "manual_answer_correct (1/0.5/0)", "manual_supported_citations", "manual_total_citations",
-              "manual_abstention_correct (1/0)", "notes"]
+    """Write the manual scoring sheet.
+
+    Pre-filled: answerability, the number of cited claims shown
+    (``claims_total``) and the measured server-side end-to-end latency.
+    The reviewer fills correctness, supported claims, citation precision and
+    abstention correctness after checking each cited page.
+    """
+
     with path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
-        writer.writerow(fields)
+        writer.writerow(MANUAL_COLUMNS + CONTEXT_COLUMNS)
         for r in records:
+            answered = r.get("abstained") is False
             writer.writerow([
-                r["id"], r.get("type"), r["answerable"], r.get("question", ""), r.get("expected_answer") or "",
+                r["id"], str(r["answerable"]).lower(), "",
+                r.get("claims_shown", "") if answered else "",
+                "", "", "",
+                f"{r['total_seconds']:.2f}" if r.get("total_seconds") is not None else "",
+                "",
+                r.get("type"), r.get("question", ""), r.get("expected_answer") or "",
                 "; ".join(r.get("expected_sections", [])), ", ".join(map(str, r.get("expected_pages", []))),
                 r.get("status", "error"), r.get("confidence", ""), r.get("answer", r.get("error", "")),
-                "; ".join(f"{s['source_id']} {s['section']} p.{','.join(map(str, s['pages']))}" for s in r.get("cited_sources", [])),
-                "", "", "", "", "",
+                "; ".join(
+                    f"{s['source_id']} {s['section'] or 'Preamble'} p.{','.join(map(str, s['pages']))}"
+                    for s in r.get("cited_sources", [])
+                ),
             ])
 
 

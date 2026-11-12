@@ -48,6 +48,54 @@ class AskRequest(BaseModel):
     section: str | None = Field(default=None, max_length=120)
 
 
+def _number(value) -> float | None:
+    try:
+        text = str(value or "").strip()
+        return float(text) if text else None
+    except ValueError:
+        return None
+
+
+def summarize_manual_scores(path: Path) -> dict:
+    """Aggregate the manual scoring sheet; empty cells mean "not scored yet".
+
+    Answer correctness is the mean of 0/1 scores. Citation precision is
+    micro-averaged: total supported cited claims / total cited claims
+    over rows where supported claims were entered.
+    """
+
+    manual = {
+        "rows": 0, "scored_correctness": 0, "scored_citations": 0, "scored_abstention": 0,
+        "answer_correctness": None, "citation_precision": None, "abstention_accuracy": None,
+    }
+    if not path.exists():
+        return manual
+
+    with path.open(encoding="utf-8-sig") as handle:
+        rows = list(csv.DictReader(handle))
+    manual["rows"] = len(rows)
+
+    correctness = [v for v in (_number(r.get("manual_answer_correct_0_or_1")) for r in rows) if v is not None]
+    abstention = [v for v in (_number(r.get("abstention_correct_0_or_1")) for r in rows) if v is not None]
+    cited = [
+        (_number(r.get("supported_cited_claims")), _number(r.get("claims_total")))
+        for r in rows
+        if _number(r.get("supported_cited_claims")) is not None
+    ]
+
+    manual["scored_correctness"] = len(correctness)
+    manual["scored_abstention"] = len(abstention)
+    manual["scored_citations"] = len(cited)
+    if correctness:
+        manual["answer_correctness"] = sum(correctness) / len(correctness)
+    if abstention:
+        manual["abstention_accuracy"] = sum(abstention) / len(abstention)
+    total = sum(t or 0 for _, t in cited)
+    if total:
+        manual["citation_precision"] = sum(s for s, _ in cited) / total
+    return manual
+
+
 def create_app(case_manager: CaseManager | None = None, qa_service: QAService | None = None) -> FastAPI:
     cases = case_manager or CaseManager()
 
@@ -268,22 +316,8 @@ def create_app(case_manager: CaseManager | None = None, qa_service: QAService | 
                 return None
             return json.loads(path.read_text(encoding="utf-8"))
 
-        manual = {"rows": 0, "scored_correctness": 0, "scored_citations": 0}
         template = config.PROJECT_ROOT / "evaluation" / "manual_scoring_template.csv"
-        if template.exists():
-            with template.open(encoding="utf-8") as handle:
-                rows = list(csv.DictReader(handle))
-            manual["rows"] = len(rows)
-            manual["scored_correctness"] = sum(1 for r in rows if (r.get("manual_answer_correct (1/0.5/0)") or "").strip())
-            manual["scored_citations"] = sum(1 for r in rows if (r.get("manual_total_citations") or "").strip())
-            correctness = [float(r["manual_answer_correct (1/0.5/0)"]) for r in rows
-                           if (r.get("manual_answer_correct (1/0.5/0)") or "").strip()]
-            supported = sum(float(r["manual_supported_citations"] or 0) for r in rows
-                            if (r.get("manual_total_citations") or "").strip())
-            total = sum(float(r["manual_total_citations"] or 0) for r in rows
-                        if (r.get("manual_total_citations") or "").strip())
-            manual["answer_correctness"] = sum(correctness) / len(correctness) if correctness else None
-            manual["citation_precision"] = supported / total if total else None
+        manual = summarize_manual_scores(template)
 
         questions_path = config.PROJECT_ROOT / "evaluation" / "held_out_questions.json"
         questions = json.loads(questions_path.read_text(encoding="utf-8")) if questions_path.exists() else []

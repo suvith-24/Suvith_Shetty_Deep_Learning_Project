@@ -260,3 +260,25 @@ def test_best_threshold_separates_scores():
 def test_latency_summary():
     summary = M.latency_summary([1.0, 2.0, 3.0, None])
     assert summary["n"] == 3 and summary["median"] == 2.0 and summary["max"] == 3.0
+
+
+def test_manual_score_summary_uses_sheet_schema(tmp_path):
+    from lexisync.api.server import summarize_manual_scores
+
+    sheet = tmp_path / "scores.csv"
+    sheet.write_text(
+        "question_id,answerable,manual_answer_correct_0_or_1,claims_total,supported_cited_claims,"
+        "citation_precision_0_to_1,abstention_correct_0_or_1,end_to_end_latency_seconds,reviewer_notes\n"
+        "q01,true,1,4,3,0.75,1,10.0,\n"
+        "q02,true,0,2,2,1.0,1,8.0,\n"
+        "q15,false,,,,,1,0.4,\n"
+        "q16,false,,,,,,0.4,not scored yet\n",
+        encoding="utf-8",
+    )
+    summary = summarize_manual_scores(sheet)
+    assert summary["rows"] == 4
+    assert summary["answer_correctness"] == 0.5
+    assert summary["citation_precision"] == pytest.approx(5 / 6)
+    assert summary["abstention_accuracy"] == 1.0
+    assert summary["scored_abstention"] == 3
+    assert summarize_manual_scores(tmp_path / "missing.csv")["answer_correctness"] is None

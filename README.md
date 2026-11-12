@@ -10,7 +10,7 @@
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.118-009688?logo=fastapi&logoColor=white)
 ![Ollama](https://img.shields.io/badge/LLM-qwen2.5%3A3b%20via%20Ollama-000000)
 ![FAISS](https://img.shields.io/badge/Vector%20search-FAISS-0467DF)
-![Tests](https://img.shields.io/badge/tests-350%20passed-2ea44f)
+![Tests](https://img.shields.io/badge/tests-351%20passed-2ea44f)
 ![Local](https://img.shields.io/badge/runs-100%25%20local-6f42c1)
 
 [Overview](#-overview) •
@@ -220,7 +220,7 @@ flowchart TD
 | Generation & claim review | `qwen2.5:3b` (Q4_K_M) via Ollama; JSON mode, temperature 0, seed 42, 8k context |
 | Backend | FastAPI + uvicorn |
 | Frontend | Framework-free single-page app (HTML, CSS, ES modules); no build step |
-| Testing | pytest (350 tests; LLM mocked) |
+| Testing | pytest (351 tests; LLM mocked) |
 
 ---
 
@@ -333,12 +333,38 @@ python scripts/evaluate.py --generate                        # + full answers (~
 python scripts/evaluate.py --generate --legacy-baseline      # + original-generator comparison
 ```
 
+
+### Manual evaluation procedure
+
+Answer correctness and citation precision are scored by hand; automated metrics never stand in for them (for example, Recall@5 is not answer correctness). After `python scripts/evaluate.py --generate`, open [`evaluation/manual_scoring_template.csv`](evaluation/manual_scoring_template.csv). It has one row per question. The system answer, cited sources, expected answer, number of cited claims and measured latency are pre-filled in the context columns. For each row:
+
+| Column | How to score |
+|---|---|
+| `manual_answer_correct_0_or_1` | **1** only when the complete answer is factually correct and addresses all parts of the question; otherwise **0** |
+| `supported_cited_claims` / `claims_total` | Open every cited page and clause; count the cited claims it really supports. `claims_total` is pre-filled with the number of cited claims shown |
+| `citation_precision_0_to_1` | `supported_cited_claims / claims_total` |
+| `abstention_correct_0_or_1` | **1** when an answerable question received a supported answer or an unanswerable question was refused; otherwise **0** |
+| `end_to_end_latency_seconds` | Pre-filled with the measured server-side time from question to final answer or abstention; keep it separate from retrieval-only latency |
+| `reviewer_notes` | Anything unusual (partial answers, recitals cited instead of articles, …) |
+
+Report answer correctness, citation precision and abstention accuracy separately. The **Evaluation & Analytics** page reads this file and shows the manual metrics as soon as rows are scored. Until then they are marked *Pending*. For a fresh, unseen document, write a separate labelled question set with expected sections before drawing conclusions.
+
+### Exam demo checklist
+
+The live exam is a **five-minute demo** on one unseen public PDF with a one-page architecture diagram, followed by five minutes of theory questions. Prepare three unseen questions:
+
+1. a direct **prose / factual** question;
+2. a **multi-hop** question that needs evidence from two pages (name two provisions or join two parts with "…, and what/when/how …");
+3. an **unanswerable** question (something the document does not cover).
+
+One-PDF cases are supported for the exam; normal use is 2–5 PDFs. Scanned PDFs are OCR'd automatically when Tesseract is installed. The full timed script is in [`docs/DEMO_GUIDE.md`](docs/DEMO_GUIDE.md).
+
 ---
 
 ## 🧪 Testing
 
 ```powershell
-python -m pytest -q          # 350 passed; Ollama and model downloads are mocked
+python -m pytest -q          # 351 passed; Ollama and model downloads are mocked
 ```
 
 | Test area | Examples |
@@ -389,7 +415,7 @@ LexiSyncAI/
 │   └── legacy/                 # Scripts from the earlier single-index version
 ├── evaluation/                 # Held-out + dev questions, results, manual scoring sheet
 ├── docs/                       # Architecture, evaluation, limitations, demo, theory, screenshots
-└── tests/                      # pytest suite (350 tests)
+└── tests/                      # pytest suite (351 tests)
 ```
 
 ---
